@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="page_title">messenger — 以审美为坐标的循环空间</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @font-face {
+      font-family: 'SerifDisplay';
+      src: local('Times New Roman'), local('SimSun'), local('Noto Serif SC'), serif;
+    }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ef;
+      --off-white: #ebe8e1;
+      --gray-100: #e0ddd6;
+      --gray-300: #a8a49c;
+      --gray-600: #6b6760;
+      --gray-900: #2a2825;
+      --accent: #c43e2c;
+      --accent-muted: rgba(196, 62, 44, 0.08);
+      --ink: #1a1a18;
+      --font-serif: 'SerifDisplay', 'Noto Serif SC', 'Times New Roman', serif;
+      --font-mono: 'SF Mono', 'Menlo', 'Monaco', 'Cascadia Code', monospace;
+      --font-sans: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      --grid-col: 80px;
+      --grid-gap: 20px;
+      --header-h: 64px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    body {
+      font-family: var(--font-serif);
+      line-height: 1.7;
+      background: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--off-white); }
+    ::-webkit-scrollbar-thumb { background: var(--gray-300); }
+
+    /* ===== GRID OVERLAY (subtle) ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent calc(var(--grid-col) - 1px),
+          rgba(0,0,0,0.03) calc(var(--grid-col) - 1px),
+          rgba(0,0,0,0.03) var(--grid-col)
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent calc(var(--grid-col) - 1px),
+          rgba(0,0,0,0.03) calc(var(--grid-col) - 1px),
+          rgba(0,0,0,0.03) var(--grid-col)
+        );
+      opacity: 0.4;
+      transition: opacity 0.6s;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      mix-blend-mode: difference;
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    header .logo a {
+      text-decoration: none;
+      color: inherit;
+      font-family: var(--font-serif);
+      font-size: 20px;
+      letter-spacing: 4px;
+      font-weight: 400;
+    }
+
+    /* lang toggle */
+    .lang-toggle {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      background: none;
+      border: none;
+      color: inherit;
+      padding: 0;
+    }
+    .lang-toggle:hover { opacity: 1; }
+    .lang-toggle .sep {
+      opacity: 0.3;
+      margin: 0 4px;
+    }
+    .lang-toggle .active-lang {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    header nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    header nav a {
+      color: inherit;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      font-size: 11px;
+    }
+
+    header nav a:hover { opacity: 1; }
+    header nav a.nav-accent { opacity: 0.55; }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--white);
+      overflow: hidden;
+      padding: 120px 40px 80px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-muted) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ink) 20%, var(--ink) 80%, transparent);
+      opacity: 0.15;
+    }
+
+    .hero-title {
+      font-size: clamp(60px, 12vw, 160px);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+      text-align: center;
+      color: var(--ink);
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 1.4s ease-out;
+    }
+
+    .hero-title .highlight {
+      display: block;
+      font-style: italic;
+      margin-top: 0.05em;
+      opacity: 0.85;
+    }
+
+    .hero-sub {
+      margin-top: 40px;
+      font-family: var(--font-sans);
+      font-size: clamp(13px, 1.8vw, 18px);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 1.4s ease-out 0.3s both;
+      text-align: center;
+      max-width: 600px;
+      line-height: 2;
+    }
+
+    .hero-sub .cn {
+      font-family: var(--font-serif);
+      letter-spacing: 8px;
+      text-transform: none;
+      display: block;
+      margin-top: 8px;
+      color: var(--gray-900);
+      font-size: clamp(14px, 1.6vw, 20px);
+    }
+
+    /* hero: glitch line */
+    .hero-glitch {
+      position: absolute;
+      top: 55%;
+      left: 15%;
+      width: 120px;
+      height: 1px;
+      background: var(--accent);
+      transform: rotate(-12deg);
+      z-index: 1;
+    }
+
+    .hero-glitch-2 {
+      position: absolute;
+      bottom: 25%;
+      right: 20%;
+      width: 80px;
+      height: 1px;
+      background: var(--ink);
+      opacity: 0.3;
+      transform: rotate(8deg);
+      z-index: 1;
+    }
+
+    /* ===== SCROLL INDICATOR ===== */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gray-600);
+      opacity: 0.5;
+      writing-mode: vertical-lr;
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+      50% { transform: translateX(-50%) translateY(8px); opacity: 0.2; }
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section {
+      padding: 140px 60px;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-label::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 40px;
+      height: 1px;
+      background: var(--ink);
+      opacity: 0.2;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 48px;
+      max-width: 720px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ===== MANIFESTO ===== */
+    .manifesto {
+      background: var(--off-white);
+    }
+
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .manifesto-text {
+      font-size: clamp(15px, 1.4vw, 20px);
+      line-height: 2;
+      color: var(--gray-900);
+    }
+
+    .manifesto-text p + p {
+      margin-top: 1.6em;
+    }
+
+    .manifesto-text .pull-quote {
+      font-size: clamp(22px, 2.4vw, 36px);
+      line-height: 1.3;
+      font-style: italic;
+      color: var(--ink);
+      padding: 32px 0 32px 32px;
+      border-left: 1px solid var(--accent);
+      margin: 40px 0;
+    }
+
+    .manifesto-image {
+      position: relative;
+      aspect-ratio: 3/4;
+      background: var(--gray-100);
+      overflow: hidden;
+    }
+
+    .manifesto-image .texture-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(0,0,0,0.03) 3px,
+          rgba(0,0,0,0.03) 4px
+        );
+      mix-blend-mode: multiply;
+    }
+
+    .manifesto-image .content-block {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      line-height: 2;
+    }
+
+    .manifesto-image .content-block strong {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 400;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ===== ITEMS GRID (循环之物) ===== */
+    .items {
+      background: var(--white);
+    }
+
+    .items-header {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .item-card {
+      position: relative;
+      background: var(--off-white);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      padding-bottom: 24px;
+    }
+
+    .item-card:nth-child(2) {
+      margin-top: 60px;
+    }
+
+    .item-card:nth-child(4) {
+      margin-top: -40px;
+    }
+
+    .item-card:nth-child(5) {
+      margin-top: 30px;
+    }
+
+    /* "breaking" — some cards overflow the grid */
+    .item-card.break-right {
+      transform: translateX(20px);
+    }
+
+    .item-card.break-left {
+      transform: translateX(-20px);
+    }
+
+    .item-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .item-card:hover .item-image img {
+      transform: scale(1.03);
+    }
+
+    .item-image {
+      aspect-ratio: 4/5;
+      background: var(--gray-100);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .item-image .placeholder-img {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--gray-300);
+      letter-spacing: 2px;
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Abstract texture backgrounds for placeholders */
+    .item-image .tex-1 {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(100,100,90,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 30%, rgba(196,62,44,0.06) 0%, transparent 50%),
+        linear-gradient(135deg, var(--gray-100) 0%, var(--off-white) 100%);
+    }
+    .item-image .tex-2 {
+      background:
+        repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(0,0,0,0.02) 8px, rgba(0,0,0,0.02) 9px),
+        linear-gradient(180deg, var(--gray-100) 0%, #d8d4cc 100%);
+    }
+    .item-image .tex-3 {
+      background:
+        radial-gradient(circle at 80% 70%, rgba(0,0,0,0.05) 0%, transparent 40%),
+        linear-gradient(90deg, #ddd9d0 0%, #e8e4dc 50%, #d4d0c8 100%);
+    }
+    .item-image .tex-4 {
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px),
+        radial-gradient(ellipse at 20% 80%, rgba(196,62,44,0.05) 0%, transparent 50%),
+        linear-gradient(135deg, #e0ddd6 0%, #cfcbc3 100%);
+    }
+    .item-image .tex-5 {
+      background:
+        radial-gradient(circle at 50% 30%, rgba(0,0,0,0.03) 0%, transparent 30%),
+        radial-gradient(circle at 20% 70%, rgba(196,62,44,0.04) 0%, transparent 40%),
+        linear-gradient(180deg, #eae7df 0%, #ddd9d0 100%);
+    }
+    .item-image .tex-6 {
+      background:
+        repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(0,0,0,0.015) 12px, rgba(0,0,0,0.015) 13px),
+        linear-gradient(135deg, #e5e1d9 0%, #d8d4cc 50%, #e0ddd6 100%);
+    }
+
+    .item-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--gray-600);
+      background: var(--white);
+      padding: 4px 10px;
+      opacity: 0.8;
+    }
+
+    .item-info {
+      padding: 20px 20px 0;
+    }
+
+    .item-name {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .item-desc {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      letter-spacing: 0.5px;
+    }
+
+    .item-price {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--ink);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* ===== RETURN MECHANISM ===== */
+    .return-mech {
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .return-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .return-text .intro {
+      font-size: clamp(15px, 1.3vw, 18px);
+      line-height: 2;
+      color: var(--gray-900);
+      margin-bottom: 28px;
+    }
+
+    .return-text .note {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.8;
+      margin-top: 20px;
+      padding-left: 16px;
+      border-left: 1px solid var(--gray-100);
+    }
+
+    .return-text .note strong {
+      color: var(--ink);
+      font-family: var(--font-serif);
+      font-weight: 400;
+    }
+
+    .return-table-wrap {
+      background: var(--off-white);
+      padding: 32px;
+      position: relative;
+    }
+
+    .return-table-wrap::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 32px; right: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .return-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .return-table thead th {
+      text-align: left;
+      padding: 14px 12px;
+      font-weight: 400;
+      color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .return-table tbody td {
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      color: var(--gray-900);
+    }
+
+    .return-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .return-table .highlight {
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .return-table .label-row {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      color: var(--gray-300);
+      letter-spacing: 1px;
+    }
+
+    .return-table .cash {
+      font-size: 13px;
+    }
+
+    .return-table .credit {
+      font-size: 13px;
+      opacity: 0.75;
+    }
+
+    .return-arrow {
+      display: inline-block;
+      margin: 0 8px;
+      color: var(--gray-300);
+    }
+
+    /* ===== PROCESS STEPS ===== */
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .process-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: var(--gray-900);
+      background: var(--off-white);
+      padding: 10px 16px;
+      flex: 1 1 auto;
+      min-width: 140px;
+    }
+
+    .process-step .num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+    }
+
+    /* ===== CHARITY FUND SECTION ===== */
+    .charity-fund {
+      background: var(--ink);
+      color: var(--white);
+      overflow: hidden;
+      padding: 160px 60px;
+    }
+
+    .charity-fund .section-label {
+      color: var(--gray-600);
+    }
+
+    .charity-fund .section-label::after {
+      background: var(--white);
+      opacity: 0.2;
+    }
+
+    .charity-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .charity-title {
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 0.03em;
+    }
+
+    .charity-title em {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .charity-text {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      line-height: 2;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .charity-text p + p {
+      margin-top: 1.4em;
+    }
+
+    .charity-categories {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .charity-cat {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .charity-cat .marker {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    .charity-highlight {
+      font-size: clamp(36px, 6vw, 72px);
+      font-family: var(--font-serif);
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    /* ===== ABOUT COLLAPSE ===== */
+    .about-expand {
+      background: var(--off-white);
+      padding: 0 60px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .about-expand.open {
+      max-height: 800px;
+    }
+
+    .about-expand-inner {
+      padding: 60px 0 80px;
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: clamp(15px, 1.3vw, 18px);
+      line-height: 2.2;
+      color: var(--gray-900);
+    }
+
+    .about-expand-inner p + p {
+      margin-top: 1.4em;
+    }
+
+    .about-trigger {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gray-600);
+      cursor: pointer;
+      margin-top: 24px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--gray-300);
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .about-trigger:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .about-trigger .arrow {
+      display: inline-block;
+      transition: transform 0.4s ease;
+    }
+
+    .about-trigger.open .arrow {
+      transform: rotate(180deg);
+    }
+
+    /* ===== CHARITY TAG ===== */
+    .charity-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--gray-600);
+      background: var(--off-white);
+      padding: 6px 14px;
+      margin-top: 24px;
+    }
+
+    .charity-tag .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    /* ===== CYCLE SECTION ===== */
+    .cycle {
+      background: var(--ink);
+      color: var(--white);
+      overflow: hidden;
+      padding: 160px 60px;
+    }
+
+    .cycle .section-label {
+      color: var(--gray-600);
+    }
+
+    .cycle .section-label::after {
+      background: var(--white);
+      opacity: 0.2;
+    }
+
+    .cycle-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .cycle-title {
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 0.03em;
+    }
+
+    .cycle-title em {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .cycle-text {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      line-height: 2;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .cycle-text p + p {
+      margin-top: 1.4em;
+    }
+
+    /* cycle ring visual */
+    .cycle-ring-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .cycle-ring {
+      width: min(320px, 50vw);
+      height: min(320px, 50vw);
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      position: relative;
+      animation: ringSpin 40s linear infinite;
+    }
+
+    @keyframes ringSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .cycle-ring::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      opacity: 0.3;
+      transform: scale(0.85);
+    }
+
+    .cycle-ring::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255,255,255,0.08);
+      transform: scale(0.7);
+    }
+
+    .cycle-dot {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      top: 50%;
+      left: 50%;
+      animation: dotOrbit 8s ease-in-out infinite;
+    }
+
+    .cycle-dot:nth-child(2) {
+      animation-delay: -2.67s;
+      background: rgba(255,255,255,0.3);
+    }
+
+    .cycle-dot:nth-child(3) {
+      animation-delay: -5.33s;
+      background: rgba(255,255,255,0.15);
+    }
+
+    @keyframes dotOrbit {
+      0%, 100% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(80px) rotate(0deg);
+      }
+      33% {
+        transform: translate(-50%, -50%) rotate(120deg) translateX(80px) rotate(-120deg);
+      }
+      66% {
+        transform: translate(-50%, -50%) rotate(240deg) translateX(80px) rotate(-240deg);
+      }
+    }
+
+    .cycle-center-label {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: rgba(255,255,255,0.2);
+      text-align: center;
+      line-height: 2;
+    }
+
+    /* ===== ATTITUDE STRIP ===== */
+    .attitude-strip {
+      padding: 100px 60px;
+      background: var(--white);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .attitude-text {
+      font-size: clamp(32px, 5vw, 72px);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      color: var(--ink);
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .attitude-text .line-break {
+      display: block;
+    }
+
+    .attitude-text .strike-through {
+      position: relative;
+      display: inline-block;
+    }
+
+    .attitude-text .strike-through::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -8px;
+      right: -8px;
+      height: 1px;
+      background: var(--accent);
+      transform: rotate(-3deg);
+    }
+
+    .attitude-text .small {
+      display: block;
+      margin-top: 24px;
+      font-family: var(--font-sans);
+      font-size: clamp(12px, 1.2vw, 15px);
+      letter-spacing: 6px;
+      color: var(--gray-300);
+      text-transform: uppercase;
+    }
+
+    /* ===== VISITORS / COUNTER ===== */
+    .visitors {
+      padding: 80px 60px;
+      background: var(--off-white);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--gray-600);
+      text-align: center;
+    }
+
+    .visitors .number {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      color: var(--ink);
+      display: block;
+      margin: 12px 0 8px;
+      letter-spacing: 2px;
+      font-weight: 400;
+    }
+
+    .visitors .copy {
+      font-size: 11px;
+      opacity: 0.5;
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ===== FOOTER ===== */
+    .brand-signature {
+      padding: 60px 60px 20px;
+      background: var(--ink);
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: clamp(11px, 1.2vw, 14px);
+      letter-spacing: 8px;
+      color: rgba(255,255,255,0.15);
+      line-height: 2;
+    }
+
+    .brand-signature .sig-sep {
+      color: rgba(255,255,255,0.08);
+      margin: 0 4px;
+    }
+
+    footer {
+      padding: 60px;
+      background: var(--ink);
+      color: rgba(255,255,255,0.3);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--white);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== CURSOR ===== */
+    .custom-cursor {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+      mix-blend-mode: difference;
+      transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+
+    .custom-cursor.active {
+      opacity: 1;
+    }
+
+    .custom-cursor.hovering {
+      width: 40px;
+      height: 40px;
+      background: rgba(196, 62, 44, 0.15);
+      border: 1px solid var(--accent);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      section { padding: 80px 30px; }
+      header { padding: 16px 24px; }
+      header nav { display: none; }
+      .manifesto-grid { grid-template-columns: 1fr; gap: 40px; }
+      .items-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .item-card:nth-child(2),
+      .item-card:nth-child(4),
+      .item-card:nth-child(5) { margin-top: 0; }
+      .return-grid { grid-template-columns: 1fr; gap: 40px; }
+      .charity-grid { grid-template-columns: 1fr; gap: 40px; }
+      .charity-ring-container { order: -1; }
+      .charity-fund { padding: 100px 30px; }
+      .about-expand { padding: 0 30px; }
+      .attitude-strip { padding: 60px 30px; }
+      .custom-cursor { display: none; }
+      footer { flex-direction: column; gap: 20px; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .items-grid { grid-template-columns: 1fr; }
+      .hero { padding: 100px 24px 60px; }
+    }
+
+    /* ===== NOISE TEXTURE (punk/zen blend) ===== */
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.015;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+      mix-blend-mode: multiply;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Noise overlay -->
+  <div class="noise-overlay"></div>
+
+  <!-- Custom cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo"><a href="#">messenger</a></div>
+    <nav>
+      <a href="#manifesto" data-i18n="nav_manifesto">· 信条</a>
+      <a href="#items" data-i18n="nav_items">· 之物</a>
+      <a href="#return" data-i18n="nav_return">· 回流</a>
+      <a href="#cycle" data-i18n="nav_cycle">· 循环</a>
+      <button class="lang-toggle" id="langToggle">
+        <span class="active-lang" data-lang="zh">中</span><span class="sep">/</span><span data-lang="en">EN</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-glitch"></div>
+    <div class="hero-glitch-2"></div>
+
+    <h1 class="hero-title">
+      messenger
+      <span class="highlight" data-i18n="hero_highlight" style="font-size:0.6em;letter-spacing:0.06em;">循环空间</span>
+    </h1>
+    <p class="hero-sub">
+      <span data-i18n="hero_sub_en">Smart. Quiet. Circulate.</span>
+      <span class="cn" data-i18n="hero_sub_cn">这里的东西可以被带走，也可以被送回来。</span>
+    </p>
+
+    <div class="scroll-indicator">SCROLL</div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto" id="manifesto">
+    <div class="manifesto-grid">
+      <div class="manifesto-text">
+        <div class="section-label reveal" data-i18n="manifesto_label">· 故事 Story</div>
+
+        <p class="reveal" data-i18n="manifesto_p1" style="font-size:clamp(28px,3.5vw,52px);line-height:1.2;font-weight:400;letter-spacing:0.03em;">
+          漂亮的东西应该流动。
+        </p>
+
+        <p class="reveal" data-i18n="manifesto_p2">
+          我一件一件淘，你一件一件看。
+        </p>
+
+        <p class="reveal" data-i18n="manifesto_p3" style="margin-top:32px;padding-top:24px;font-size:clamp(13px,1.2vw,16px);font-family:var(--font-sans);line-height:2;color:var(--gray-600);border-top:1px solid var(--gray-100);">
+          <strong style="font-family:var(--font-serif);color:var(--gray-900);font-weight:400;">审美这件事，可以很轻松。</strong><br>
+          不 elitist，不 gatekeeping，不 pretentious。<br>
+          我们的价值不是拼价格，而是让你不纠结。<br>
+          花一笔对的钱，买一个我们挑过的杯子。<br>
+          它会陪你很久。
+        </p>
+
+        <span class="about-trigger reveal" id="aboutTrigger" data-i18n="about_trigger">
+          阅读完整故事 <span class="arrow">▼</span>
+        </span>
+      </div>
+
+      <div class="manifesto-image reveal">
+        <div class="texture-overlay"></div>
+        <div class="tex-3" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:4px;color:var(--gray-600);text-align:center;line-height:2;opacity:0.6;">
+            <div>◈</div>
+            <div style="margin-top:12px;" data-i18n="manifesto_image_text">审美即坐标</div>
+            <div style="font-size:8px;" data-i18n="manifesto_image_sub">AESTHETICS AS COORDINATES</div>
+          </div>
+        </div>
+        <div class="content-block">
+          <strong data-i18n="manifesto_philosophy_title">流动生活的选品空间</strong>
+          <span data-i18n="manifesto_philosophy_text">漂亮的东西应该流动<br>Beauty is meant to flow</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT (expandable long story) -->
+  <div class="about-expand" id="aboutExpand">
+    <div class="about-expand-inner">
+      <p data-i18n="about_p1">
+        我们这一代人，很少真正安顿下来。<br>
+        租房、搬家、出国、换城市。
+      </p>
+      <p data-i18n="about_p2">
+        拥有的东西越来越少，<br>
+        但依然希望生活里有美感。
+      </p>
+      <p data-i18n="about_p3">
+        问题是：<br>
+        好看的东西太贵。<br>
+        便宜的东西不值得留下。
+      </p>
+      <p data-i18n="about_p4">
+        所以我们开始寻找另一种方式——<br>
+        不是拥有更多，而是拥有得更聪明。
+      </p>
+      <p data-i18n="about_p5">
+        一盏灯。一个杯子。一本旧杂志。<br>
+        一个被使用过很多年的包。
+      </p>
+      <p data-i18n="about_p6">
+        它们不一定昂贵，<br>
+        但都有被选中的理由。
+      </p>
+      <p data-i18n="about_p7" style="font-style:italic;">
+        我们相信：<br>
+        好的物品不应该永远属于某一个人。<br>
+        它们应该流动。<br>
+        像故事一样。像人生一样。
+      </p>
+      <p data-i18n="about_p8">
+        这不是一家二手商店。<br>
+        这是流动生活的选品空间。
+      </p>
+
+      <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--gray-100);">
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:3px;color:var(--gray-600);margin-bottom:16px;" data-i18n="about_standard_label">我的选品标准</div>
+        <div style="font-family:var(--font-serif);font-size:clamp(20px,2vw,28px);letter-spacing:6px;color:var(--ink);line-height:1.8;">
+          <span data-i18n="about_sig1">降噪</span><span style="color:var(--gray-300);margin:0 6px;">·</span>
+          <span data-i18n="about_sig2">聪明</span><span style="color:var(--gray-300);margin:0 6px;">·</span>
+          <span data-i18n="about_sig3">实用</span><span style="color:var(--gray-300);margin:0 6px;">·</span>
+          <span data-i18n="about_sig4">流转</span>
+        </div>
+        <div style="font-family:var(--font-sans);font-size:12px;color:var(--gray-600);margin-top:12px;letter-spacing:1px;" data-i18n="about_standard_note">
+          我选东西看这四点。每件都过一遍。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITEMS -->
+  <section class="items" id="items">
+    <div class="items-header">
+      <div>
+        <div class="section-label reveal" data-i18n="items_label">· 循环之物 Objects</div>
+        <h2 class="section-title reveal" data-i18n="items_title">
+          它们在寻找<br>下一个<em>主人</em>
+        </h2>
+      </div>
+    </div>
+
+    <div class="items-grid">
+      <!-- Card 1 -->
+      <div class="item-card break-right reveal" data-index="0">
+        <div class="item-image">
+          <div class="placeholder-img tex-1">
+            <span>◎</span>
+          </div>
+          <span class="item-tag" data-i18n="item1_tag">已修复 / 限一件</span>
+        </div>
+        <div class="item-info">
+          <h3 class="item-name" data-i18n="item1_name">废铁皮飞行员夹克</h3>
+          <p class="item-desc" data-i18n="item1_desc">90年代军需工厂尾单，铜质拉链氧化成古铜色。内衬手工修补——用了一段老和服腰带。</p>
+          <div class="item-price">¥ 680</div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="item-card reveal" data-index="1">
+        <div class="item-image">
+          <div class="placeholder-img tex-2">
+            <span>◎</span>
+          </div>
+          <span class="item-tag" data-i18n="item2_tag">孤品</span>
+        </div>
+        <div class="item-info">
+          <h3 class="item-name" data-i18n="item2_name">手织亚麻阔腿裤</h3>
+          <p class="item-desc" data-i18n="item2_desc">手工草木染，颜色来自核桃皮和茜草。左口袋内侧有前主人绣的经纬度坐标。</p>
+          <div class="item-price">¥ 520</div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="item-card break-left reveal" data-index="2">
+        <div class="item-image">
+          <div class="placeholder-img tex-3">
+            <span>◎</span>
+          </div>
+          <span class="item-tag" data-i18n="item3_tag">带使用痕迹</span>
+        </div>
+        <div class="item-info">
+          <h3 class="item-name" data-i18n="item3_name">黑胶唱片包</h3>
+          <p class="item-desc" data-i18n="item3_desc">手缝帆布包，印着1987年伦敦某地下乐队的演出海报。背带是回收的登山绳。</p>
+          <div class="item-price">¥ 380</div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="item-card reveal" data-index="3">
+        <div class="item-image">
+          <div class="placeholder-img tex-4">
+            <span>◎</span>
+          </div>
+          <span class="item-tag" data-i18n="item4_tag">艺术家合作款</span>
+        </div>
+        <div class="item-info">
+          <h3 class="item-name" data-i18n="item4_name">拼贴工装马甲</h3>
+          <p class="item-desc" data-i18n="item4_desc">六块不同年代的军布拼成，每块都有自己的色差和故事。口袋衬里是手写乐谱。</p>
+          <div class="item-price">¥ 890</div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="item-card break-right reveal" data-index="4">
+        <div class="item-image">
+          <div class="placeholder-img tex-5">
+            <span>◎</span>
+          </div>
+          <span class="item-tag" data-i18n="item5_tag">已售 · 可预定</span>
+        </div>
+        <div class="item-info">
+          <h3 class="item-name" data-i18n="item5_name">磨损马丁靴</h3>
+          <p class="item-desc" data-i18n="item5_desc">穿了六年的Dr. Martens，皮面自然龟裂如地图。鞋底纹路里嵌着的不是泥土，是三个城市的记忆。</p>
+          <div class="item-price">¥ 750</div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="item-card break-left reveal" data-index="5">
+        <div class="item-image">
+          <div class="placeholder-img tex-6">
+            <span>◎</span>
+          </div>
+          <span class="item-tag" data-i18n="item6_tag">待修复</span>
+        </div>
+        <div class="item-info">
+          <h3 class="item-name" data-i18n="item6_name">旧书店的灯</h3>
+          <p class="item-desc" data-i18n="item6_desc">昭和年间黄铜台灯，灯罩手工捶打出凹凸纹理。电线已换新，接头外露——故意不藏起来。</p>
+          <div class="item-price">¥ 460</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETURN MECHANISM -->
+  <section class="return-mech" id="return">
+    <div class="return-grid">
+      <div class="return-text">
+        <div class="section-label reveal" data-i18n="return_label">· 回流 Return</div>
+        <h2 class="section-title reveal" data-i18n="return_title">
+          不喜欢了？<br><em>送回来</em>
+        </h2>
+
+        <p class="intro reveal" data-i18n="return_intro">
+          在这里买的东西，不喜欢了可以送回来。
+        </p>
+
+        <p class="intro reveal" data-i18n="return_choices">
+          你有两种选择：拿回现金，或者换成积分。积分 1:1 使用，不过期。
+        </p>
+
+        <div class="process-steps reveal">
+          <div class="process-step"><span class="num">1</span><span data-i18n="return_step1">联系我（微信/私信）</span></div>
+          <div class="process-step"><span class="num">2</span><span data-i18n="return_step2">确认成色</span></div>
+          <div class="process-step"><span class="num">3</span><span data-i18n="return_step3">你寄回</span></div>
+          <div class="process-step"><span class="num">4</span><span data-i18n="return_step4">按规则返还</span></div>
+        </div>
+
+        <p class="note reveal">
+          <strong data-i18n="return_note_title">备注</strong>
+          <span data-i18n="return_note_text">退回的东西会重新整理上架。二次销售利润的 20% 进入公益金，每季度公示去向。</span>
+        </p>
+      </div>
+
+      <div class="return-table-wrap reveal">
+        <table class="return-table">
+          <thead>
+            <tr>
+              <th data-i18n="return_th_period">退回时间</th>
+              <th data-i18n="return_th_cash">现金返还</th>
+              <th data-i18n="return_th_credit">积分返还</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="return_row1_period">30 天内</td>
+              <td class="cash highlight" data-i18n="return_row1_cash">60%</td>
+              <td class="credit highlight" data-i18n="return_row1_credit">70%</td>
+            </tr>
+            <tr>
+              <td data-i18n="return_row2_period">30–90 天</td>
+              <td class="cash" data-i18n="return_row2_cash">50%</td>
+              <td class="credit" data-i18n="return_row2_credit">60%</td>
+            </tr>
+            <tr>
+              <td data-i18n="return_row3_period">90–180 天</td>
+              <td class="cash" data-i18n="return_row3_cash">40%</td>
+              <td class="credit" data-i18n="return_row3_credit">50%</td>
+            </tr>
+            <tr>
+              <td data-i18n="return_row4_period">180 天以上</td>
+              <td class="cash" data-i18n="return_row4_cash">30%</td>
+              <td class="credit" data-i18n="return_row4_credit">40%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHARITY FUND -->
+  <section class="charity-fund" id="cycle">
+    <div class="charity-grid">
+      <div class="cycle-ring-container reveal">
+        <div class="cycle-ring" style="border-color:rgba(255,255,255,0.12);">
+          <div class="cycle-dot"></div>
+          <div class="cycle-dot"></div>
+          <div class="cycle-dot"></div>
+          <div class="cycle-center-label">循<br>环<br>∞</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label reveal" data-i18n="charity_label">· 公益金 Charity Fund</div>
+        <div class="charity-highlight reveal" data-i18n="charity_percent">20%</div>
+        <h2 class="charity-title reveal" data-i18n="charity_title">
+          你流回的东西<br>我们让它<em>继续流动</em>
+        </h2>
+        <div class="charity-text reveal">
+          <p data-i18n="charity_p1">
+            你流回的东西，我们会重新上架。二次销售的利润，20% 进入流动公益金。
+          </p>
+          <p data-i18n="charity_p2">
+            这些钱会按季度捐给：
+          </p>
+        </div>
+        <div class="charity-categories reveal">
+          <div class="charity-cat"><span class="marker"></span><span data-i18n="charity_cat1">流浪动物救助</span></div>
+          <div class="charity-cat"><span class="marker"></span><span data-i18n="charity_cat2">乡村儿童阅读</span></div>
+          <div class="charity-cat"><span class="marker"></span><span data-i18n="charity_cat3">社区环保行动</span></div>
+        </div>
+        <div class="charity-text reveal" style="margin-top:24px;">
+          <p data-i18n="charity_p3">
+            每季度在这里公示捐赠记录。你让好东西继续流动。我们一起做点好事。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATTITUDE -->
+  <section class="attitude-strip" id="attitude">
+    <div class="attitude-text reveal">
+      <span data-i18n="attitude_line1">审美</span>
+      <span class="line-break" data-i18n="attitude_line2">不是特权</span>
+      <span class="strike-through" data-i18n="attitude_strike">pretentious</span>
+      <span class="line-break" data-i18n="attitude_line3">just come in</span>
+      <span class="small" data-i18n="attitude_sign">— messenger · no gatekeeping —</span>
+    </div>
+  </section>
+
+  <!-- VISITORS -->
+  <section class="visitors" id="visitors">
+    <div class="reveal">
+      <div data-i18n="visitors_label">当前在线</div>
+      <div class="number" id="visitorCount">0</div>
+      <div class="copy" data-i18n="visitors_text">
+        漂亮的东西应该流动<br>
+        Beauty is meant to flow
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND SIGNATURE -->
+  <div class="brand-signature">
+    <span data-i18n="sig_1">降噪</span><span class="sig-sep"> · </span>
+    <span data-i18n="sig_2">聪明</span><span class="sig-sep"> · </span>
+    <span data-i18n="sig_3">实用</span><span class="sig-sep"> · </span>
+    <span data-i18n="sig_4">流转</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div data-i18n="footer_text">messenger · 漂亮的东西应该流动</div>
+    <div class="footer-links">
+      <a href="#" data-i18n="footer_instagram">Instagram</a>
+      <a href="#" data-i18n="footer_about">关于</a>
+      <a href="#" data-i18n="footer_consign">寄售</a>
+      <a href="#" data-i18n="footer_contact">联系</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ===== I18N =====
+      const translations = {
+        zh: {
+          page_title: 'messenger — 以审美为坐标的循环空间',
+          nav_manifesto: '· 信条',
+          nav_items: '· 之物',
+          nav_return: '· 回流',
+          nav_cycle: '· 循环',
+          hero_highlight: '循环空间',
+          hero_sub_en: 'Smart. Quiet. Circulate.',
+          hero_sub_cn: '这里的东西可以被带走，也可以被送回来。',
+          manifesto_label: '· 故事 Story',
+          manifesto_p1: '漂亮的东西应该流动。',
+          manifesto_p2: '我一件一件淘，你一件一件看。',
+          manifesto_p3: '<strong style="font-family:var(--font-serif);color:var(--gray-900);font-weight:400;">审美这件事，可以很轻松。</strong><br>不 elitist，不 gatekeeping，不 pretentious。<br>我们的价值不是拼价格，而是让你不纠结。<br>花一笔对的钱，买一个我们挑过的杯子。<br>它会陪你很久。',
+          about_trigger: '阅读完整故事 <span class="arrow">▼</span>',
+          about_p1: '我们这一代人，很少真正安顿下来。<br>租房、搬家、出国、换城市。',
+          about_p2: '拥有的东西越来越少，<br>但依然希望生活里有美感。',
+          about_p3: '问题是：<br>好看的东西太贵。<br>便宜的东西不值得留下。',
+          about_p4: '所以我们开始寻找另一种方式——<br>不是拥有更多，而是拥有得更聪明。',
+          about_p5: '一盏灯。一个杯子。一本旧杂志。<br>一个被使用过很多年的包。',
+          about_p6: '它们不一定昂贵，<br>但都有被选中的理由。',
+          about_p7: '我们相信：<br>好的物品不应该永远属于某一个人。<br>它们应该流动。<br>像故事一样。像人生一样。',
+          about_p8: '这不是一家二手商店。<br>这是流动生活的选品空间。',
+          manifesto_image_text: '审美即坐标',
+          manifesto_image_sub: 'AESTHETICS AS COORDINATES',
+          manifesto_philosophy_title: '流动生活的选品空间',
+          manifesto_philosophy_text: '漂亮的东西应该流动<br>Beauty is meant to flow',
+          items_label: '· 循环之物 Objects',
+          items_title: '它们在寻找<br>下一个<em>主人</em>',
+          item1_tag: '已修复 / 限一件',
+          item1_name: '废铁皮飞行员夹克',
+          item1_desc: '90年代军需工厂尾单，铜质拉链氧化成古铜色。内衬手工修补——用了一段老和服腰带。',
+          item2_tag: '孤品',
+          item2_name: '手织亚麻阔腿裤',
+          item2_desc: '手工草木染，颜色来自核桃皮和茜草。左口袋内侧有前主人绣的经纬度坐标。',
+          item3_tag: '带使用痕迹',
+          item3_name: '黑胶唱片包',
+          item3_desc: '手缝帆布包，印着1987年伦敦某地下乐队的演出海报。背带是回收的登山绳。',
+          item4_tag: '艺术家合作款',
+          item4_name: '拼贴工装马甲',
+          item4_desc: '六块不同年代的军布拼成，每块都有自己的色差和故事。口袋衬里是手写乐谱。',
+          item5_tag: '已售 · 可预定',
+          item5_name: '磨损马丁靴',
+          item5_desc: '穿了六年的Dr. Martens，皮面自然龟裂如地图。鞋底纹路里嵌着的不是泥土，是三个城市的记忆。',
+          item6_tag: '待修复',
+          item6_name: '旧书店的灯',
+          item6_desc: '昭和年间黄铜台灯，灯罩手工捶打出凹凸纹理。电线已换新，接头外露——故意不藏起来。',
+          return_label: '· 回流 Return',
+          return_title: '不喜欢了？<br><em>送回来</em>',
+          return_intro: '在这里买的东西，不喜欢了可以送回来。',
+          return_choices: '你有两种选择：拿回现金，或者换成积分。积分 1:1 使用，不过期。',
+          return_step1: '联系我（微信/私信）',
+          return_step2: '确认成色',
+          return_step3: '你寄回',
+          return_step4: '按规则返还',
+          return_note_title: '备注',
+          return_note_text: '退回的东西会重新整理上架。二次销售利润的 20% 进入公益金，每季度公示去向。',
+          return_th_period: '退回时间',
+          return_th_cash: '现金返还',
+          return_th_credit: '积分返还',
+          return_row1_period: '30 天内',
+          return_row1_cash: '60%',
+          return_row1_credit: '70%',
+          return_row2_period: '30–90 天',
+          return_row2_cash: '50%',
+          return_row2_credit: '60%',
+          return_row3_period: '90–180 天',
+          return_row3_cash: '40%',
+          return_row3_credit: '50%',
+          return_row4_period: '180 天以上',
+          return_row4_cash: '30%',
+          return_row4_credit: '40%',
+          charity_label: '· 公益金 Charity Fund',
+          charity_percent: '20%',
+          charity_title: '你流回的东西<br>我们让它<em>继续流动</em>',
+          charity_p1: '你流回的东西，我们会重新上架。二次销售的利润，20% 进入流动公益金。',
+          charity_p2: '这些钱会按季度捐给：',
+          charity_cat1: '流浪动物救助',
+          charity_cat2: '乡村儿童阅读',
+          charity_cat3: '社区环保行动',
+          charity_p3: '每季度在这里公示捐赠记录。你让好东西继续流动。我们一起做点好事。',
+          attitude_strike: 'pretentious',
+          attitude_line1: '审美',
+          attitude_line2: '不是特权',
+          attitude_line3: 'just come in',
+          attitude_sign: '— messenger · no gatekeeping —',
+          visitors_label: '当前在线',
+          visitors_text: '漂亮的东西应该流动<br>Beauty is meant to flow',
+          footer_text: 'messenger · 漂亮的东西应该流动',
+          sig_1: '降噪',
+          sig_2: '聪明',
+          sig_3: '实用',
+          sig_4: '流转',
+          about_standard_label: '我的选品标准',
+          about_sig1: '降噪',
+          about_sig2: '聪明',
+          about_sig3: '实用',
+          about_sig4: '流转',
+          about_standard_note: '我选东西看这四点。每件都过一遍。',
+          footer_instagram: 'Instagram',
+          footer_about: '关于',
+          footer_consign: '寄售',
+          footer_contact: '联系'
+        },
+        en: {
+          page_title: 'messenger — A cyclic space with aesthetics as coordinates',
+          nav_manifesto: '· Manifesto',
+          nav_items: '· Objects',
+          nav_return: '· Return',
+          nav_cycle: '· Cycle',
+          hero_highlight: 'Cyclic Space',
+          hero_sub_en: 'Smart. Quiet. Circulate.',
+          hero_sub_cn: '这里的东西可以被带走，也可以被送回来。',
+          manifesto_label: '· Story',
+          manifesto_p1: '漂亮的东西应该流动。',
+          manifesto_p2: '我一件一件淘，你一件一件看。',
+          manifesto_p3: '<strong style="font-family:var(--font-serif);color:var(--gray-900);font-weight:400;">Good taste doesn\'t have to be heavy.</strong><br>No elitist, no gatekeeping, not pretentious.<br>Our value isn\'t about price wars — it\'s about peace of mind.<br>Spend the right money on a cup we picked for you.<br>It will stay with you a long time.',
+          about_trigger: 'Read the full story <span class="arrow">▼</span>',
+          about_p1: 'Our generation rarely settles down.<br>We rent, we move, we go abroad, we change cities.',
+          about_p2: 'We own less and less,<br>but we still want beauty in our lives.',
+          about_p3: 'The problem:<br>beautiful things cost too much.<br>Cheap things aren\'t worth keeping.',
+          about_p4: 'So we started looking for another way—<br>not owning more, but owning smarter.',
+          about_p5: 'A lamp. A cup. An old magazine.<br>A bag that\'s been used for years.',
+          about_p6: 'They\'re not necessarily expensive,<br>but they all have a reason for being chosen.',
+          about_p7: 'We believe:<br>good things shouldn\'t belong to one person forever.<br>They should flow.<br>Like stories. Like lives.',
+          about_p8: 'This is not a second-hand store.<br>This is a curation space for a life in motion.',
+          manifesto_image_text: 'Aesthetics as Coordinates',
+          manifesto_image_sub: '审美即坐标',
+          manifesto_philosophy_title: 'Curation for a Life in Motion',
+          manifesto_philosophy_text: 'Beauty is meant to flow<br>漂亮的东西应该流动',
+          items_label: '· Objects in Cycle',
+          items_title: 'They are searching<br>for their next <em>owner</em>',
+          item1_tag: 'Restored / One of a Kind',
+          item1_name: 'Scrap Leather Bomber Jacket',
+          item1_desc: '90s military surplus, brass zipper oxidized to bronze. Lining hand-repaired with a piece of old kimono obi.',
+          item2_tag: 'Unique Piece',
+          item2_name: 'Handwoven Linen Wide-leg Pants',
+          item2_desc: 'Hand-dyed with natural pigments from walnut shells and madder root. Inside left pocket embroidered with previous owner\'s coordinates.',
+          item3_tag: 'Signs of Use',
+          item3_name: 'Vinyl Record Bag',
+          item3_desc: 'Hand-stitched canvas bag printed with a 1987 London underground band poster. Strap made from recycled climbing rope.',
+          item4_tag: 'Artist Collaboration',
+          item4_name: 'Patchwork Utility Vest',
+          item4_desc: 'Six panels of military fabric from different eras, each with its own patina and story. Pocket lining is hand-written sheet music.',
+          item5_tag: 'Sold · Available for Order',
+          item5_name: 'Worn Dr. Martens Boots',
+          item5_desc: 'Six years worn Dr. Martens, leather naturally cracked like a map. Embedded in the sole treads aren\'t just dirt — they\'re memories of three cities.',
+          item6_tag: 'Awaiting Restoration',
+          item6_name: 'Old Bookshop Lamp',
+          item6_desc: 'Showa-era brass desk lamp, shade hand-hammered with textured patterns. Rewired with exposed joints — deliberately left uncovered.',
+          return_label: '· Return Guide',
+          return_title: 'Don\'t love it anymore?<br><em>Send it back</em>',
+          return_intro: 'Bought something here and changed your mind? You can send it back.',
+          return_choices: 'Two options: get cash back, or store credit. Credit is 1:1, never expires.',
+          return_step1: 'Message me (WeChat / DM)',
+          return_step2: 'Condition check',
+          return_step3: 'Ship it back',
+          return_step4: 'Refund issued',
+          return_note_title: 'Note',
+          return_note_text: 'Returned items will be re-listed. 20% of second-sale profit goes to the charity fund, reported quarterly.',
+          return_th_period: 'Return Period',
+          return_th_cash: 'Cash Back',
+          return_th_credit: 'Store Credit',
+          return_row1_period: 'Within 30 days',
+          return_row1_cash: '60%',
+          return_row1_credit: '70%',
+          return_row2_period: '30–90 days',
+          return_row2_cash: '50%',
+          return_row2_credit: '60%',
+          return_row3_period: '90–180 days',
+          return_row3_cash: '40%',
+          return_row3_credit: '50%',
+          return_row4_period: '180+ days',
+          return_row4_cash: '30%',
+          return_row4_credit: '40%',
+          charity_label: '· Charity Fund',
+          charity_percent: '20%',
+          charity_title: 'What you return<br>keeps <em>flowing onward</em>',
+          charity_p1: 'Items you return are re-listed. 20% of second-sale profit goes into the flowing charity fund.',
+          charity_p2: 'These funds are donated quarterly to:',
+          charity_cat1: 'Stray animal rescue',
+          charity_cat2: 'Rural children\'s reading',
+          charity_cat3: 'Community environmental action',
+          charity_p3: 'Donation records are published here every quarter. You keep good things flowing. We do good together.',
+          attitude_strike: 'pretentious',
+          attitude_line1: 'Good taste',
+          attitude_line2: 'is not a privilege',
+          attitude_line3: 'just come in',
+          attitude_sign: '— messenger · no gatekeeping —',
+          visitors_label: 'Online Now',
+          visitors_text: 'Beauty is meant to flow<br>漂亮的东西应该流动',
+          footer_text: 'messenger · Beauty is meant to flow',
+          sig_1: 'Noise Off',
+          sig_2: 'Smart',
+          sig_3: 'Useful',
+          sig_4: 'Flowing',
+          about_standard_label: 'Selection Criteria',
+          about_sig1: 'Noise Off',
+          about_sig2: 'Smart',
+          about_sig3: 'Useful',
+          about_sig4: 'Flowing',
+          about_standard_note: 'Four things I check. Every piece, every time.',
+          footer_instagram: 'Instagram',
+          footer_about: 'About',
+          footer_consign: 'Consign',
+          footer_contact: 'Contact'
+        }
+      };
+
+      let currentLang = localStorage.getItem('messenger-lang') || 'zh';
+
+      function switchLang(lang) {
+        currentLang = lang;
+        localStorage.setItem('messenger-lang', lang);
+
+        // Update html lang attribute
+        document.getElementById('html-root').setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+
+        // Update all data-i18n elements
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+          const key = el.getAttribute('data-i18n');
+          const text = translations[lang][key];
+          if (text !== undefined) {
+            el.innerHTML = text;
+          }
+        });
+
+        // Update toggle button active state
+        const toggle = document.getElementById('langToggle');
+        toggle.querySelectorAll('span[data-lang]').forEach(function(span) {
+          span.classList.toggle('active-lang', span.getAttribute('data-lang') === lang);
+        });
+
+        // Update console subtitle
+        if (typeof printSubtitle === 'function') printSubtitle(lang);
+      }
+
+      // Init language
+      switchLang(currentLang);
+
+      // Lang toggle click
+      document.getElementById('langToggle').addEventListener('click', function() {
+        switchLang(currentLang === 'zh' ? 'en' : 'zh');
+      });
+
+      // ===== ABOUT TOGGLE =====
+      const aboutTrigger = document.getElementById('aboutTrigger');
+      const aboutExpand = document.getElementById('aboutExpand');
+      aboutTrigger.addEventListener('click', function() {
+        aboutExpand.classList.toggle('open');
+        aboutTrigger.classList.toggle('open');
+      });
+
+      // ===== CUSTOM CURSOR =====
+      const cursor = document.getElementById('cursor');
+      let cursorVisible = false;
+
+      document.addEventListener('mousemove', function(e) {
+        if (!cursorVisible) {
+          cursor.classList.add('active');
+          cursorVisible = true;
+        }
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+
+      document.addEventListener('mouseleave', function() {
+        cursor.classList.remove('active');
+        cursorVisible = false;
+      });
+
+      // Enlarge cursor on interactive elements
+      document.querySelectorAll('a, .item-card, button').forEach(function(el) {
+        el.addEventListener('mouseenter', function() {
+          cursor.classList.add('hovering');
+        });
+        el.addEventListener('mouseleave', function() {
+          cursor.classList.remove('hovering');
+        });
+      });
+
+      // ===== SCROLL REVEAL =====
+      const revealElements = document.querySelectorAll('.reveal');
+
+      function checkReveal() {
+        const windowHeight = window.innerHeight;
+        revealElements.forEach(function(el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < windowHeight * 0.88) {
+            el.classList.add('visible');
+          }
+        });
+      }
+
+      // Initial check
+      checkReveal();
+
+      // Throttled scroll handler
+      let scrollTicking = false;
+      window.addEventListener('scroll', function() {
+        if (!scrollTicking) {
+          window.requestAnimationFrame(function() {
+            checkReveal();
+            scrollTicking = false;
+          });
+          scrollTicking = true;
+        }
+      });
+
+      // ===== VISITOR COUNTER (animated) =====
+      const visitorEl = document.getElementById('visitorCount');
+      let currentCount = 0;
+      const targetCount = 128;
+
+      function animateCount() {
+        const step = Math.ceil((targetCount - currentCount) / 20);
+        if (step <= 1) {
+          currentCount = targetCount;
+          visitorEl.textContent = targetCount;
+          return;
+        }
+        currentCount += step;
+        visitorEl.textContent = currentCount;
+        requestAnimationFrame(animateCount);
+      }
+
+      // Start animation when visitors section enters view
+      let countAnimated = false;
+
+      function checkCountTrigger() {
+        if (countAnimated) return;
+        const rect = document.getElementById('visitors').getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.9) {
+          countAnimated = true;
+          animateCount();
+        }
+      }
+
+      window.addEventListener('scroll', checkCountTrigger);
+      checkCountTrigger();
+
+      // ===== PARALLAX ON ITEMS (subtle) =====
+      const itemCards = document.querySelectorAll('.item-card');
+
+      function applyParallax() {
+        const scrollY = window.scrollY;
+        itemCards.forEach(function(card, index) {
+          const offset = (index % 3 - 1) * 0.03;
+          const rect = card.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const yOffset = (rect.top - window.innerHeight / 2) * offset;
+            card.style.transform = 'translateY(' + yOffset + 'px)';
+          }
+        });
+      }
+
+      // ===== INSPECTOR LOG =====
+      console.log('%c messenger ', 'background: #0a0a0a; color: #f5f3ef; font-size: 16px; padding: 8px 12px; border-left: 3px solid #c43e2c;');
+      function printSubtitle(lang) {
+        const msg = lang === 'en'
+          ? 'A cyclic space with aesthetics as coordinates'
+          : '以审美为坐标的循环空间';
+        console.log('%c ' + msg + ' ', 'color: #6b6760; font-size: 12px;');
+      }
+      printSubtitle(currentLang);
+
+      // Add subtle random rotation to some cards on page load
+      document.querySelectorAll('.item-card.break-right').forEach(function(el) {
+        el.style.transform += ' rotate(0.8deg)';
+      });
+      document.querySelectorAll('.item-card.break-left').forEach(function(el) {
+        el.style.transform += ' rotate(-0.6deg)';
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

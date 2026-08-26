@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><!-- v6 1781751184 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About · 关于 · THAT Program</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.cn">
+  <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
+  <link href="https://fonts.googleapis.cn/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    :root {
+      --ink: #050d06;
+      --bg: #fbf9f7;
+      --bg-alt: #f0edeb;
+      --bg-light: #ffffff;
+      --text: #121212;
+      --accent: #050d06;
+      --accent-muted: rgba(5,13,6,0.06);
+      --sprout: #5c7a64;
+      --deep-forest: #3d5243;
+      --text-light: #d4cfc4;
+      --gray-100: #e4e2e0;
+      --gray-300: #9a9488;
+      --gray-600: #6b6558;
+      --gray-900: #121212;
+      --font-serif: 'Libre Caslon Text', Georgia, 'Times New Roman', serif;
+      --font-mono: 'SF Mono', Menlo, 'Cascadia Code', monospace;
+      --font-sans: 'Hanken Grotesk', Inter, -apple-system, 'Helvetica Neue', sans-serif;
+      --header-h: 64px;
+    }
+
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    .noise-overlay {
+      position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 128px;
+    }
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 1.5px; background: var(--sprout);
+      z-index: 10001; width: 0%; transition: width 0.1s linear;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px clamp(20px, 4vw, 60px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(251, 249, 247, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #121212;
+    }
+
+    header .logo a {
+      text-decoration: none;
+      color: inherit;
+      font-family: var(--font-sans);
+      font-size: 18px;
+      letter-spacing: 2px;
+      font-weight: 300;
+    }
+
+    /* lang toggle */
+    .lang-toggle {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      background: none;
+      border: none;
+      color: inherit;
+      padding: 0;
+    }
+    .lang-toggle:hover { opacity: 1; }
+    .lang-toggle .sep {
+      opacity: 0.3;
+      margin: 0 4px;
+    }
+    .lang-toggle .active-lang {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    header nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    header nav a {
+      color: inherit;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      font-size: 13px;
+    }
+
+    header nav a:hover { opacity: 1; }
+    header nav a.nav-accent { opacity: 0.55; }
+
+    main { padding-top: var(--header-h); }
+
+    /* Hero */
+    .about-hero {
+      min-height: 60vh; display: flex; flex-direction: column; justify-content: space-between;
+      padding: clamp(80px, 12vw, 140px) clamp(30px, 5vw, 120px) clamp(60px, 8vw, 100px);
+      position: relative; overflow: hidden;
+    }
+    .about-hero h1 {
+      font-family: var(--font-serif); font-size: clamp(48px, 8vw, 96px);
+      font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink);
+      margin-bottom: 40px;
+    }
+    .about-hero .tagline {
+      font-family: var(--font-serif); font-size: clamp(14px, 1.8vw, 20px);
+      font-weight: 400; color: var(--sprout); line-height: 1.6; max-width: 640px;
+    }
+
+    /* Section shared */
+    .section {
+      padding: clamp(60px, 10vw, 120px) clamp(30px, 5vw, 120px);
+      border-top: 1px solid #121212;
+    }
+    .section-label {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sprout); margin-bottom: 24px;
+    }
+    .section h2 {
+      font-family: var(--font-serif); font-size: clamp(28px, 5vw, 52px);
+      font-weight: 400; color: var(--ink); margin-bottom: 32px; line-height: 1.15;
+    }
+    .section p {
+      font-family: var(--font-sans); font-size: clamp(14px, 1.3vw, 17px);
+      font-weight: 300; line-height: 1.9; color: var(--gray-600);
+    }
+    .section p + p { margin-top: 16px; }
+    .section strong { color: var(--text); font-weight: 500; }
+    .prose { max-width: min(720px, 100%); }
+    .prose-wide { max-width: min(960px, 100%); }
+
+    /* Brand story pull quote */
+    .pull-quote {
+      font-family: var(--font-serif); font-size: clamp(20px, 2.5vw, 32px);
+      font-style: italic; font-weight: 400; color: var(--ink);
+      line-height: 1.5; max-width: min(640px, 100%);
+      border-left: 2px solid var(--sprout); padding-left: 24px;
+      margin: 40px 0;
+    }
+
+    /* Three Gates */
+    .gates-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px; margin-top: 48px;
+    }
+    .gate-card {
+      border: 1px solid #121212; padding: clamp(32px, 4vw, 48px) clamp(24px, 3vw, 36px);
+      background: var(--bg); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: none;
+    }
+    .gate-card:hover { transform: translateY(-4px); }
+    .gate-number {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em;
+      color: var(--sprout); margin-bottom: 20px;
+    }
+    .gate-card h3 {
+      font-family: var(--font-serif); font-size: clamp(22px, 3vw, 28px);
+      font-weight: 400; color: var(--ink); margin-bottom: 16px;
+    }
+    .gate-card p {
+      font-family: var(--font-sans); font-size: 14px; font-weight: 300;
+      line-height: 1.8; color: var(--gray-600);
+    }
+    .gate-card .gate-highlight {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+      color: var(--text); margin-top: 20px; letter-spacing: 0.02em;
+    }
+
+    /* Curatorial principle */
+    .principle-summary {
+      background: var(--bg-alt); border: 1px solid var(--gray-100);
+      padding: clamp(32px, 4vw, 56px); margin-top: 48px;
+      text-align: center;
+    }
+    .principle-summary .label {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sprout); margin-bottom: 16px;
+    }
+    .principle-summary .statement {
+      font-family: var(--font-serif); font-size: clamp(20px, 3vw, 32px);
+      font-weight: 400; color: var(--ink); line-height: 1.4;
+    }
+
+
+    /* Closing */
+    #closing .prose p:first-child {
+      font-family: var(--font-serif); font-size: clamp(18px, 2.5vw, 28px);
+      line-height: 1.8; color: var(--ink);
+    }
+
+    /* Contact */
+    .contact-links {
+      display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px;
+    }
+    .contact-item {
+      border: 1px solid #121212; padding: 28px 32px; min-width: 200px;
+      background: var(--bg); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: none;
+    }
+    .contact-item:hover { transform: translateY(-4px); }
+    .contact-item .label {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sprout); margin-bottom: 12px;
+    }
+    .contact-item a {
+      font-family: var(--font-sans); font-size: 15px; font-weight: 400;
+      color: var(--text); text-decoration: none; transition: color 0.3s;
+    }
+    .contact-item a:hover { color: var(--sprout); }
+
+    /* Footer */
+    footer {
+      padding: 60px clamp(30px, 5vw, 120px);
+      border-top: 1px solid #121212;
+      font-family: var(--font-sans); font-size: 12px;
+    }
+    footer .footer-main { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+    footer .footer-brand h3 { font-family: var(--font-sans); font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 6px; }
+    footer .footer-brand p { font-family: var(--font-sans); font-size: 13px; color: var(--gray-600); }
+    footer .footer-right { text-align: right; }
+    footer .footer-nav { display: flex; gap: 24px; justify-content: flex-end; margin-bottom: 10px; }
+    footer .footer-nav a { color: var(--gray-600); font-family: var(--font-sans); font-size: 13px; transition: color 0.3s; }
+    footer .footer-nav a:hover { color: var(--text); }
+    footer .footer-social { display: flex; gap: 24px; justify-content: flex-end; }
+    footer .footer-social a { color: var(--gray-600); font-family: var(--font-sans); font-size: 13px; transition: color 0.3s; }
+    footer .footer-social a:hover { color: var(--sprout); }
+    footer .footer-bottom { font-family: var(--font-sans); font-size: 12px; letter-spacing: 1px; color: var(--gray-300); text-align: center; border-top: 1px solid var(--gray-100); padding-top: 24px; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Cursor */
+    .custom-cursor {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+      position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference;
+      transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+      transform: translate(-50%, -50%); opacity: 0;
+    }
+    .custom-cursor.active { opacity: 1; }
+    .custom-cursor.hovering {
+      width: 40px; height: 40px; background: rgba(196, 62, 44, 0.15);
+      border: 1px solid var(--accent);
+    }
+
+    @media (min-width: 1440px) {
+      .gates-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+      .contact-links { gap: 40px; }
+    }
+    @media (max-width: 900px) {
+      .gates-grid { grid-template-columns: 1fr; }
+      .contact-links { flex-direction: column; gap: 16px; }
+      footer .footer-main { flex-direction: column; }
+      footer .footer-right { text-align: left; }
+      footer .footer-nav, footer .footer-social { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="noise-overlay"></div>
+  <div class="custom-cursor" id="cursor"></div>
+
+  <header>
+    <div class="logo"><a href="index.html">THAT program</a></div>
+    <nav>
+      <a href="index.html#taste">Taste</a>
+      <a href="index.html#hold">Hold</a>
+      <a href="index.html#transfer">Transfer</a>
+      <a href="archive.html">Archive</a>
+      <a href="flow.html">Flow</a>
+      <a href="about.html" class="nav-accent">About</a>
+      <button class="lang-toggle" id="langToggle"><span class="active-lang" data-lang="zh">中</span><span class="sep">/</span><span data-lang="en">EN</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <div class="about-hero">
+      <div>
+        <h1 data-i18n="about_title">About THAT</h1>
+        <div class="tagline" data-i18n="about_tagline">THAT是一个克制但偶尔反叛，安静但有冲击力的空间。不吵闹，也不乖巧。</div>
+      </div>
+    </div>
+
+    <!-- Opening -->
+    <div class="section reveal" id="story">
+      <div class="prose">
+        <p data-i18n="story_p0">它从一个问题开始：每次搬家，打包的时候，有些东西你根本舍不得放进行李箱——不是因为贵，是因为它对了。</p>
+        <p data-i18n="story_p2">一个来自京都百元店的杯子。一个在布鲁克林跳蚤市场翻到的黄铜台灯。一条朋友说"你疯了吧"但你知道它会穿十年的围巾。</p>
+        <p data-i18n="story_p3">我一件一件淘出来的。不是在画廊，不是在买手店。是在深夜刷页面时突然停住手指的那种感觉——就是它。</p>
+        <p data-i18n="story_p4">价格不重要。有的东西五块，有的一百。唯一重要的是它是不是对的。</p>
+        <div class="pull-quote" data-i18n="story_quote">漂亮的东西应该流动。</div>
+        <p data-i18n="story_p5">所以我把它变成了一个空间。你可以买下它，也可以只是跟它住一季。当你不再需要了——要搬家了、厌倦了、准备好迎接新东西了——把它送回来。它会继续飞往下一个人的生活里。</p>
+        <p data-i18n="story_p6">送回来的东西，我们会清洁、重新上架。每一次再流通，售价的 10% 会变成公益金。你让好东西继续走，我们替这条路多做一点。</p>
+        <p data-i18n="story_p7"><strong>这不是二手店。这是一个人把自己对物品的判断，变成了一种让好东西不停下来的方式。</strong></p>
+        <p class="tagline" style="margin-top: 24px;">THAT is us.</p>
+        <p data-i18n="story_p8" style="margin-top: 48px; font-style: italic; color: var(--gray-600);">因为我不想被物品绑住，也不想将就，所以我为自己挑东西时，立下了三道门槛。</p>
+      </div>
+    </div>
+
+    <!-- Aesthetic Framework: Three Gates -->
+    <div class="section reveal" id="framework">
+      <div class="section-label">Aesthetic Framework · 审美框架</div>
+      <h2 data-i18n="framework_title">三道门槛</h2>
+      <p class="prose" data-i18n="framework_intro">不是标准——是从生活里长出来的直觉。</p>
+
+      <div class="gates-grid">
+        <div class="gate-card reveal">
+          <div class="gate-number">01</div>
+          <h3 data-i18n="gate1_title">审美门</h3>
+          <p data-i18n="gate1_desc">你看见它的那一秒，心里有没有停了一下？不是"市场认为好看"，是你觉得它值得被看见。它可以是安静的，也可以有锋芒——但那种存在感是真实的，不是跟风跟出来的。</p>
+          <div class="gate-highlight" data-i18n="gate1_rule">不随便。不跟风。不盲目。</div>
+        </div>
+        <div class="gate-card reveal">
+          <div class="gate-number">02</div>
+          <h3 data-i18n="gate2_title">聪明门</h3>
+          <p data-i18n="gate2_desc">你为它付的钱，会不会让你觉得"值"？不是便宜，是它的价值被低估了——那种淘到宝的心跳。你心里清楚：这不是消费，是一次判断力的胜利。</p>
+          <div class="gate-highlight" data-i18n="gate2_rule">不贵，但值得。</div>
+        </div>
+        <div class="gate-card reveal">
+          <div class="gate-number">03</div>
+          <h3 data-i18n="gate3_title">流动门</h3>
+          <p data-i18n="gate3_desc">它能不能走进下一个人的生活？不是用完即弃的那种。是可以被擦干净、被重新爱上、越用越有味道的那种。每一道使用痕迹，都不是损耗，是它活过的证据。</p>
+          <div class="gate-highlight" data-i18n="gate3_rule">不被消耗，只被传递。</div>
+        </div>
+      </div>
+
+      <div class="principle-summary reveal">
+        <div class="label" data-i18n="summary_label">一句话</div>
+        <div class="statement" data-i18n="summary_text">有判断力，聪明，值得流转。</div>
+      </div>
+    </div>
+
+    <!-- Curatorial Principles -->
+    <div class="section reveal" id="curatorial">
+      <div class="prose">
+        <p data-i18n="curatorial_text">所以我只收那些声音不大的东西：手作的杯子、有年份的灯、洗过很多次的衬衫。你生活里用得到，并且愿意用很久。不进来的？那些吵的、快的、用完就扔的。不是不好，只是不属于这里。</p>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="section reveal" id="closing">
+      <div class="prose">
+        <p data-i18n="closing_p1">不是追求"安静"，是追求"准确"。颜色可以鲜艳，图案可以有性格，但每一件被选中的东西，都在说同一句话：<strong>"我知道我是谁。"</strong></p>
+        <p data-i18n="closing_p2" style="font-style: italic; color: var(--gray-600);">—— Em, Founder & Curator</p>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="section reveal" id="contact">
+      <div class="section-label">Contact · 联系方式</div>
+      <h2 data-i18n="contact_title">找到我们</h2>
+      <div class="contact-links">
+        <div class="contact-item">
+          <div class="label">Email</div>
+          <a href="mailto:emerson.the.k@gmail.com">邮箱</a>
+        </div>
+        <div class="contact-item">
+          <div class="label">Instagram</div>
+          <a href="https://instagram.com/" target="_blank">@that.program</a>
+        </div>
+        <div class="contact-item">
+          <div class="label" data-i18n="contact_xhs_label">小红书</div>
+          <a href="https://xiaohongshu.com/" target="_blank" data-i18n="contact_xhs">THAT Program</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <h3>THAT program</h3>
+        <p>Taste, Hold and Transfer</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-nav">
+          <a href="index.html" data-i18n="footer_home">首页</a>
+          <a href="archive.html">Archive</a>
+      <a href="flow.html">Flow</a>
+          <a href="flow.html">Flow</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://instagram.com/" target="_blank">Instagram</a>
+          <a href="https://xiaohongshu.com/" target="_blank" data-i18n="footer_xhs">小红书</a>
+          <a href="mailto:emerson.the.k@gmail.com">邮箱</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 THAT program. Circularity by Design.</div>
+  </footer>
+
+  <script>
+    (function() {
+      // Scroll progress + header
+      const scrollProgress = document.getElementById('scrollProgress');
+      let scrollTicking = false;
+      function updateScroll() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        scrollProgress.style.width = (scrollTop / docHeight) * 100 + '%';
+      }
+      window.addEventListener('scroll', function() {
+        if (!scrollTicking) {
+          window.requestAnimationFrame(function() { updateScroll(); scrollTicking = false; });
+          scrollTicking = true;
+        }
+      });
+
+      // Custom cursor
+      const cursor = document.getElementById('cursor');
+      let cursorVisible = false;
+      document.addEventListener('mousemove', function(e) {
+        if (!cursorVisible) { cursor.classList.add('active'); cursorVisible = true; }
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+      document.addEventListener('mouseleave', function() { cursor.classList.remove('active'); cursorVisible = false; });
+      document.querySelectorAll('a, button, .gate-card, .contact-item').forEach(function(el) {
+        el.addEventListener('mouseenter', function() { cursor.classList.add('hovering'); });
+        el.addEventListener('mouseleave', function() { cursor.classList.remove('hovering'); });
+      });
+
+      // IntersectionObserver reveal
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+      // Fallback: force reveal all after 1.5s
+      setTimeout(function() { document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) { el.classList.add('visible'); }); }, 1500);
+
+      // i18n
+      const translations = {
+        zh: {
+          about_title: 'About THAT',
+          about_tagline: 'THAT是一个克制但偶尔反叛，安静但有冲击力的空间。不吵闹，也不乖巧。',
+          story_p0: '它从一个问题开始：每次搬家，打包的时候，有些东西你根本舍不得放进行李箱——不是因为贵，是因为它对了。',
+          story_p2: '每次搬家，打包的时候会发现——有些东西你根本舍不得放进行李箱，不是因为贵，是因为它对了。一个来自京都百元店的杯子。一个在布鲁克林跳蚤市场翻到的黄铜台灯。一条朋友说"你疯了吧"但你知道它会穿十年的围巾。',
+          story_p3: '我一件一件淘出来的。不是在画廊，不是在买手店。是在深夜刷页面时突然停住手指的那种感觉——就是它。',
+          story_p4: '价格不重要。有的东西五块，有的一百。唯一重要的是它是不是对的。',
+          story_quote: '漂亮的东西应该流动。',
+          story_p5: '所以我把它变成了一个空间。你可以买下它，也可以只是跟它住一季。当你不再需要了——要搬家了、厌倦了、准备好迎接新东西了——把它送回来。它会继续飞往下一个人的生活里。',
+          story_p6: '送回来的东西，我们会清洁、重新上架。每一次再流通，售价的 10% 会变成公益金。你让好东西继续走，我们替这条路多做一点。',
+          story_p7: '这不是二手店。这是一个人把自己对物品的判断，变成了一种让好东西不停下来的方式。',
+          story_p8: '因为我不想被物品绑住，也不想将就，所以我为自己挑东西时，立下了三道门槛。',
+          framework_title: '三道门槛',
+          framework_intro: '不是标准——是从生活里长出来的直觉。',
+          gate1_title: '审美门',
+          gate1_desc: '你看见它的那一秒，心里有没有停了一下？不是"市场认为好看"，是你觉得它值得被看见。它可以是安静的，也可以有锋芒——但那种存在感是真实的，不是跟风跟出来的。',
+          gate1_rule: '不随便。不跟风。不盲目。',
+          gate2_title: '聪明门',
+          gate2_desc: '你为它付的钱，会不会让你觉得"值"？不是便宜，是它的价值被低估了——那种淘到宝的心跳。你心里清楚：这不是消费，是一次判断力的胜利。',
+          gate2_rule: '不贵，但值得。',
+          gate3_title: '流动门',
+          gate3_desc: '它能不能走进下一个人的生活？不是用完即弃的那种。是可以被擦干净、被重新爱上、越用越有味道的那种。每一道使用痕迹，都不是损耗，是它活过的证据。',
+          gate3_rule: '不被消耗，只被传递。',
+          summary_label: '一句话',
+          summary_text: '有判断力，聪明，值得流转。',
+          curatorial_text: '所以我只收那些声音不大的东西：手作的杯子、有年份的灯、洗过很多次的衬衫。你生活里用得到，并且愿意用很久。不进来的？那些吵的、快的、用完就扔的。不是不好，只是不属于这里。',
+          closing_p1: '不是追求"安静"，是追求"准确"。颜色可以鲜艳，图案可以有性格，但每一件被选中的东西，都在说同一句话："我知道我是谁。"',
+          closing_p2: '—— Em, Founder & Curator',
+          contact_title: '找到我们',
+          contact_xhs_label: '小红书',
+          contact_xhs: 'THAT Program',
+          footer_tagline: 'Taste, Hold and Transfer',
+          footer_home: '首页',
+          footer_xhs: '小红书'
+        },
+        en: {
+          about_title: 'About THAT',
+          about_tagline: 'THAT is a space that is restrained but occasionally rebellious, quiet but impactful. Neither loud nor well-behaved.',
+          story_p0: 'It started with a question: every time you move, there are things you can\'t bring yourself to pack — not because they\'re expensive, but because they\'re right.',
+          story_p2: 'Every time you move, packing reveals the truth — some things you can\'t bear to put in the suitcase. Not because they\'re expensive, but because they\'re right. A cup from a Kyoto hundred-yen shop. A brass lamp found at a Brooklyn flea market. A scarf your friend called crazy but you knew would last ten years.',
+          story_p3: 'I found them one by one. Not in galleries, not in boutiques. It was that feeling when scrolling late at night and your finger just stops — this is it.',
+          story_p4: 'Price doesn\'t matter. Some things cost five bucks, some a hundred. The only thing that matters is whether it\'s right.',
+          story_quote: 'Beautiful things should flow.',
+          story_p5: 'So I turned it into a space. You can take it home, or just live with it for a season. When you no longer need it — maybe you\'re moving again, maybe you\'re just ready for something new — send it back. It\'ll keep flying into someone else\'s life.',
+          story_p6: 'What comes back gets cleaned and relisted. Every time it circulates again, 10% of the sale price goes to a charity fund. You keep beautiful things moving; we make that path do a little more good.',
+          story_p7: 'This isn\'t a thrift store. It\'s one person turning their judgment about objects into a way to keep good things from stopping.',
+          story_p8: 'Because I don\'t want to be tied down by things, and I refuse to settle, I set three gates for myself when choosing what to bring in.',
+          framework_title: 'Three Gates',
+          framework_intro: 'Not standards — instincts that grew out of living.',
+          gate1_title: 'The Aesthetic Gate',
+          gate1_desc: 'The second you see it — does something in you pause? Not what the market thinks is beautiful, but whether you feel it deserves to be seen. It can be quiet, it can have edges — but that presence has to be real, not trend-chased.',
+          gate1_rule: 'No randomness. No trends. No blindness.',
+          gate2_title: 'The Smart Gate',
+          gate2_desc: 'Does what you pay for it make you think "worth it"? Not cheap — underestimated. That heartbeat of finding treasure. You know: this isn\'t consumption, it\'s a victory of judgment.',
+          gate2_rule: 'Not expensive, but worth it.',
+          gate3_title: 'The Flow Gate',
+          gate3_desc: 'Can it walk into someone else\'s life? Not the disposable kind. The kind that can be wiped clean, loved again, get better with age. Every mark of use isn\'t damage — it\'s proof it lived.',
+          gate3_rule: 'Not consumed, only passed on.',
+          summary_label: 'In a sentence',
+          summary_text: 'Discerning, smart, worth circulating.',
+          curatorial_text: 'So I only take in things that don\'t shout: handmade cups, lamps with a history, shirts washed a hundred times. Things you\'ll use in your life, and want to keep using. What stays out? The loud, the fast, the disposable. Not bad — just not from here.',
+          closing_p1: 'Not chasing "quiet" — chasing "precise." Colors can be vivid, patterns can have personality, but every chosen piece says the same thing: "I know who I am."',
+          closing_p2: '— Em, Founder & Curator',
+          contact_title: 'Find us',
+          contact_xhs_label: 'Xiaohongshu',
+          contact_xhs: 'THAT Program',
+          footer_tagline: 'Taste, Hold and Transfer',
+          footer_home: 'Home',
+          footer_xhs: 'Xiaohongshu'
+        }
+      };
+      let currentLang = 'zh';
+      const langToggle = document.getElementById('langToggle');
+      function updateLanguage() {
+        const t = translations[currentLang];
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+          const key = el.getAttribute('data-i18n');
+          if (t[key]) el.textContent = t[key];
+        });
+        document.querySelectorAll('.lang-toggle span[data-lang]').forEach(function(span) {
+          span.classList.toggle('active-lang', span.getAttribute('data-lang') === currentLang);
+        });
+      }
+      if (langToggle) langToggle.addEventListener('click', function() {
+        currentLang = currentLang === 'zh' ? 'en' : 'zh'; updateLanguage();
+      });
+    })();
+  </script>
+</body>
+</html>
