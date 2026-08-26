@@ -1,0 +1,48 @@
+[
+  {
+    "submitterName": "林小雅",
+    "submitterContact": "lin@example.com",
+    "itemName": "Muuto Restore 收纳套装",
+    "description": "全新未拆封，毛毡材质，灰色套装",
+    "photos": [
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400"
+    ],
+    "expectedPrice": 1200,
+    "category": "家居",
+    "status": "pending",
+    "id": "1783656295021-721989",
+    "createdAt": "2026-07-10T04:04:55.021Z",
+    "updatedAt": "2026-07-10T04:04:55.021Z"
+  },
+  {
+    "submitterName": "张明远",
+    "submitterContact": "zhang@example.com",
+    "itemName": "Sony WH-1000XM5 耳机",
+    "description": "使用半年，银色，含原装收纳盒",
+    "photos": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
+    ],
+    "expectedPrice": 1800,
+    "category": "数码",
+    "status": "approved",
+    "reviewNote": "品质良好，通过审核",
+    "reviewedAt": "2026-07-10T04:04:55.020Z",
+    "generatedItemId": "pending",
+    "id": "1783656295021-3fkcqf",
+    "createdAt": "2026-07-10T04:04:55.021Z",
+    "updatedAt": "2026-07-10T04:04:55.021Z"
+  },
+  {
+    "submitterName": "测试用户",
+    "submitterContact": "test@example.com",
+    "itemName": "测试物品",
+    "description": "描述",
+    "photos": [],
+    "expectedPrice": 2000,
+    "category": "测试",
+    "status": "pending",
+    "id": "1783656295149-df6qkb",
+    "createdAt": "2026-07-10T04:04:55.149Z",
+    "updatedAt": "2026-07-10T04:04:55.149Z"
+  }
+]

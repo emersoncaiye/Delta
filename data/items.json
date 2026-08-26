@@ -1,0 +1,154 @@
+[
+  {
+    "code": "THAT-0001",
+    "name": "Herman Miller Aeron 人体工学椅",
+    "description": "经典款A椅，B size，全功能版，使用约1年，状态良好",
+    "photos": [
+      "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=400"
+    ],
+    "category": "家具",
+    "originalPrice": 12800,
+    "sellingPrice": 7680,
+    "status": "on_sale",
+    "sourceOrigin": "上海-静安",
+    "flowHistory": [
+      {
+        "timestamp": "2026-07-10T04:04:55.020Z",
+        "action": "listed",
+        "note": "从用户提交审核通过，上架代售"
+      }
+    ],
+    "id": "1783656295020-csuzfo",
+    "createdAt": "2026-07-10T04:04:55.020Z",
+    "updatedAt": "2026-07-10T04:04:55.020Z"
+  },
+  {
+    "code": "THAT-0002",
+    "name": "Leica Q2 数码相机",
+    "description": "银色限量版，快门数约3000，含原装皮套",
+    "photos": [
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400"
+    ],
+    "category": "数码",
+    "originalPrice": 38000,
+    "sellingPrice": 26600,
+    "status": "on_sale",
+    "sourceOrigin": "北京-朝阳",
+    "flowHistory": [
+      {
+        "timestamp": "2026-07-10T04:04:55.020Z",
+        "action": "listed",
+        "note": "用户持有3个月后提交流转"
+      }
+    ],
+    "id": "1783656295020-3wl5x5",
+    "createdAt": "2026-07-10T04:04:55.020Z",
+    "updatedAt": "2026-07-10T04:04:55.020Z"
+  },
+  {
+    "code": "THAT-0003",
+    "name": "B&O Beoplay A9 音箱",
+    "description": "第四代，胡桃木色，功能完好，外观轻微使用痕迹",
+    "photos": [
+      "https://images.unsplash.com/photo-1545454675-35d1c71f3b85?w=400"
+    ],
+    "category": "音频",
+    "originalPrice": 21900,
+    "sellingPrice": 13140,
+    "status": "reserved",
+    "sourceOrigin": "深圳-南山",
+    "flowHistory": [
+      {
+        "timestamp": "2026-07-10T04:04:55.020Z",
+        "action": "listed",
+        "note": "上架代售"
+      },
+      {
+        "timestamp": "2026-07-10T04:04:55.020Z",
+        "action": "reserved",
+        "note": "买家预定，等待付款"
+      }
+    ],
+    "id": "1783656295020-82ll9t",
+    "createdAt": "2026-07-10T04:04:55.020Z",
+    "updatedAt": "2026-07-10T04:04:55.020Z"
+  },
+  {
+    "code": "THAT-0004",
+    "name": "Mid-century 胡桃木书桌",
+    "description": "丹麦进口胡桃木，140x70cm，有轻微岁月痕迹",
+    "photos": [
+      "https://images.unsplash.com/photo-1518455027359-3f15356565d8?w=400"
+    ],
+    "category": "家具",
+    "originalPrice": 8500,
+    "sellingPrice": 5100,
+    "status": "sold",
+    "sourceOrigin": "杭州-西湖",
+    "flowHistory": [
+      {
+        "timestamp": "2026-07-10T04:04:55.020Z",
+        "action": "listed",
+        "note": "上架代售"
+      },
+      {
+        "timestamp": "2026-07-10T04:04:55.020Z",
+        "action": "sold",
+        "price": 5100,
+        "note": "已售出"
+      }
+    ],
+    "id": "1783656295020-ykqku5",
+    "createdAt": "2026-07-10T04:04:55.020Z",
+    "updatedAt": "2026-07-10T04:04:55.020Z"
+  },
+  {
+    "code": "THAT-0005",
+    "name": "Arc'teryx Alpha SV 冲锋衣",
+    "description": "黑色 M码，Gore-Tex Pro，穿过两次户外",
+    "photos": [
+      "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400"
+    ],
+    "category": "服饰",
+    "originalPrice": 6800,
+    "sellingPrice": 4080,
+    "status": "repair",
+    "sourceOrigin": "成都-锦江",
+    "flowHistory": [
+      {
+        "timestamp": "2026-07-10T04:04:55.020Z",
+        "action": "listed",
+        "note": "上架代售"
+      },
+      {
+        "timestamp": "2026-07-10T04:04:55.020Z",
+        "action": "repair",
+        "note": "拉链需修复，送修中"
+      }
+    ],
+    "id": "1783656295021-pz8aqr",
+    "createdAt": "2026-07-10T04:04:55.021Z",
+    "updatedAt": "2026-07-10T04:04:55.021Z"
+  },
+  {
+    "code": "THAT-0006",
+    "name": "Test Item",
+    "description": "Test",
+    "photos": [],
+    "category": "测试",
+    "originalPrice": 5000,
+    "sellingPrice": 3000,
+    "status": "on_sale",
+    "sourceOrigin": "测试来源",
+    "flowHistory": [
+      {
+        "timestamp": "2026-07-10T04:04:55.057Z",
+        "action": "listed",
+        "note": "新建库存条目，上架代售"
+      }
+    ],
+    "id": "1783656295057-3kciu8",
+    "createdAt": "2026-07-10T04:04:55.057Z",
+    "updatedAt": "2026-07-10T04:04:55.057Z"
+  }
+]

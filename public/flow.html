@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><!-- v6 1781751184 --><!-- v3 1781747396 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flow Guide · 回流指南 · THAT Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.cn">
+  <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
+  <link href="https://fonts.googleapis.cn/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    :root {
+      --ink: #050d06;
+      --bg: #fbf9f7;
+      --bg-alt: #f0edeb;
+      --bg-light: #ffffff;
+      --text: #121212;
+      --accent: #050d06;
+      --accent-muted: rgba(5,13,6,0.06);
+      --sprout: #5c7a64;
+      --deep-forest: #3d5243;
+      --text-light: #d4cfc4;
+      --gray-100: #e4e2e0;
+      --gray-300: #9a9488;
+      --gray-600: #6b6558;
+      --gray-900: #121212;
+      --font-serif: 'Libre Caslon Text', Georgia, 'Times New Roman', serif;
+      --font-mono: 'SF Mono', Menlo, 'Cascadia Code', monospace;
+      --font-sans: 'Hanken Grotesk', Inter, -apple-system, 'Helvetica Neue', sans-serif;
+      --grid-col: 48px;
+      --grid-gap: 20px;
+      --header-h: 64px;
+    }
+
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    .noise-overlay {
+      position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 128px;
+    }
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 1.5px; background: var(--sprout);
+      z-index: 10001; width: 0%; transition: width 0.1s linear;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px clamp(20px, 4vw, 60px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(251, 249, 247, 0.7);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      color: var(--text); font-family: var(--font-sans); font-size: 13px;
+      letter-spacing: 2px; text-transform: uppercase;
+      border-bottom: 1px solid #121212;
+    }
+
+    header .logo a {
+      text-decoration: none;
+      color: inherit;
+      font-family: var(--font-sans);
+      font-size: 18px;
+      letter-spacing: 2px;
+      font-weight: 300;
+    }
+
+    .lang-toggle {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      background: none;
+      border: none;
+      color: inherit;
+      padding: 0;
+    }
+    .lang-toggle:hover { opacity: 1; }
+    .lang-toggle .sep { opacity: 0.3; margin: 0 4px; }
+    .lang-toggle .active-lang { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+
+    header nav { display: flex; gap: 24px; }
+    header nav a { color: inherit; text-decoration: none; opacity: 0.7; transition: opacity 0.3s; font-size: 13px; }
+    header nav a:hover { opacity: 1; }
+    header nav a.nav-accent { opacity: 0.55; }
+
+    main { padding-top: var(--header-h); }
+
+    .flow-hero {
+      min-height: 70vh; display: flex; flex-direction: column; justify-content: space-between;
+      padding: 120px 60px 80px; position: relative; overflow: hidden;
+    }
+    .flow-hero h1 {
+      font-family: var(--font-serif); font-size: clamp(48px, 8vw, 128px);
+      font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink);
+      margin-bottom: 40px;
+    }
+    .flow-hero p {
+      font-family: var(--font-sans); font-size: 15px; font-weight: 300;
+      line-height: 1.8; color: var(--gray-600); max-width: min(560px, 90%);
+    }
+    .flow-hero p + p { margin-top: 16px; }
+    .flow-hero strong { color: var(--accent); font-weight: 400; }
+    .flow-hero .tagline {
+      font-family: var(--font-serif); font-size: 14px; font-style: italic;
+      color: var(--gray-300); letter-spacing: 0.02em;
+    }
+
+    .timeline {
+      padding: 120px 60px; border-top: 1px solid #121212;
+    }
+    .section-header { margin-bottom: 80px; }
+    .section-header h2 {
+      font-family: var(--font-serif); font-size: clamp(32px, 5vw, 72px);
+      font-weight: 400; color: var(--ink); margin-bottom: 16px;
+    }
+    .section-header p {
+      font-family: var(--font-sans); font-size: 14px; font-weight: 300;
+      color: var(--gray-600); max-width: min(480px, 90%); line-height: 1.7;
+    }
+    .timeline-item {
+      display: grid; grid-template-columns: 120px 1fr; gap: 40px;
+      padding: 40px 0; border-bottom: 1px solid var(--gray-100);
+      transition: background 0.3s; cursor: none;
+    }
+    .timeline-item:hover { background: var(--accent-muted); }
+    .timeline-number {
+      font-family: var(--font-mono); font-size: 11px; color: var(--sprout);
+      letter-spacing: 0.1em; margin-bottom: 8px;
+    }
+    .timeline-period {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+      color: var(--gray-600);
+    }
+    .timeline-content h3 {
+      font-family: var(--font-serif); font-size: 24px; font-weight: 400;
+      color: var(--ink); margin-bottom: 12px;
+    }
+    .timeline-content p {
+      font-family: var(--font-sans); font-size: 14px; font-weight: 300;
+      line-height: 1.7; color: var(--gray-600); max-width: min(520px, 90%);
+    }
+
+    .macro-image {
+      width: 100%; height: 50vh; object-fit: cover; display: block;
+      filter: grayscale(30%) contrast(1.05);
+    }
+
+    .return-ladder {
+      padding: 120px 60px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      border-top: 1px solid #121212;
+    }
+    .ladder-card {
+      border: 1px solid #121212; padding: 48px 36px;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s;
+      cursor: none; background: var(--bg);
+    }
+    .ladder-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(5,13,6,0.08);
+    }
+    .ladder-card.outline { background: transparent; }
+    .ladder-card .icon {
+      font-size: 24px; color: var(--sprout); margin-bottom: 24px;
+    }
+    .ladder-card .label {
+      font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gray-300); margin-bottom: 16px;
+    }
+    .ladder-card .percent {
+      font-family: var(--font-serif); font-size: 56px; font-weight: 400;
+      color: var(--ink); line-height: 1; margin-bottom: 8px;
+    }
+    .ladder-card .title {
+      font-family: var(--font-sans); font-size: 18px; font-weight: 500;
+      color: var(--text); margin-bottom: 16px;
+    }
+    .ladder-card .desc {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 300;
+      line-height: 1.7; color: var(--gray-600); margin-bottom: 32px;
+    }
+    .ladder-card .btn {
+      display: inline-block; font-family: var(--font-mono); font-size: 13px;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--text);
+      border: 1px solid #121212; padding: 12px 24px;
+      transition: all 0.3s; cursor: none;
+    }
+    .ladder-card .btn:hover {
+      background: var(--accent); color: var(--bg); border-color: var(--accent);
+    }
+
+    .process-section {
+      padding: 120px 60px; border-top: 1px solid #121212; background: var(--bg-alt);
+    }
+    .process-grid {
+      display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;
+    }
+    .process-intro h2 {
+      font-family: var(--font-serif); font-size: clamp(32px, 5vw, 64px);
+      font-weight: 400; color: var(--ink); margin-bottom: 20px;
+    }
+    .process-intro p {
+      font-family: var(--font-sans); font-size: 14px; font-weight: 300;
+      line-height: 1.7; color: var(--gray-600); max-width: min(320px, 90%);
+    }
+    .process-steps { display: flex; flex-direction: column; gap: 48px; }
+    .process-step { position: relative; padding-left: 24px; }
+    .process-step .progress-bar {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: var(--gray-100);
+    }
+    .process-step:not(:last-child) .progress-bar::after {
+      content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%;
+      background: var(--sprout); transform: scaleY(0); transform-origin: top;
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .process-step.visible:not(:last-child) .progress-bar::after { transform: scaleY(1); }
+    .step-label {
+      font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sprout); margin-bottom: 12px;
+    }
+    .process-step h4 {
+      font-family: var(--font-serif); font-size: 24px; font-weight: 400;
+      color: var(--ink); margin-bottom: 12px;
+    }
+    .process-step p {
+      font-family: var(--font-sans); font-size: 14px; font-weight: 300;
+      line-height: 1.7; color: var(--gray-600); max-width: min(480px, 90%);
+    }
+
+    footer {
+      padding: 60px 60px; border-top: 1px solid #121212;
+      font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.1em;
+    }
+    footer a { color: inherit; text-decoration: none; transition: color 0.3s; cursor: none; }
+    footer a:hover { color: var(--text); }
+    footer .footer-main { display: flex; justify-content: space-between; align-items: flex-start; }
+    footer .footer-brand h3 { font-family: var(--font-sans); font-size: 24px; font-weight: 400; color: var(--ink); margin-bottom: 6px; letter-spacing: 0; }
+    footer .footer-brand p { font-family: var(--font-sans); font-size: 13px; color: var(--gray-600); }
+    footer .footer-right { text-align: right; }
+    footer .footer-nav { display: flex; gap: 24px; justify-content: flex-end; margin-bottom: 10px; }
+    footer .footer-nav a { color: var(--gray-600); font-family: var(--font-sans); font-size: 13px; }
+    footer .footer-nav a:hover { color: var(--ink); }
+    footer .footer-social { display: flex; gap: 24px; justify-content: flex-end; }
+    footer .footer-social a { color: var(--gray-600); font-family: var(--font-sans); font-size: 13px; }
+    footer .footer-social a:hover { color: var(--sprout); }
+    footer .footer-bottom { font-family: var(--font-sans); font-size: 12px; letter-spacing: 1px; color: var(--gray-300); text-align: center; border-top: 1px solid var(--gray-100); margin-top: 40px; padding-top: 24px; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .custom-cursor {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+      position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference;
+      transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+      transform: translate(-50%, -50%); opacity: 0;
+    }
+    .custom-cursor.active { opacity: 1; }
+    .custom-cursor.hovering {
+      width: 40px; height: 40px; background: rgba(196, 62, 44, 0.15);
+      border: 1px solid var(--accent);
+    }
+
+
+    @media (max-width: 900px) {
+      .return-ladder { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; gap: 40px; }
+      .timeline-item { grid-template-columns: 80px 1fr; gap: 24px; }
+      .flow-hero, .timeline, .return-ladder, .process-section { padding: 80px 24px; }
+      nav { gap: 16px; }
+      header { padding: 16px 20px; }
+    }
+    @media (max-width: 600px) {
+      .timeline-item { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="noise-overlay"></div>
+  <div class="custom-cursor" id="cursor"></div>
+  <header>
+    <div class="logo"><a href="index.html">THAT program</a></div>
+    <nav>
+      <a href="archive.html">Archive</a>
+      <a href="flow.html" class="nav-accent">Flow</a>
+      <a href="about.html">About</a>
+      <button class="lang-toggle" id="langToggle"><span class="active-lang" data-lang="zh">中</span><span class="sep">/</span><span data-lang="en">EN</span></button>
+    </nav>
+  </header>
+  <main>
+    <div class="flow-hero reveal">
+      <div>
+        <h1 data-i18n="flow_title">Flow Guide</h1>
+        <p data-i18n="flow_desc">临时所有权是与物品的一种流动关系。你投资的是使用与体验，而非永久占有。</p>
+        <p data-i18n="flow_desc2">我们的简单信任系统建立在一个前提之上：<strong>标准不是完美，而是还值不值得被下一个喜欢。</strong></p>
+      </div>
+      <div class="tagline" data-i18n="flow_tagline">占有不是答案。流动才是。</div>
+    </div>
+    <div class="timeline reveal">
+      <div class="section-header">
+        <h2 data-i18n="timeline_title">持有时间线</h2>
+        <p data-i18n="timeline_desc">你拥有得越久，返还比例越不同。但每一种放手方式，都对应一种值得的退出路径。</p>
+      </div>
+      
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-number">01</div>
+          <div class="timeline-period">7 天内</div>
+        </div>
+        <div class="timeline-content">
+          <h3>The Trial · 试炼</h3>
+          <p>即时连接评估。<strong>100% 换购</strong> 或 <strong>80% 现金</strong> 返还。物品只是路过，以确保与你的空间兼容。</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-number">02</div>
+          <div class="timeline-period">30 天内</div>
+        </div>
+        <div class="timeline-content">
+          <h3>The Integration · 融入</h3>
+          <p>物品开始融入你的日常。<strong>80% 积分</strong> 或 <strong>60% 现金</strong> 返还。如果流动停滞，让物品继续前行。</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-number">03</div>
+          <div class="timeline-period">90 天内</div>
+        </div>
+        <div class="timeline-content">
+          <h3>The Season · 季节</h3>
+          <p>整整一季的使用，磨损开始出现。<strong>60% 积分</strong> 或 <strong>40% 现金</strong> 返还。承认它的演变，让它进入下一段旅程。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-number">04</div>
+          <div class="timeline-period">3–6 个月</div>
+        </div>
+        <div class="timeline-content">
+          <h3>The Mark · 印记</h3>
+          <p>物品留下了你的生活痕迹。<strong>40% 积分</strong> 或 <strong>20% 现金</strong> 返还。它的故事里有了你的一部分。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-number">05</div>
+          <div class="timeline-period">6–12 个月</div>
+        </div>
+        <div class="timeline-content">
+          <h3>The Companion · 陪伴</h3>
+          <p>它陪你走过了一整年。返还方式为 <strong>20% 积分</strong>，不再提供现金返还。它值得被好好告别。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-number">06</div>
+          <div class="timeline-period">1 年以上</div>
+        </div>
+        <div class="timeline-content">
+          <h3>The Bond · 羁绊</h3>
+          <p>它已经是你的朋友了。我们不再谈"退货"，而是 <strong>代售（70% 归你）</strong>。让它体面地找到下一个家。</p>
+        </div>
+      </div>
+    </div>
+    <img class="macro-image reveal" alt="Ceramic Texture" src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=1200&q=80">
+    <div class="return-ladder reveal">
+      <div class="ladder-card">
+        <div class="icon">&#x21bb;</div>
+        <div class="label">The Loop · 循环</div>
+        <div class="percent">60%</div>
+        <div class="title">System Credit · 系统积分</div>
+        <div class="desc">最大化你的影响力和持续探索。通过将价值保留在生态系统内，你推动循环经济，并解锁对你下一个发现的即时访问。</div>
+        <div class="btn">SELECT CREDIT</div>
+      </div>
+      <div class="ladder-card outline">
+        <div class="icon">$</div>
+        <div class="label">The Extract · 提取</div>
+        <div class="percent">50%</div>
+        <div class="title">Cash Value · 现金价值</div>
+        <div class="desc">满足你变化需求的流动资本。将你的临时所有权转换回传统货币，让你在我们的生态系统之外拥有完全的自由。</div>
+        <div class="btn">SELECT CASH</div>
+      </div>
+      <div class="ladder-card outline">
+        <div class="icon">&#x2665;</div>
+        <div class="label">The Lived-In ·  lived-in</div>
+        <div class="percent">40%</div>
+        <div class="title">Value Return · 价值返还</div>
+        <div class="desc">为真正生活过的物品。重度磨损是荣誉的徽章，而非失败。我们将深受喜爱的物品接回我们的修复项目，尊重它们的旅程。</div>
+        <div class="btn">RESTORE & RETURN</div>
+      </div>
+    </div>
+    <div class="process-section reveal">
+      <div class="process-grid">
+        <div class="process-intro">
+          <h2>Return Process</h2>
+          <p>一个有意的序列。没有无摩擦的、游戏化的点击——只有有意的行动来尊重过渡。</p>
+        </div>
+        <div class="process-steps">
+          <div class="process-step reveal">
+            <div class="progress-bar"></div>
+            <div class="step-label">Step 01</div>
+            <h4>Declare · 申报</h4>
+            <p>提交释放意图。用未经编辑的摄影记录物品的当前状态。诚实是这里的货币。</p>
+          </div>
+          <div class="process-step reveal">
+            <div class="progress-bar"></div>
+            <div class="step-label">Step 02</div>
+            <h4>Package · 包装</h4>
+            <p>使用提供的原始结构材料固定物品。在运输过程中尊重物理形态。</p>
+          </div>
+          <div class="process-step reveal">
+            <div class="progress-bar"></div>
+            <div class="step-label">Step 03</div>
+            <h4>Dispatch · 寄送</h4>
+            <p>交给我们指定的运输合作伙伴。循环完成，你选择的值在收到后计入。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <h3>THAT program</h3>
+        <p>Taste, Hold and Transfer</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-nav">
+          <a href="index.html" data-i18n="footer_home">首页</a>
+          <a href="archive.html" data-i18n="footer_archive">Archive</a>
+          <a href="flow.html" data-i18n="footer_flow">Flow</a>
+          <a href="about.html" data-i18n="footer_about">About</a>
+        </div>
+        <div class="footer-social">
+          <a href="#" data-i18n="footer_instagram">Instagram</a>
+          <a href="#" data-i18n="footer_xiaohongshu">小红书</a>
+          <a href="mailto:emerson.the.k@gmail.com">邮箱</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 THAT program. Circularity by Design.</div>
+  </footer>
+  <script>
+    (function() {
+      const scrollProgress = document.getElementById('scrollProgress');
+      let lastScrollY = 0, scrollTicking = false;
+      function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        scrollProgress.style.width = (scrollTop / docHeight) * 100 + '%';
+      }
+      window.addEventListener('scroll', function() {
+        if (!scrollTicking) {
+          window.requestAnimationFrame(function() { updateScrollProgress(); scrollTicking = false; });
+          scrollTicking = true;
+        }
+      });
+
+      const cursor = document.getElementById('cursor');
+      let cursorVisible = false;
+      document.addEventListener('mousemove', function(e) {
+        if (!cursorVisible) { cursor.classList.add('active'); cursorVisible = true; }
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+      document.addEventListener('mouseleave', function() { cursor.classList.remove('active'); cursorVisible = false; });
+      document.querySelectorAll('a, button, .ladder-card, .timeline-item').forEach(function(el) {
+        el.addEventListener('mouseenter', function() { cursor.classList.add('hovering'); });
+        el.addEventListener('mouseleave', function() { cursor.classList.remove('hovering'); });
+      });
+
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      revealElements.forEach(function(el) { revealObserver.observe(el); });
+
+      const translations = {
+        zh: { flow_title: 'Flow Guide', flow_desc: '临时所有权是与物品的一种流动关系。你投资的是使用与体验，而非永久占有。', flow_desc2: '我们的简单信任系统建立在一个前提之上：标准不是完美，而是还值不值得被下一个喜欢。', flow_tagline: '占有不是答案。流动才是。', timeline_title: '持有时间线', timeline_desc: '你拥有得越久，返还比例越不同。但每一种放手方式，都对应一种值得的退出路径。', footer_home: '首页', footer_archive: 'Archive', footer_flow: 'Flow', footer_about: '关于', footer_instagram: 'Instagram', footer_xiaohongshu: '小红书', footer_impact: 'Impact' },
+        en: { flow_title: 'Flow Guide', flow_desc: 'Temporary Ownership is a fluid relationship with physical goods. You invest in access and experience, not permanent possession.', flow_desc2: 'Our Simple Trust System is built on a single premise: The standard is not perfection, but whether it is worthy of being loved by the next person.', flow_tagline: 'Possession is not the answer. Flow is.', timeline_title: 'Hold Timeline', timeline_desc: 'The longer you keep it, the more the return shifts. But every way of letting go has its own graceful exit.', footer_home: 'Home', footer_archive: 'Archive', footer_flow: 'Flow', footer_about: 'About', footer_instagram: 'Instagram', footer_xiaohongshu: 'RED', footer_impact: 'Impact' }
+      };
+      let currentLang = 'zh';
+      const langToggle = document.getElementById('langToggle');
+      function updateLanguage() {
+        const t = translations[currentLang];
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+          const key = el.getAttribute('data-i18n');
+          if (t[key]) el.textContent = t[key];
+        });
+        document.querySelectorAll('.lang-toggle span[data-lang]').forEach(function(span) { span.classList.toggle('active-lang', span.getAttribute('data-lang') === currentLang); });
+      }
+      if (langToggle) langToggle.addEventListener('click', function() { currentLang = currentLang === 'zh' ? 'en' : 'zh'; updateLanguage(); });
+    })();
+  </script>
+</body>
+</html>

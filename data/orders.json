@@ -1,0 +1,14 @@
+[
+  {
+    "itemId": "item-4",
+    "itemName": "Mid-century 胡桃木书桌",
+    "buyerName": "王设计",
+    "buyerContact": "wang@example.com",
+    "amount": 5100,
+    "status": "completed",
+    "id": "1783656295021-5jbxs1",
+    "orderNo": "THAT-ORD-00001",
+    "createdAt": "2026-07-10T04:04:55.021Z",
+    "updatedAt": "2026-07-10T04:04:55.021Z"
+  }
+]
