@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delta · 海外社媒内容策略提案 | 作品集</title>
+<style>
+:root{
+  --bone:#f3f0e9; --paper:#fffdf8; --ink:#191817; --ink2:#4b4740;
+  --muted:#8d877b; --rust:#ad4f28; --sage:#5d7160; --line:#dfd8ca;
+  --line2:#efe9dd;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bone); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.serif{font-family:Georgia,"Songti SC","Times New Roman",serif;font-weight:600;letter-spacing:0.01em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(243,240,233,.92);
+  backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid var(--line);
+}
+nav .wrap{display:flex;gap:26px;align-items:center;height:52px;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{color:var(--muted);text-decoration:none;font-size:12.5px;letter-spacing:.08em;white-space:nowrap;padding:4px 0;border-bottom:1px solid transparent}
+nav a:hover{color:var(--ink);border-bottom-color:var(--rust)}
+nav .brand{font-family:Georgia,serif;color:var(--ink);font-size:14px;letter-spacing:.06em;margin-right:auto}
+
+header.hero{padding:88px 0 72px;border-bottom:1px solid var(--line)}
+.kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--rust);margin-bottom:20px}
+h1{font-size:clamp(34px,5.4vw,58px);line-height:1.12;margin-bottom:22px}
+h1 em{font-style:italic;color:var(--rust)}
+.lede{font-size:17px;color:var(--ink2);max-width:680px;line-height:1.85}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:44px}
+.meta div{background:var(--paper);padding:16px 18px}
+.meta dt{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.meta dd{font-size:14px;font-family:Georgia,serif}
+
+section{padding:78px 0;border-bottom:1px solid var(--line)}
+.sec-no{font-family:Georgia,serif;font-size:12px;letter-spacing:.2em;color:var(--muted);margin-bottom:12px}
+h2{font-size:clamp(24px,3.2vw,34px);margin-bottom:14px}
+h3{font-size:19px;margin-bottom:10px}
+.sec-intro{color:var(--ink2);max-width:780px;margin-bottom:38px;font-size:15.5px}
+
+.card{background:var(--paper);border:1px solid var(--line);padding:26px 28px}
+.card + .card{margin-top:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+
+.pill{display:inline-block;font-size:11px;letter-spacing:.08em;padding:3px 9px;border:1px solid var(--line);color:var(--ink2);background:var(--bone);margin:0 5px 5px 0}
+.pill.rust{border-color:rgba(173,79,40,.4);color:var(--rust);background:rgba(173,79,40,.06)}
+.pill.sage{border-color:rgba(93,113,96,.4);color:var(--sage);background:rgba(93,113,96,.07)}
+.pill.solid{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--paper)}
+th,td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top}
+th{background:var(--bone);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);font-weight:600}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line)}
+
+.asset{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:28px}
+.asset .card h4{font-family:Georgia,serif;font-size:15px;margin-bottom:8px;color:var(--rust)}
+.asset .card p{font-size:13.5px;color:var(--ink2)}
+
+.icp{background:var(--ink);color:var(--bone);padding:38px 40px;margin-bottom:26px}
+.icp .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(243,240,233,.5);margin-bottom:16px}
+.icp .line{font-family:Georgia,serif;font-size:clamp(20px,2.6vw,27px);line-height:1.45;color:#fffdf8;margin-bottom:14px}
+.icp .line em{font-style:italic;color:#e0a888}
+.icp .sub{font-size:13.5px;color:#cdc5b7;line-height:1.8;max-width:720px}
+.excl{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px;border-top:1px solid rgba(243,240,233,.16);padding-top:24px}
+.excl .x h5{font-family:Georgia,serif;font-size:14.5px;color:#e0a888;margin-bottom:6px;font-weight:600}
+.excl .x p{font-size:12.5px;color:#cdc5b7;line-height:1.7}
+.excl .x .no{display:inline-block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(224,168,136,.45);color:#e0a888;padding:2px 7px;margin-bottom:8px}
+.testbox{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--rust);padding:18px 22px;margin-top:16px}
+.testbox h4{font-family:Georgia,serif;font-size:15px;margin-bottom:8px}
+.testbox p{font-size:13.5px;color:var(--ink2)}
+
+.comp-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.comp-head h3{font-size:21px;margin:0}
+.comp-head .tier{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.kv{display:grid;grid-template-columns:88px 1fr;gap:6px 16px;font-size:13.5px;margin-top:14px}
+.kv dt{color:var(--muted);font-size:12px;padding-top:2px}
+.kv dd{color:var(--ink2)}
+.learn{border-left:2px solid var(--sage);padding-left:14px;margin-top:16px;font-size:13.5px;color:var(--ink2)}
+.beat{border-left:2px solid var(--rust);padding-left:14px;margin-top:10px;font-size:13.5px;color:var(--ink2)}
+.learn b,.beat b{color:var(--ink)}
+
+.opportunity{background:var(--ink);color:var(--bone);padding:44px 40px;margin-top:28px}
+.opportunity h3{color:#f0e7d8;font-size:20px;margin-bottom:20px}
+.opportunity ol{list-style:none;counter-reset:o}
+.opportunity li{counter-increment:o;padding-left:38px;position:relative;margin-bottom:18px;font-size:14.5px;line-height:1.8;color:#dcd3c4}
+.opportunity li::before{content:counter(o);position:absolute;left:0;top:1px;font-family:Georgia,serif;font-size:15px;width:24px;height:24px;border:1px solid rgba(220,211,196,.4);display:flex;align-items:center;justify-content:center;color:#dcd3c4}
+.opportunity li b{color:#fff}
+
+.pillar{background:var(--paper);border:1px solid var(--line);padding:22px 24px;border-top:2px solid var(--rust)}
+.pillar .pno{font-family:Georgia,serif;font-size:12px;color:var(--rust);letter-spacing:.16em;margin-bottom:8px}
+.pillar h4{font-family:Georgia,serif;font-size:17px;margin-bottom:8px}
+.pillar p{font-size:13.5px;color:var(--ink2);margin-bottom:12px}
+.pillar .share{font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+
+.c-item{background:var(--paper);border:1px solid var(--line);margin-bottom:18px}
+.c-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 24px;border-bottom:1px solid var(--line2);background:linear-gradient(180deg,#fffdf8,#faf7f0)}
+.c-no{font-family:Georgia,serif;font-size:13px;color:var(--rust);letter-spacing:.1em}
+.c-title{font-family:Georgia,serif;font-size:17px;flex:1;min-width:220px}
+.c-body{padding:20px 24px}
+.c-row{display:grid;grid-template-columns:82px 1fr;gap:14px;padding:9px 0;border-bottom:1px dotted var(--line)}
+.c-row:last-child{border-bottom:none}
+.c-row dt{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.c-row dd{font-size:14px;color:var(--ink2)}
+.copy{font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.8;color:var(--ink);background:#faf7f0;border:1px solid var(--line2);padding:12px 15px;white-space:pre-wrap;margin-top:2px}
+.copy.zh{font-family:inherit;font-size:13.5px;color:var(--ink2);background:transparent;border:none;border-left:2px solid var(--line);padding:4px 0 4px 12px}
+.judge{background:rgba(93,113,96,.07);border:1px solid rgba(93,113,96,.25);padding:14px 16px;margin-top:16px;font-size:13.5px;color:var(--ink2)}
+.judge b{color:var(--sage);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px}
+
+.week{border:1px solid var(--line);background:var(--paper);margin-bottom:18px}
+.week-hd{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--bone)}
+.week-hd .w{font-family:Georgia,serif;font-size:15px;color:var(--rust);letter-spacing:.06em}
+.week-hd .theme{font-family:Georgia,serif;font-size:18px}
+.week-hd .goal{font-size:12px;color:var(--muted);margin-left:auto}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line)}
+@media(max-width:900px){.days{grid-template-columns:repeat(2,1fr)}}
+.day{background:var(--paper);padding:12px 12px 14px;min-height:120px}
+.day .d{font-family:Georgia,serif;font-size:11px;color:var(--muted);margin-bottom:7px}
+.day .pl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;display:inline-block;margin-bottom:7px;border:1px solid var(--line)}
+.pl.ig{color:#8a3f6d;border-color:#e3cddb;background:#faf3f8}
+.pl.tt{color:#1d1d1d;border-color:#d5d5d5;background:#f5f5f5}
+.pl.pt{color:#a3272b;border-color:#e8cdce;background:#fbf1f1}
+.pl.tw{color:#4b5563;border-color:#dcdfe4;background:#f4f5f7}
+.pl.th{color:#6b4fa0;border-color:#ddd6ec;background:#f6f3fb}
+.pl.yt{color:#a8322a;border-color:#ecd4d2;background:#fbf3f2}
+.pl.nl{color:var(--sage);border-color:#d3dbd4;background:#f3f6f4}
+.pl.rd{color:#c4622d;border-color:#ecd8c6;background:#fbf5ee}
+.day .t{font-size:12.5px;line-height:1.55;color:var(--ink2)}
+
+ul.tick{list-style:none}
+ul.tick li{padding-left:20px;position:relative;font-size:14px;color:var(--ink2);margin-bottom:9px}
+ul.tick li::before{content:"—";position:absolute;left:0;color:var(--rust)}
+.num-list{counter-reset:n;list-style:none}
+.num-list li{counter-increment:n;position:relative;padding-left:32px;margin-bottom:14px;font-size:14px;color:var(--ink2)}
+.num-list li::before{content:counter(n);position:absolute;left:0;top:1px;font-family:Georgia,serif;font-size:12px;color:var(--rust);width:20px;height:20px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.7;border-top:1px dashed var(--line);padding-top:12px}
+
+/* identity / tldr / role */
+.who{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-end;border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:30px}
+.who-l{flex:1;min-width:280px}
+.who .role{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.who .name{font-family:Georgia,serif;font-size:27px;line-height:1.2}
+.who .pos{font-size:15px;color:var(--ink2);max-width:660px;line-height:1.75;margin-top:10px}
+.who .pos b{color:var(--ink)}
+.who .contact{margin-left:auto;font-size:12.5px;color:var(--muted);line-height:1.9;text-align:right}
+.tldr{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--ink);padding:28px 32px}
+.tldr .lb{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.tldr .q{font-family:Georgia,serif;font-size:clamp(17px,2.2vw,21px);line-height:1.6;margin-bottom:20px}
+.tldr .q b{color:var(--rust)}
+.tldr ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px 28px;margin-bottom:22px}
+.tldr li{font-size:13.5px;color:var(--ink2);line-height:1.7;padding-left:16px;position:relative}
+.tldr li::before{content:"—";position:absolute;left:0;color:var(--rust)}
+.chain{display:flex;flex-wrap:wrap;gap:8px;border-top:1px dashed var(--line);padding-top:18px}
+.chain a{font-size:12px;text-decoration:none;color:var(--ink2);border:1px solid var(--line);padding:5px 11px;background:var(--bone)}
+.chain a:hover{border-color:var(--rust);color:var(--rust)}
+.chain .lbx{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);align-self:center;margin-right:4px}
+.takeaway{background:rgba(173,79,40,.06);border:1px solid rgba(173,79,40,.28);padding:14px 18px;margin-bottom:22px;font-size:14px;color:var(--ink2)}
+.takeaway b{color:var(--rust);font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:6px}
+
+/* x mock */
+.xwrap{max-width:620px;width:100%;background:#15202b;border:1px solid #22303c;border-radius:16px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.16)}
+.xbar{display:flex;align-items:center;gap:16px;padding:11px 18px;border-bottom:1px solid #22303c}
+.xbar .lg{font-size:15px;color:#e7e9ea;font-weight:600}
+.xbar .tb{margin-left:auto;display:flex;gap:16px;font-size:12px;color:#71767b}
+.xbar .tb span.on{color:#e7e9ea;font-weight:600;border-bottom:2px solid #1d9bf0;padding-bottom:3px}
+.xthread{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:16px 18px 6px}
+.xav{width:40px;height:40px;border-radius:50%;background:#f3f0e9;color:#15202b;font-family:Georgia,serif;display:flex;align-items:center;justify-content:center;font-size:16px}
+.xline{justify-self:center;width:2px;height:100%;background:#31414f;margin-top:6px;border-radius:2px}
+.xmeta{display:flex;align-items:center;gap:6px;font-size:13px;flex-wrap:wrap}
+.xmeta b{color:#e7e9ea}
+.xmeta span{color:#71767b}
+.xpost{font-size:13.5px;line-height:1.7;color:#e7e9ea;padding-bottom:14px}
+.xnum{display:block;color:#71767b;font-size:11.5px;letter-spacing:.06em;margin-bottom:5px}
+.xpost em{font-style:normal;color:#e0a888}
+.xcard{border:1px solid #31414f;border-radius:12px;overflow:hidden;margin:2px 0 14px}
+.xcard h6{padding:9px 13px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#71767b;background:#1d2b36;border-bottom:1px solid #31414f;font-weight:600}
+.xcmp{display:grid;grid-template-columns:1fr 1fr}
+.xcmp div{padding:9px 13px;font-size:11.5px;line-height:1.6;color:#b9c0c6;border-top:1px solid #31414f}
+.xcmp div:nth-child(odd){border-right:1px solid #31414f}
+.xcmp div.hr{border-top:none;background:#1d2b36;color:#71767b;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+.xcmp div.hr.dl{color:#e0a888}
+.xcmp div.dl{color:#f4e3d4}
+.xacts{display:flex;gap:22px;padding:2px 0 16px;color:#71767b;font-size:11.5px;align-items:center;flex-wrap:wrap}
+.xacts span{display:flex;align-items:center;gap:7px}
+.ico.x{width:15px;height:15px;stroke:#71767b}
+
+/* ---------- mocks ---------- */
+.mk-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.mk-grid{grid-template-columns:1fr}}
+.mk{border:1px solid var(--line);background:var(--paper)}
+.mk-hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:13px 18px;border-bottom:1px solid var(--line2);background:var(--bone)}
+.mk-no{font-family:Georgia,serif;font-size:12px;color:var(--rust);letter-spacing:.12em}
+.mk-hd .plat{font-family:Georgia,serif;font-size:14.5px}
+.mk-hd .ref{margin-left:auto;font-size:11px;color:var(--muted)}
+.mk-stage{padding:22px;background:#fbf8f2;display:flex;justify-content:center}
+.mk-note{padding:16px 20px;border-top:1px solid var(--line2);font-size:13px;color:var(--ink2)}
+.mk-note b{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:6px}
+.ico{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ico.xs{width:13px;height:13px;stroke:#9fd8ae}
+.ico.dark{stroke:var(--ink2)}
+
+.phone{width:290px;aspect-ratio:9/16;border:9px solid #171514;border-radius:36px;overflow:hidden;position:relative;background:#000;box-shadow:0 16px 36px rgba(0,0,0,.20);flex:none}
+.screen{position:absolute;inset:0;overflow:hidden}
+.room{position:absolute;inset:0;background:linear-gradient(180deg,#2c2724 0%,#3a332e 56%,#493e35 56%,#54473c 100%)}
+.room.b{background:linear-gradient(180deg,#312b27 0%,#3d3630 60%,#4b4038 60%,#574a3f 100%)}
+.glow{position:absolute;left:50%;top:33%;width:230px;height:230px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,216,156,.95) 0%,rgba(255,197,124,.42) 34%,rgba(255,181,92,.12) 58%,transparent 72%)}
+.glow.sm{width:150px;height:150px;top:56%;left:74%;opacity:.85}
+.shade{position:absolute;left:50%;top:22%;width:78px;height:32px;transform:translateX(-50%);background:#1e1e1c;clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}
+.stem{position:absolute;left:50%;top:30%;width:3px;height:104px;transform:translateX(-50%);background:#2a2724}
+.base{position:absolute;left:50%;top:53%;width:46px;height:6px;transform:translateX(-50%);background:#2a2724;border-radius:3px}
+.case{position:absolute;left:20px;bottom:132px;width:104px;height:70px;border-radius:9px;background:#3a2f28;border:1px solid rgba(255,255,255,.14)}
+.case::before{content:"";position:absolute;left:38%;top:-9px;width:26px;height:9px;border:1px solid rgba(255,255,255,.18);border-bottom:none;border-radius:4px 4px 0 0}
+.ui-top{position:absolute;top:15px;left:17px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.tabs{position:absolute;top:16px;left:0;right:0;display:flex;justify-content:center;gap:18px;font-size:11.5px;color:rgba(255,255,255,.55)}
+.tabs span.on{color:#fff;font-weight:600;border-bottom:2px solid #fff;padding-bottom:4px}
+.hook{position:absolute;left:0;right:66px;bottom:104px;padding:0 17px}
+.hk1{font-family:Georgia,serif;font-size:16.5px;line-height:1.35;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.55)}
+.hk1 em{font-style:italic;color:#ffd7a5}
+.qlist{list-style:none;margin-top:13px;display:grid;gap:8px}
+.qlist li{display:flex;align-items:center;gap:9px;font-size:11px;color:rgba(255,255,255,.9)}
+.tt{position:absolute;left:0;right:66px;top:58px;padding:0 17px;font-family:Georgia,serif;font-size:22px;line-height:1.28;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.tt u{text-decoration:none;border-bottom:2px solid rgba(255,255,255,.35)}
+.tt2{margin-top:14px;font-size:11.5px;line-height:1.6;color:rgba(255,255,255,.82);font-family:inherit;max-width:180px}
+.ui-bottom{position:absolute;left:0;right:66px;bottom:20px;padding:0 17px}
+.prof{display:flex;align-items:center;gap:8px}
+.av{width:26px;height:26px;border-radius:50%;background:#f3f0e9;color:#191817;font-family:Georgia,serif;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.av.sp{border:1.5px solid rgba(255,255,255,.5);background:#4a4038;color:#fff}
+.hdl{font-size:11.5px;color:#fff;font-weight:600}
+.flw{border:1px solid #fff;border-radius:3px;font-size:9.5px;padding:2px 8px;color:#fff;letter-spacing:.04em}
+.cap{margin-top:9px;font-size:10.5px;color:rgba(255,255,255,.85);line-height:1.5}
+.cap i{font-style:normal;color:rgba(255,255,255,.55)}
+.chips{margin-top:7px;display:flex;gap:6px;flex-wrap:wrap}
+.chips span{font-size:9.5px;color:rgba(255,255,255,.85)}
+.acts{position:absolute;right:11px;bottom:26px;display:grid;gap:17px;justify-items:center}
+.a{display:grid;justify-items:center;gap:3px}
+.a b{font-size:9.5px;color:#fff;font-weight:600}
+.prog{position:absolute;left:0;right:0;bottom:5px;height:2px;background:rgba(255,255,255,.22)}
+.prog i{display:block;height:100%;width:62%;background:#fff}
+
+.ptwrap{width:100%}
+.ptsearch{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:9px 17px;margin-bottom:18px;font-size:12.5px;color:var(--ink2)}
+.ptgrid{columns:3;column-gap:13px}
+.ptile{border:1px solid var(--line2);border-radius:15px;overflow:hidden;background:#efeadf;margin-bottom:13px;break-inside:avoid;position:relative}
+.ptile.other{opacity:.5}
+.ptile.mine{border:2px solid var(--rust);box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.ph{position:relative;background:linear-gradient(160deg,#e9e2d6,#d9d0c1)}
+.ph.mine{background:linear-gradient(180deg,#f0e7d9 0%,#e3d4c0 55%,#d2c3ac 55%,#c5b49c 100%);height:250px}
+.mini{position:absolute}
+.mini.lamp{left:50%;top:34%;width:80px;height:80px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,214,152,.95),rgba(255,190,110,.25) 45%,transparent 70%)}
+.mini.cup{left:16%;bottom:16%;width:26px;height:32px;background:#fffdf8;border-radius:3px 3px 6px 6px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.mini.vase{right:16%;bottom:15%;width:22px;height:44px;background:#cfc3ae;border-radius:8px 8px 4px 4px}
+.ptile .plabel{padding:9px 11px;font-size:10.5px;color:var(--ink2);line-height:1.5}
+.ptitle{position:absolute;left:12px;right:12px;bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:1.35;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.badge{position:absolute;top:10px;left:10px;background:var(--rust);color:#fff;font-size:9.5px;letter-spacing:.1em;padding:3px 8px;border-radius:3px}
+.ptmeta{margin-top:16px;border:1px solid var(--line2);background:#fff;padding:14px 16px;font-size:12.5px;color:var(--ink2);line-height:1.75}
+.ptmeta h5{font-family:Georgia,serif;font-size:13px;color:var(--ink);margin-bottom:6px}
+.ptmeta .kw{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.ptmeta .kw span{font-size:10.5px;border:1px solid var(--line);padding:2px 8px;color:var(--ink2)}
+/* ig carousel mock */
+.igcwrap{width:100%;max-width:540px}
+.igc-top{display:flex;align-items:center;gap:9px;padding:10px 13px;background:#fff;border:1px solid var(--line2)}
+.igc-strip{display:flex;gap:11px;overflow-x:auto;padding:13px;background:#fff;border:1px solid var(--line2);border-top:none;border-bottom:none}
+.igc-cell{flex:none;width:126px}
+.igc-f{position:relative;aspect-ratio:1/1;border:1px solid var(--line2);display:flex;flex-direction:column;justify-content:flex-end;padding:11px;overflow:hidden;background:linear-gradient(170deg,#2f2a26,#54473c)}
+.igc-f .pg{position:absolute;top:8px;left:9px;font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.6)}
+.igc-f .dot{position:absolute;left:11px;right:11px;bottom:52%;height:1px;background:rgba(255,255,255,.16)}
+.igc-f h6{font-family:Georgia,serif;font-size:13px;line-height:1.34;color:#fff;font-weight:400}
+.igc-f h6 em{font-style:italic;color:#ffd7a5}
+.igc-f p{font-size:9.5px;line-height:1.55;color:rgba(255,255,255,.72);margin-top:5px}
+.igc-f .tickq{margin-bottom:8px;font-size:10px;color:#9fd8ae;letter-spacing:.04em}
+.igc-f .glowx{position:absolute;left:50%;top:30%;width:96px;height:96px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,214,152,.85),rgba(255,190,110,.2) 45%,transparent 70%)}
+.igc-f.last{background:linear-gradient(170deg,#3a332e,#63513f)}
+.igc-lb{font-size:10px;color:var(--muted);text-align:center;margin-top:7px;letter-spacing:.04em}
+.igc-foot{display:flex;align-items:center;gap:14px;padding:10px 13px;background:#fff;border:1px solid var(--line2);font-size:11px;color:var(--muted)}
+.igc-foot .dots{display:flex;gap:5px}
+.igc-foot .dots i{width:5px;height:5px;border-radius:50%;background:var(--line)}
+.igc-foot .dots i.on{background:var(--rust)}
+.igc-foot b{color:var(--ink);font-weight:600}
+/* reddit + substack mock */
+.rdwrap{width:100%;max-width:500px;background:#fff;border:1px solid var(--line2);border-radius:5px}
+.rdtop{display:flex;align-items:center;gap:7px;padding:9px 14px;border-bottom:1px solid var(--line2);background:#f6f4ef;font-size:11px;color:var(--muted)}
+.rdtop .rdsub{font-weight:600;color:var(--ink);font-size:12px}
+.rdbody{display:grid;grid-template-columns:32px 1fr;gap:14px;padding:14px 16px}
+.rdvote{display:grid;justify-items:center;gap:3px;color:var(--muted);font-size:10.5px}
+.rdvote .up{font-size:13px;color:var(--rust)}
+.rdmeta{display:flex;gap:6px;font-size:11px;color:var(--muted)}
+.rdtitle{font-family:Georgia,serif;font-size:17px;line-height:1.32;margin:7px 0 10px}
+.rdtext{font-size:12.5px;line-height:1.75;color:var(--ink2)}
+.rdtext p{margin-bottom:9px}
+.rdwarn{margin:12px 0 0;padding:10px 12px;background:#fdf6ec;border-left:3px solid var(--rust);font-size:11.5px;line-height:1.6;color:var(--ink2)}
+.rdacts{margin-top:13px;padding-top:10px;border-top:1px dashed var(--line2);display:flex;gap:18px;font-size:11px;color:var(--muted)}
+.rdtag{margin-top:10px;font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+.sswrap{width:100%;max-width:500px;background:#fff;border:1px solid var(--line2)}
+.ssmail{padding:12px 18px;background:#f6f4ef;border-bottom:1px solid var(--line2)}
+.ssmail b{font-family:Georgia,serif;font-size:15.5px;display:block;margin-bottom:4px}
+.ssmail div{font-size:11.5px;color:var(--muted)}
+.sskicker{margin:16px 18px 0;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust)}
+.sshero{margin:10px 18px 0;height:118px;background:linear-gradient(160deg,#efe7d9,#dcd0bd);display:flex;align-items:center;justify-content:center;font-size:11px;color:#8b8172}
+.sstitle{font-family:Georgia,serif;font-size:20px;line-height:1.3;margin:16px 18px 10px}
+.sstext{font-size:12.5px;line-height:1.8;color:var(--ink2);margin:0 18px}
+.sspull{margin:14px 18px;padding:12px 14px;border-left:3px solid var(--sage);background:#f4f7f4;font-family:Georgia,serif;font-size:13.5px;line-height:1.6}
+.ssfoot{margin-top:16px;border-top:1px dashed var(--line2);padding:12px 18px;font-size:11px;color:var(--muted);line-height:1.7}
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.proof .card{border-top:2px solid var(--sage)}
+footer{padding:60px 0 80px;color:var(--muted);font-size:12.5px}
+footer .serif{font-size:15px;color:var(--ink);margin-bottom:10px}
+.tag-line{display:flex;gap:24px;flex-wrap:wrap;margin-top:14px}
+@media print{nav{display:none}body{background:#fff}}
+.proof .ev{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--muted);letter-spacing:.03em}
+.proof .ev a{color:var(--rust);text-decoration:none;border-bottom:1px solid var(--rust);margin-right:12px}
+.proof .ev a:hover{color:var(--ink);border-color:var(--ink)}
+.tg{display:inline-block;font-size:10.5px;letter-spacing:.06em;padding:1px 7px;border-radius:20px;margin-right:6px;vertical-align:middle;white-space:nowrap}
+.tg.ref{background:#eceff2;color:#5a6873;border:1px solid #d8dee4}
+.tg.asm{background:#fdf1e6;color:#9a5a22;border:1px solid #f2ddc2}
+.tg.real{background:#e8f1e9;color:#3f6b45;border:1px solid #cfe3d2}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Delta / 三角洲计划</span>
+    <a href="#tldr">30 秒看板</a>
+    <a href="#brief">Brief</a>
+    <a href="#brand">品牌拆解</a>
+    <a href="#comp">竞品拆解</a>
+    <a href="#strategy">策略框架</a>
+    <a href="#content">9 条内容</a>
+    <a href="#mocks">Mock</a>
+    <a href="#plan">30 天计划</a>
+    <a href="#opt">优化方案</a>
+    <a href="#proof">为什么能迁移</a>
+    <a href="en.html" style="border:1px solid var(--line);padding:3px 10px;color:var(--ink);letter-spacing:.14em">EN</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+
+    <div class="who">
+      <div class="who-l">
+        <div class="role">Target Role · Overseas Content &amp; Social Media Strategy</div>
+        <!-- ↓↓↓ 换成你的真实姓名 ↓↓↓ -->
+        <div class="name">Emerson · @emersoncaiye</div>
+        <!-- ↑↑↑ 换成你的真实姓名 ↑↑↑ -->
+        <p class="pos">
+          <b>求职方向：出海内容策略 / 海外社媒。</b>
+          一份<strong>自主完成的端到端实战项目</strong>：围绕我创办的循环消费品牌 Delta，从竞品定位一路做到
+          <b>内容支柱 → 平台原生文案 → 发布节奏 → 数据验收</b>。策略判断、英文文案、30 天排期和指标框架全部由我一人产出，
+          没有客户 brief、也没有历史后台数据可以依赖，因此每个判断都写在页面上，可以逐条追问。
+        </p>
+        <p class="pos" style="margin-top:9px;font-size:12.5px;color:var(--muted)">
+          独立完成：品牌哲学与审美框架 · 回流机制（7 天 / 30 天 / 90 天 / 1 年以上四档）与公益机制设计 · 用户定义 · 竞品拆解 · 内容支柱 · 9 条英文成稿 · 30 天排期
+        </p>
+      </div>
+      <div class="contact">✉ emerson.the.k@gmail.com<br><a href="en.html" style="color:var(--rust);text-decoration:none;border-bottom:1px solid var(--rust)">Read in English →</a></div>
+    </div>
+
+    <div class="kicker">Case 01 · Social Media Strategy · Own Project</div>
+    <h1>Nothing good<br><em>stays behind</em>.</h1>
+    <p class="lede">
+      Delta（三角洲计划）是我从 0 搭建的循环消费品牌。以下是我为它制定的<b>海外社媒内容策略提案</b>。
+      品牌侧的 philosophy / aesthetic / for_whom / circularity / charity 全部由我撰写（<code>emersoncaiye/Delta</code>）。
+    </p>
+    <dl class="meta">
+      <div><dt>Brand</dt><dd>Delta · Objects for a moving life</dd></div>
+      <div><dt>ICP</dt><dd>搬得动，但不愿将就的人</dd></div>
+      <div><dt>Platforms</dt><dd>IG · TikTok · Pinterest · X · Threads · Shorts · Reddit · Substack</dd></div>
+      <div><dt>项目性质</dt><dd>自有品牌 · 本人 develop（尚未上线，无真实账号数据）</dd></div>
+      <div><dt>周期</dt><dd>0–30 天启动期</dd></div>
+      <div><dt>交付</dt><dd>9 条内容 / 7 张 mock / 30 天计划 / 优化方案</dd></div>
+    </dl>
+  </div>
+</header>
+
+<!-- TL;DR -->
+<section id="tldr" style="padding:44px 0">
+  <div class="wrap">
+    <div class="tldr">
+      <div class="lb">30 秒看板</div>
+      <div class="q">
+        下面按一条链路排：先看为什么这个品牌容易被误读，再看竞品哪里留了空位，
+        然后是内容支柱、9 条平台原生文案、30 天排期，最后落到验收指标。
+        每一节都写了「为什么这么定」，可以直接跳到你关心的部分。
+      </div>
+      <div class="chain">
+        <span class="lbx">案例完整链路：</span>
+        <a href="#brief">背景目标</a>
+        <a href="#brand">品牌 + ICP</a>
+        <a href="#comp">竞品拆解</a>
+        <a href="#strategy">内容策略</a>
+        <a href="#content">9 条原生内容</a>
+        <a href="#mocks">Mock</a>
+        <a href="#plan">30 天发布节奏</a>
+        <a href="#opt">指标 + A/B 框架</a>
+      </div>
+    </div>
+    <div class="note" style="border-top:none;padding-top:14px">
+      品牌还没上线，因此<strong>没有真实后台数据</strong>——竞品量级是公开可见的估算，KPI 是同品类新号的经验值，上线实测后需重设。
+    </div>
+  </div>
+</section>
+
+<!-- 00 -->
+<section id="brief">
+  <div class="wrap">
+    <div class="sec-no">00 — BRIEF</div>
+    <h2>任务与判断前提</h2>
+    <p class="sec-intro">
+      Delta 在海外是一个<strong>品类不存在</strong>的产品：用户熟悉二手平台（Depop / Vinted）、家具租赁（Feather）、
+      循环品牌（Worn Wear），但没见过「一人审美策展 + 买了能寄回 + 寄回再卖捐出去」。
+      更麻烦的是它<strong>极易被误读</strong>——像二手店，或像租赁公司。所以第一个月的核心不是卖货，是<strong>抢定义权</strong>。
+    </p>
+    <div class="grid2">
+      <div class="card">
+        <h3>品牌现状（来自仓库原文）</h3>
+        <ul class="tick">
+          <li>定位：A circular space curated by one person's aesthetic —— 不是二手店</li>
+          <li>核心信念：Beautiful things should circulate. Because no one needs to hoard.</li>
+          <li>选品四问：Quiet / Smart / Worth circulating / Usable</li>
+          <li>机制：你拥有它，但你有一个出口（ownership with an exit，明确不是租赁）</li>
+          <li>公益：回流再售的部分利润 → 动物救助 + 儿童阅读，季度公示</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>海外社媒的三个真实难题</h3>
+        <ul class="tick">
+          <li><b>会被归类错</b>：不说清楚就会掉进「二手店」或「租赁」两个已有心智抽屉</li>
+          <li><b>机制没有场景</b>：「可以寄回」是功能，用户需要的是「我要搬走了」这个时刻</li>
+          <li><b>审美无法空谈</b>：说"我有品味"没人信，必须把标准公开成可判断的东西</li>
+        </ul>
+      </div>
+    </div>
+    <div class="takeaway">
+      <b>这一段的一句话结论</b>
+      品牌最大的风险不是没流量，是<strong>被归类错</strong>。所以 30 天目标的第一条不是「涨粉」，是「让海外用户能正确复述 Delta 是什么」——这条决定了后面所有 KPI 的排序。
+    </div>
+
+    <h3>背景目标（Objective &amp; Key Results）</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>层级</th><th>内容</th><th>为什么这样定</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>Objective</b></td>
+            <td>30 天内让海外目标用户<b>正确理解</b> Delta「不是二手店、不是租赁」，并产生<b>首次购买</b>与<b>首次回流</b>。</td>
+            <td>品类不存在 → 先解决认知，再谈转化；回流是新品牌独有的验证点</td>
+          </tr>
+          <tr>
+            <td><b>KR1 理解</b></td>
+            <td><span class="tg asm">项目假设</span>评论区出现「? / how does it work / is this rental」以外的机制描述 ≥30%；X Thread 被外部引用 ≥10 次</td>
+            <td>可直接观测「定义权是否被抢到」，不需要后台数据</td>
+          </tr>
+          <tr>
+            <td><b>KR2 触达</b></td>
+            <td><span class="tg ref">行业参考值</span>Reels / TikTok 非粉丝触达占比 ≥60%；Pinterest 出站 CTR ≥1%</td>
+            <td>判断是否真在破圈，以及长尾搜索是否真的开始产生流量</td>
+          </tr>
+          <tr>
+            <td><b>KR3 转化</b></td>
+            <td><span class="tg ref">行业参考值</span>bio 链接点击率 ≥2%、邮件订阅净增 ≥300；<span class="tg asm">项目假设</span><b>回流发起数 / 售出量 ≥15%</b></td>
+            <td>前两项在电商里有公开基准；回流率没有——这是基于「每件物品会被持有多久」自设的第一版目标，也是这套机制是否成立的唯一证明</td>
+          </tr>
+          <tr>
+            <td><b>约束条件</b></td>
+            <td><span class="tg asm">项目设定</span>零广告预算；单人兼职执行；每周仅 1 个拍摄窗口；物品履历与捐赠数据由品牌方提供</td>
+            <td>决定了「母素材复用」和「Threads 前置筛选」是被迫也是最优解</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>这张表里的数字，目前没有一项是实测值。</b>
+      <span class="tg ref">行业参考值</span>公开可见的同品类新号区间，用来判断量级是否合理（非粉丝触达比、bio 点击率、Newsletter 打开率属于这一类）；
+      <span class="tg asm">项目假设</span>没有公开基准的目标，由品牌机制推导而来（回流率、定义权类指标属于这一类）——第一版，必须靠上线后的数据校准；
+      <span class="tg real">上线后实测</span>品牌上线后回填真实后台数据，届时前两类全部作废，以实测值为准。
+      后文所有 KPI 沿用同一口径。
+    </div>
+
+  </div>
+</section>
+
+<!-- 01 -->
+<section id="brand">
+  <div class="wrap">
+    <div class="sec-no">01 — BRAND</div>
+    <h2>品牌拆解：什么东西是别人抄不走的</h2>
+    <p class="sec-intro">
+      做内容策略的第一步不是选题，是找<strong>不可复制的内容资产</strong>。Delta 有三样，且都藏在仓库原文里、还没被用起来。
+    </p>
+
+    <div class="icp">
+      <div class="lbl">ICP</div>
+      <div class="line">搬得动，但<em>不愿将就</em>的人。</div>
+      <div class="sub">
+        20–30 岁，过去 3 年至少搬过 2 次，愿意为「住进去的样子」付一点溢价，但拒绝为「带不走的东西」付钱。<br>
+        他不是因为便宜才买二手，也不是因为搬家才将就——他要的是<strong>在这个前提下，生活依然好看</strong>。
+      </div>
+      <div class="excl">
+        <div class="x">
+          <span class="no">不是 01</span>
+          <h5>把 Delta 当临时过渡方案的人</h5>
+          <p>他要的是「先用着，到期就还」——那是 <b>Feather 用户</b>。Delta 用户的物件是被选中、被拥有的，只是他保留出口。</p>
+        </div>
+        <div class="x">
+          <span class="no">不是 02</span>
+          <h5>追求「捡漏」的二手买家</h5>
+          <p>他买的是价格差与转售空间——那是 <b>Depop 用户</b>。Delta 定价写的是 "not cheap, smart"，捡漏叙事会直接破坏 value。</p>
+        </div>
+        <div class="x">
+          <span class="no">不是 03</span>
+          <h5>需要「懂行才配用」的精英消费者</h5>
+          <p>品牌明确反对 elitist / gatekeeping / performative——<b>品味不需要考试</b>。任何「懂的都懂」式表达都是把核心用户推开。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testbox">
+      <h4>把 ICP 变成可执行的一条审核规则</h4>
+      <p>
+        每条内容发布前问一句：<strong>「这三类人会不会也对这条内容感兴趣？」如果会，就是写错了。</strong><br>
+        例如：打折文案会吸引捡漏党（✗）；「临时方案 / 先用着」的说法会吸引租赁用户（✗）；需要解释才懂的黑话会赶走不愿考试的人（✗）。
+        这条规则同时解释了竞品为什么该这么选——<strong>三个排除项，正好对应三个竞品的用户</strong>。
+      </p>
+    </div>
+
+    <div class="asset">
+      <div class="card">
+        <h4>01 · 四道题（审美框架）</h4>
+        <p>Quiet / Smart / Worth circulating / Usable。<strong>这是可复制的栏目格式，不是形容词</strong>。竞品要么靠算法推荐（无从谈标准），要么靠买手（不公开）。把内部标准公开化，等于把主观判断变成可教学、可辩论、可参与的内容。</p>
+      </div>
+      <div class="card">
+        <h4>02 · 搬家时刻（场景）</h4>
+        <p>仓库里写得很清楚：回流的原因是 <i>“because you're moving”</i>。搬家是高频、可预测、有明确时间点的人生节点——这是内容日历唯一能对齐的外部节奏，竞品都没有。</p>
+      </div>
+      <div class="card">
+        <h4>03 · 一个人的品味（人格）</h4>
+        <p><i>“I started this because I am that person.”</i> 品牌即创始人，且创始人就是典型用户。这不是缺点——在反对精英化（no gatekeeping）的前提下，这是最强的信任来源。</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>内容人格：三条规定（全部来自 What We're Not）</h3>
+      <div class="kv">
+        <dt>不设门槛</dt><dd>仓库明确写了 no elitist / no gatekeeping / no "if you know you know"。内容里禁用任何需要"懂行"才看得懂的黑话，包括古着圈的行话。</dd>
+        <dt>不表演</dt><dd>no loud logos, no trying too hard。画面和文案都不做精致感展示，做"住进去的样子"。禁用「匠心」「高级感」。</dd>
+        <dt>不说教</dt><dd>品牌立场是"品味不需要考试"。可以讲标准，但不能变成教你怎么做人——每条内容允许读者 disagree。</dd>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section id="comp">
+  <div class="wrap">
+    <div class="sec-no">02 — COMPETITORS</div>
+    <h2>三个竞品：按「审美 / 移动 / 循环」三条轴拆</h2>
+    <p class="sec-intro">
+      选样本的逻辑是<strong>让每个竞品占住一条 Delta 需要的轴</strong>，而不是挑三个二手平台。
+      这样拆出来的空白才是结构性空白——Delta 站在三条轴的交点上，而交点现在是空的。<br>
+      <strong>更关键的验证：</strong>ICP 的三个排除项，正好对应这三个竞品的核心用户——
+      「只想要临时方案」= Feather 用户，「只想捡漏」= Depop 用户，「需要懂行才配用」= 品牌明确拒绝的精英消费者。
+      人群定义和竞品选择互相印证，说明这两件事都做对了。
+    </p>
+    <div class="takeaway">
+      <b>这一段的一句话结论</b>
+      三个竞品各占一条 Delta 需要的轴，<strong>「有标准地拥有 + 有尊严地放手」这个交点是空的</strong>——内容支柱不是从灵感来的，是从这张空位表推出来的。
+    </div>
+
+    <div class="card">
+      <div class="comp-head">
+        <h3>Depop</h3>
+        <span class="tier">轴：审美 · Gen Z 二手时尚 marketplace</span>
+        <span class="pill">IG 百万级</span><span class="pill">TikTok 百万级</span><span class="pill">IG 3–5 / 周 · TikTok 4–6 / 周</span>
+      </div>
+      <div class="kv">
+        <dt>内容支柱</dt><dd>① 卖家 spotlight ② 穿搭灵感 / 趋势 ③ 年度趋势报告（用平台搜索数据做 PR）</dd>
+        <dt>形态</dt><dd>UGC 转帖为主，卖家自拍 + 试穿；品牌号更像「精选板」而非创作者</dd>
+        <dt>强在哪</dt><dd>卖家即渠道，几十万卖家替它生产内容；把「搜索数据」包装成年度趋势报告被媒体反复引用，是极低成本的权威建设</dd>
+        <dt>弱在哪</dt><dd>内容质量方差极大；品牌声音被海量 UGC 稀释；<strong>没有统一审美标准</strong>——谁都能卖，所以选品无法成为内容；买完关系就断了</dd>
+      </div>
+      <div class="learn"><b>可借鉴：</b>「人 spotlight」结构有效；用自家数据做可被媒体引用的报告，是新品牌最便宜的背书方式。</div>
+      <div class="beat"><b>可超越：</b>Depop 的审美是<strong>众包的趋势</strong>，Delta 的审美是<strong>一个人的框架</strong>。前者追热点，后者可教学——「四道题」是 Depop 在结构上给不出的东西。</div>
+    </div>
+
+    <div class="card">
+      <div class="comp-head">
+        <h3>Feather</h3>
+        <span class="tier">轴：移动 · 家具租赁（订阅制，为搬家的人设计）</span>
+        <span class="pill">IG 十万级</span><span class="pill">TikTok 中量级</span><span class="pill">IG 3–4 / 周</span>
+      </div>
+      <div class="kv">
+        <dt>内容支柱</dt><dd>① 「不用拥有也能住得好看」② 搬家 / 首间公寓场景搭配 ③ 订阅便利性与免组装</dd>
+        <dt>强在哪</dt><dd><strong>验证了「流动人群愿意为不用拥有付费」这个需求真实存在</strong>；场景内容做得极准（搬家、短租、第一间公寓）；Pinterest / SEO 铺得很稳</dd>
+        <dt>弱在哪</dt><dd>是租赁——用户从不拥有，情感连接弱；<strong>没有审美观点</strong>，只有风格分类；退出原因是合同到期而非人生变化；没有循环与公益，用完即还、无故事</dd>
+      </div>
+      <div class="learn"><b>可借鉴：</b>① 移动场景的内容模板可直接用（搬家清单、首间公寓、小空间）。② 它证明 Pinterest 上 first apartment / small space 是真实高意图流量。</div>
+      <div class="beat"><b>可超越：</b>Feather 解决的是「暂时」，Delta 解决的是「我仍然想拥有好东西」。仓库原文已把这条线划清：you own it while you have it —— 拥有权 + 出口，而不是订阅。</div>
+    </div>
+
+    <div class="card">
+      <div class="comp-head">
+        <h3>Patagonia Worn Wear</h3>
+        <span class="tier">轴：循环 · 品牌自营维修 / 回收 / 转售</span>
+        <span class="pill">IG 十万级</span><span class="pill">YouTube 中量级</span><span class="pill">IG 2–3 / 周</span>
+      </div>
+      <div class="kv">
+        <dt>内容支柱</dt><dd>① 修补故事（修补车巡游、用户衣物背后的经历）② 维修教程（长尾搜索）③ 产品寿命价值观</dd>
+        <dt>强在哪</dt><dd><strong>机制即内容</strong>——回收、修补、再售的闭环本身就是故事，不需要额外编选题；教程类内容持续吃搜索流量</dd>
+        <dt>弱在哪</dt><dd>只服务自家产品，故事池受限；情绪偏严肃、偏苦行，缺乏欲望感；审美维度缺席；<strong>只讲"延长"，不讲"放手"</strong></dd>
+      </div>
+      <div class="learn"><b>可借鉴：</b>「机制即内容」是 Delta 该走的路——不要解释机制，要<strong>拍下机制发生的人</strong>。教程类（保养、清洁、如何判断值不值得留）值得单开一条线吃长尾。</div>
+      <div class="beat"><b>可超越：</b>Worn Wear 讲的是「别扔」，Delta 讲的是「可以放手，而且这是好事」。仓库原文那句 <i>Letting go is not failure</i> 是整个循环叙事里几乎没人占领的情绪位。</div>
+    </div>
+
+    <div class="tbl-wrap" style="margin-top:24px">
+      <table>
+        <thead>
+          <tr><th>维度</th><th>Depop（审美）</th><th>Feather（移动）</th><th>Worn Wear（循环）</th><th>Delta 的位置</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>审美来源</td><td>众包趋势</td><td>风格分类</td><td>无</td><td><b>一人框架 · 四道题（公开）</b></td></tr>
+          <tr><td>是否拥有</td><td>买断</td><td>租赁（不拥有）</td><td>买断</td><td><b>拥有 + 出口</b></td></tr>
+          <tr><td>退出原因</td><td>无</td><td>合同到期</td><td>坏了才修</td><td><b>搬家 / 审美变了 / 不需要了</b></td></tr>
+          <tr><td>人生场景</td><td>穿搭</td><td>搬家、首间公寓</td><td>户外使用</td><td><b>流动的生活</b></td></tr>
+          <tr><td>公益</td><td>无</td><td>无</td><td>环保（非捐赠）</td><td><b>动物救助 + 儿童阅读，季度公示</b></td></tr>
+          <tr><td>价格带</td><td>低</td><td>月费中等</td><td>中高</td><td><b>「聪明定价」：不是最低价，是价实（价格随单品单独设定）</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="opportunity">
+      <h3>三个结构性空白 → 直接变成内容支柱</h3>
+      <ol>
+        <li><b>没有人把「搬家」当成内容场景。</b>循环品牌都在讲环保、省钱、耐用；租赁品牌讲搬家但不讲情感。没人拍过「你要搬走了，那些你爱的东西怎么办」——而这是 Delta 用户<strong>真实、高频、可预测</strong>的时刻。</li>
+        <li><b>没有品牌公开自己的选品标准。</b>要么靠算法，要么靠买手黑箱。把「四道题」做成公开栏目，等于把无法证明的主观品味，变成可教学、可讨论、可被用户拿去用的东西——这是 no gatekeeping 立场的唯一可信表达方式。</li>
+        <li><b>没有人给「放手」正名。</b>Worn Wear 讲延长，租赁讲归还（无情感），二手讲转卖（讲钱）。<i>"Returning something shouldn't feel like I made a mistake. It should feel like I participated in something good."</i> —— 这句仓库原文就是一整个内容品类。</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section id="strategy">
+  <div class="wrap">
+    <div class="sec-no">03 — STRATEGY</div>
+    <h2>策略框架：4 个支柱 × 8 个平台角色</h2>
+    <p class="sec-intro">
+      支柱解决「说什么」，平台角色解决「怎么说」。同一个母素材在 8 个平台要有 8 种写法，而不是一条视频全网同步。
+    </p>
+
+    <div class="takeaway">
+      <b>这一段的一句话结论</b>
+      支柱决定「说什么」，平台角色决定「怎么说」；<strong>判断每个平台值不值得投入的标准只有一个：它在用户决策链路里能不能单独完成一件事</strong>——Pinterest 负责被发现，X 负责被定义，Substack 负责被相信。
+    </div>
+    <div class="grid2">
+      <div class="pillar">
+        <div class="pno">PILLAR 01</div>
+        <h4>Objects for a Moving Life</h4>
+        <p>为会搬家的生活选物：第一间公寓、跨国搬家、带得走的尺寸、不必留下的好东西。这是品牌的场景入口。</p>
+        <div class="share">配比 35% · 主指标：保存率、Pinterest 出站点击</div>
+      </div>
+      <div class="pillar">
+        <div class="pno">PILLAR 02</div>
+        <h4>The Four Questions</h4>
+        <p>Quiet / Smart / Worth circulating / Usable。每期让一件物品过四关，也讲没过四关的那件。把审美框架变成固定栏目。</p>
+        <div class="share">配比 25% · 主指标：完播率、评论区讨论数</div>
+      </div>
+      <div class="pillar">
+        <div class="pno">PILLAR 03</div>
+        <h4>The Graceful Exit</h4>
+        <p>放手的人、搬走的人、寄回来的包裹与字条。给「放手」正名——不是退换货，是参与了一件好事。</p>
+        <div class="share">配比 25% · 主指标：回流发起数、Stories 贴纸互动</div>
+      </div>
+      <div class="pillar">
+        <div class="pno">PILLAR 04</div>
+        <h4>Where It Went</h4>
+        <p>物品的下一站 + 季度捐赠记录（动物救助 / 儿童阅读）。信任基建，也是唯一能吸引本地媒体的题材。</p>
+        <div class="share">配比 15% · 主指标：外部链接点击、媒体报道</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:40px">平台角色分工</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>平台</th><th>角色</th><th>主格式</th><th>频次 / 周</th><th>主指标</th><th>语气差异</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>Instagram</b></td><td>品牌展厅 + 转化枢纽</td><td>Reels 3 / Carousel 1 / Stories 每日</td><td>5+</td><td>保存率、主页点击</td><td>克制、具体、句子短</td></tr>
+          <tr><td><b>TikTok</b></td><td>破圈与共鸣</td><td>15–30s 竖版</td><td>4</td><td>3 秒留存、完播率</td><td>第一人称、有转折、字幕前置</td></tr>
+          <tr><td><b>Pinterest</b></td><td>长尾搜索流量</td><td>商品 Pin / Idea Pin</td><td>5</td><td>出站点击、收藏</td><td><b>放弃调性，关键词优先</b></td></tr>
+          <tr><td><b>X</b></td><td><b>定义权</b>与数据</td><td>单条 / Thread</td><td>3</td><td>引用、外部点击</td><td>锋利、数字、反直觉</td></tr>
+          <tr><td><b>Threads</b></td><td>社群 + 素材测试</td><td>短文本 + 图</td><td>3</td><td>回复数</td><td>人说话，不是品牌说话</td></tr>
+          <tr><td><b>YouTube Shorts</b></td><td>机制可视化 + 订阅</td><td>无对白整备 / 修复</td><td>2（复用）</td><td>订阅转化</td><td>零语言依赖、ASMR</td></tr>
+          <tr><td><b>Reddit</b></td><td>高意图长尾 + 信任</td><td>经验长帖（r/expats 等）</td><td>0.5</td><td>upvote ratio、Google 收录</td><td><b>纯经验 + 强制披露身份</b></td></tr>
+          <tr><td><b>Substack</b></td><td>深度 + 合规载体</td><td>600–900 字</td><td>0.5</td><td>打开率、回复</td><td>文学性、透明、可核验</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      为什么 Pinterest 要「放弃调性」：它是唯一搜索型平台，first apartment / small space / secondhand home 是真实高意图词，标题必须写成用户会搜的话而不是品牌会说的话。Pin 半衰期 3–6 个月，是唯一能持续产生站外流量的资产。<br>
+      为什么 Reddit 值得单独占一格：它的语气规则最极端（营销语言会被踩到负分），但 Google 收录权重最高，对「moving + secondhand + apartment」这类高意图词的长尾价值超过所有社媒。能写 Reddit 才叫真的平台适配。
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section id="content">
+  <div class="wrap">
+    <div class="sec-no">04 — CONTENT</div>
+    <h2>9 条平台原生内容</h2>
+    <p class="sec-intro">
+      每条都标注了<strong>「判断」</strong>——为什么在这个平台用这个形态、这个钩子、这个 CTA。
+      平台适配不是把同一句话换个排版，是换叙事单位和情绪曲线。
+    </p>
+    <div class="takeaway">
+      <b>阅读提示</b>
+      文案中出现的具体物品与金额（如 <code>$68</code>、<code>Under $100</code>）为<strong>示例占位</strong>，用于演示定价语言的分寸感；正式发布前替换为真实物品与其真实价格。
+      Delta 的定价为逐件设定、不走价格带，因此策略层面<strong>刻意不给出区间</strong>——「not cheap, fairly priced」是立场，不是折扣承诺。
+    </div>
+
+    <div class="tbl-wrap" style="margin-bottom:32px">
+      <table>
+        <thead><tr><th>#</th><th>平台 / 格式</th><th>标题</th><th>支柱</th><th>目标</th><th>CTA</th></tr></thead>
+        <tbody>
+          <tr><td>C1</td><td>IG Reels 30s</td><td>Four questions, one lamp</td><td>The Four Questions</td><td>建立标准</td><td>Save</td></tr>
+          <tr><td>C2</td><td>IG Carousel 8p</td><td>The moving box test</td><td>The Graceful Exit</td><td>机制理解</td><td>Save before your move</td></tr>
+          <tr><td>C3</td><td>TikTok 20s</td><td>I moved 4 times in 3 years</td><td>Moving Life</td><td>破圈共鸣</td><td>评论区接龙</td></tr>
+          <tr><td>C4</td><td>Pinterest</td><td>First Apartment Essentials Under $100</td><td>Moving Life</td><td>长尾搜索流量</td><td>出站点击</td></tr>
+          <tr><td>C5</td><td>X Thread</td><td>We're not a rental company</td><td>定义权</td><td>抢定义 / 媒体</td><td>引用转发</td></tr>
+          <tr><td>C6</td><td>Threads</td><td>she returned the lamp — she's moving to Lisbon</td><td>The Graceful Exit</td><td>社群 + 素材测试</td><td>回复你的故事</td></tr>
+          <tr><td>C7</td><td>YouTube Shorts</td><td>Restaging a returned lamp (no music)</td><td>The Graceful Exit</td><td>机制可视化 + 订阅</td><td>Subscribe</td></tr>
+          <tr><td>C8</td><td>Reddit</td><td>What I learned furnishing a life that moves</td><td>Moving Life</td><td>高意图长尾</td><td>讨论（不导流）</td></tr>
+          <tr><td>C9</td><td>Substack</td><td>Object No.007: the lamp that moved four times</td><td>Where It Went</td><td>复购 + 合规</td><td>订阅优先看</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- C1 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C1</span><span class="c-title">Four questions, one lamp</span>
+        <span class="pill solid">Instagram Reels</span><span class="pill rust">The Four Questions</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>Hook 0–3s</dt><dd>画面上依次打出四个问题，前三个打勾、第四个打勾的瞬间台灯亮起。<b>“Every object here has to pass four questions.”</b></dd></dl>
+        <dl class="c-row"><dt>结构</dt><dd>3s 四问抛出 → 8s Quiet（无 logo、不抢戏）→ 14s Smart（$68，不是便宜是价实）→ 20s Worth circulating（黄铜越用越好）→ 25s Usable（你每晚都会开它）→ 结尾</dd></dl>
+        <dl class="c-row"><dt>文案 EN</dt><dd><div class="copy">Every object in Delta has to pass four questions.
+
+1. Is it quiet? — no logo, no shouting.
+2. Is it smart? — $68. Not cheap. Fairly priced.
+3. Is it worth circulating? — brass. It gets better, not worse.
+4. Is it usable? — you'll turn it on every night.
+
+This one passed. Most don't.
+
+Object No.007. Save this if you have a corner that needs it.</div></dd></dl>
+        <dl class="c-row"><dt>视觉</dt><dd>手持微晃、自然光、无配乐；字幕硬编码（85% 静音观看）；封面用「四个问题 + 一盏亮着的灯」</dd></dl>
+        <div class="judge"><b>判断</b>把内部选品标准变成公开栏目，是竞品在结构上给不出的东西：Depop 靠算法（无从谈标准），Feather 靠买手（不公开），Worn Wear 只讲耐用。更重要——<strong>「四道题」是栏目格式不是一次性创意</strong>，可以无限复用，且天然符合 no gatekeeping 的立场（我把标准告诉你，你自己也能用）。CTA 要 Save 而不是点赞，因为 Reels 的保存权重最高，且这类内容的用户行为就是存起来。</div>
+      </div>
+    </div>
+
+    <!-- C2 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C2</span><span class="c-title">The moving box test</span>
+        <span class="pill solid">IG Carousel</span><span class="pill rust">The Graceful Exit</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>Slides</dt><dd><div class="copy">S1 — The moving box test.
+S2 — You're moving in three weeks. What goes in the box?
+S3 — Things you'd buy again tomorrow → keep.
+S4 — Things you're keeping out of guilt → let them go.
+S5 — Things too big, too fragile, too tied to one flat → let them go.
+S6 — Things you love but can't carry → send them back.
+S7 — That's the exit. You own it while you have it. When you move, it keeps moving.
+S8 — Credit toward your next find. We clean it, restage it, it finds a new home.</div></dd></dl>
+        <dl class="c-row"><dt>Caption EN</dt><dd><div class="copy">Moving isn't a reason to own less beauty.
+It's a reason to own it differently.
+
+Save this before your next move.</div></dd></dl>
+        <div class="judge"><b>判断</b>机制如果脱离场景，就是一段没人读完的规则。仓库原文写的回流理由第一条就是 <i>because you're moving</i>——所以机制内容的正确载体是「搬家纸箱」这个具体物件，而不是「我们的回流政策」。前 6 页全部是<strong>与品牌无关的通用决策建议</strong>，机制只出现在第 7–8 页：先给价值，再讲自己。Carousel 的 Save 率天然高于单图，而搬家清单本身就是最容易被存下来的内容形态。</div>
+      </div>
+    </div>
+
+    <!-- C3 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C3</span><span class="c-title">I moved 4 times in 3 years. Here's what I stopped buying.</span>
+        <span class="pill solid">TikTok</span><span class="pill rust">Moving Life</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>结构</dt><dd>0–2s 空房间 + 一个行李箱，字幕 <b>“4 moves. 3 years. One rule.”</b> → 2–6s「我不再买大件家具」→ 6–10s「我不再买『暂时用用』的东西，它们最先被扔」→ 10–14s「我不再买走了会有负罪感的东西」→ 14–20s 拿起一盏灯 / 一只杯子 <b>“现在我只买搬走时能寄回去的东西”</b> → 尾帧</dd></dl>
+        <dl class="c-row"><dt>尾帧 / 文案</dt><dd><div class="copy">nothing good stays behind.
+#movingtips #apartmenthacks #slowliving #secondhandhome</div></dd></dl>
+        <dl class="c-row"><dt>中文注释</dt><dd><div class="copy zh">不出现品牌名、不出现价格、不放链接。前 20 秒全部是「我不再买什么」——没有一句在推销。品牌只出现在主页和评论区。</div></dd></dl>
+        <div class="judge"><b>判断</b>TikTok 上 apartment / moving 是超大流量池，但几乎全是「搬家好物推荐」。我们做反向——<strong>「我不再买什么」</strong>，反常识 + 高共鸣 + 零推销，完播和评论都会更好。这条内容真正解决的不是曝光，是<strong>筛选 ICP</strong>：前三句「我不再买什么」会同时劝退捡漏党和租赁用户，留下的正是「搬得动但不愿将就」的那批人。最后一句 nothing good stays behind 就是品牌主张的口语版，可以直接做成长期系列标题。</div>
+      </div>
+    </div>
+
+    <!-- C4 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C4</span><span class="c-title">First Apartment Essentials Under $100</span>
+        <span class="pill solid">Pinterest</span><span class="pill rust">Moving Life</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>形态</dt><dd>1 个 Idea Pin（8 件物品顺序播放）+ 6 个商品 Pin，分别进 3 个 Board：First Apartment · Small Space Warmth · Secondhand Home</dd></dl>
+        <dl class="c-row"><dt>文案 EN</dt><dd><div class="copy">First Apartment Essentials Under $100 — small space, warm, mostly secondhand.
+
+A brass lamp. A wool scarf. Two cups. One small bag.
+Everything here can move with you, and everything here can be sent back when it's time.
+
+#firstapartment #apartmentessentials #smallspace #secondhandhome</div></dd></dl>
+        <dl class="c-row"><dt>中文注释</dt><dd><div class="copy zh">标题里没有品牌名、没有诗意、没有「循环空间」。Pinterest 用户搜的是 first apartment / apartment essentials / small space / secondhand home，不是 Delta。这是全案唯一主动放弃品牌调性的地方。</div></dd></dl>
+        <div class="judge"><b>判断</b>first apartment 是 Pinterest 顶级搜索词，且这类 Pin 生命周期以月计——同一张商品图在 IG 会被算法淘汰，在这里能持续带来出站点击。这是 Feather 已经验证过的流量池（它的场景内容几乎全压在这里），Delta 用「$5–100 的聪明定价」切入比订阅制更容易转化。判断标准不是点赞，是<strong>出站点击率</strong>。</div>
+      </div>
+    </div>
+
+    <!-- C5 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C5</span><span class="c-title">We're not a rental company.</span>
+        <span class="pill solid">X / Twitter</span><span class="pill rust">定义权</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>Thread</dt><dd><div class="copy">1/ People keep asking if Delta is a rental company. It isn't.
+Here's the difference — and why it matters.
+
+2/ Rental: you never own it. You pay monthly. You give it back because a contract says so.
+
+3/ Delta: you buy it. You own it. You use it.
+And when you're moving, or your taste changed, or you're simply done — you have an exit.
+
+4/ You get credit toward your next find. The object gets cleaned, restaged, and finds a new home. Part of that resale goes to animal rescue and children's literacy. We publish the records every quarter.
+
+5/ Ownership, with an exit.
+Beautiful things should circulate. That's all.</div></dd></dl>
+        <dl class="c-row"><dt>配图</dt><dd>两栏对照图：Rental（月费 / 不拥有 / 合同到期）vs Delta（买断 / 拥有 / 你想退就退）</dd></dl>
+        <div class="judge"><b>判断</b>品类新创品牌最贵的成本是被误读——一旦被归进「二手店」或「租赁」两个已有抽屉，之后所有内容都在给别人做解释。X 是做<strong>定义权争夺</strong>最好的地方：它的货币是「观点 + 清晰度」，且这类 thread 会被可持续 / 设计 / 创业圈层引用，是极低成成本的权威建设（Depop 的年度趋势报告走的是同一条路）。第 4 条必须写清公益去向与季度公示——这个圈层对漂绿极敏感，形容词只会招来质疑。</div>
+      </div>
+    </div>
+
+    <!-- C6 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C6</span><span class="c-title">she returned the lamp — she's moving to Lisbon</span>
+        <span class="pill solid">Threads</span><span class="pill rust">The Graceful Exit</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>文案 EN</dt><dd><div class="copy">someone returned a lamp last week because she's moving to Lisbon.
+she wrote: "it did its job for two winters. send it somewhere warm."
+
+we've had the note on the desk since. [photo]
+
+follow-up (2h later):
+the exit thing is weird at first — you buy something knowing you might send it back.
+but people keep telling us it changes how they pack.</div></dd></dl>
+        <dl class="c-row"><dt>中文注释</dt><dd><div class="copy zh">不用品牌口吻（「我们很高兴地宣布」），用坐在桌前的人的口吻。不 tag 商品、不放链接、不加 hashtag——Threads 对链接降权，且这条的目的不是转化。</div></dd></dl>
+        <div class="judge"><b>判断</b>这是一条<strong>「素材测试」</strong>内容，不是营销内容。Threads 的回复/曝光比远高于 X，适合低成本试故事：24 小时内自然互动最高的那条，升级为下周的 Reels 母素材；低于阈值的直接淘汰，不浪费拍摄成本。<strong>用低生产成本平台给高生产成本平台做前置筛选</strong>，是这套排期里最重要的成本控制机制。字条内容也直接服务品牌那句：letting go is not failure。</div>
+      </div>
+    </div>
+
+    <!-- C7 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C7</span><span class="c-title">Restaging a returned lamp (no music)</span>
+        <span class="pill solid">YouTube Shorts</span><span class="pill rust">The Graceful Exit</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>结构</dt><dd>无对白、纯 ASMR：拆回流包裹 → 清洁 → 擦拭黄铜 → 换线 → 重新打光 → 放进新场景。字幕只给四个词：<b>returned → cleaned → restaged → next home</b>。结尾：<i>“Part 2: the one that didn't pass.”</i></dd></dl>
+        <dl class="c-row"><dt>文案 EN</dt><dd><div class="copy">Restaging a returned brass lamp. No music — just the sound.
+Part 2: the one that didn't pass the four questions.</div></dd></dl>
+        <div class="judge"><b>判断</b>「整备回流物品」是竞品完全没有的画面：Depop 看不到（卖家自己发货），Feather 不展示（归还即结束），Worn Wear 只拍修补。这一段是<strong>机制的可视化证据</strong>——比任何解释都有说服力。同时它是零语言依赖内容，可跨语种三投（Shorts / Reels / TikTok）不重配音。系列化解决 Shorts 最大的问题：单条爆了也不涨粉。</div>
+      </div>
+    </div>
+
+    <!-- C8 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C8</span><span class="c-title">What I learned furnishing a life that keeps moving</span>
+        <span class="pill solid">Reddit</span><span class="pill rust">Moving Life</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>投放</dt><dd>r/ApartmentHacks · r/expats · r/Frugal（不同 subreddit 需分别改写标题与开头，不能一稿多投）</dd></dl>
+        <dl class="c-row"><dt>正文 EN</dt><dd><div class="copy">Title: I've moved 5 times in 4 years — what I learned about furnishing a life that keeps moving
+
+Body (excerpt):
+- Buy at a size that can travel. A lamp, a cup, a scarf. Not a bookcase.
+- Stop buying "for now" things. They're the first to get thrown out, and they're the least enjoyable while you have them.
+- Secondhand doesn't mean settling, but it does mean you need a filter. I use four: is it quiet, is it smartly priced, will it survive another owner, will I actually use it.
+- The hardest part isn't buying. It's leaving. I've started only buying things I can send back.
+
+Disclosure:
+Full disclosure — I run a small curated secondhand project (Delta), which is why I think about this far too much. Not here to sell anything; happy to answer questions about the framework.</div></dd></dl>
+        <dl class="c-row"><dt>中文注释</dt><dd><div class="copy zh">Reddit 是全案语气最极端的平台：任何营销腔都会被踩到负分，且未披露身份推广有封号与声誉双重风险。必须纯经验 + 明确 disclosure + 主动回答提问。这条内容不设任何导流 CTA。</div></dd></dl>
+        <div class="judge"><b>判断</b>把 Reddit 放进内容矩阵，是这份提案里最能证明「平台适配」的一条：它要求完全放弃品牌口吻、放弃 CTA、主动暴露利益相关——这跟 Pinterest 放弃调性是同一种判断，但方向相反（一个为搜索，一个为社区规则）。回报是 Reddit 的 Google 收录权重极高，对 moving + secondhand + apartment 这类高意图长尾词的价值超过所有社媒，且能长期沉淀。四道题在这里出现的形式是「我用的筛选方法」，是可被质疑、可被讨论的，而非宣传。</div>
+      </div>
+    </div>
+
+    <!-- C9 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C9</span><span class="c-title">Object No.007: the lamp that moved four times</span>
+        <span class="pill solid">Substack</span><span class="pill rust">Where It Went</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>结构</dt><dd><div class="copy">Open — 这盏黄铜台灯的四个住处：跳蚤市场 → 第一间公寓 → 另一个城市 → 回到我们手上
+Middle — 我们做了什么：换线、清锈、重新打光；哪些痕迹保留
+Data — 本季回流 N 件 / 捐赠 ¥X / 动物救助 + 儿童阅读 / 回执链接
+Close — 下周上新 3–5 件，订阅者提前 24 小时看
+
+Subject: the lamp that moved four times (and came back)</div></dd></dl>
+        <div class="judge"><b>判断</b>长内容不是给所有人的，是给<strong>愿意读字的人</strong>——这批人是复购主力，也是媒体和合作方会观察的样本。Newsletter 同时承担两个功能：① 公益金可核验的<strong>合规载体</strong>（社媒贴不下回执，而「季度公示」是仓库里对用户的公开承诺）；② 「提前 24 小时」形成订阅动机——孤品生意里，提前看比打折有效得多。</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 05 -->
+<section id="mocks">
+  <div class="wrap">
+    <div class="sec-no">05 — MOCKUPS</div>
+    <h2>视觉 mock</h2>
+    <p class="sec-intro">
+      同一件东西（一盏回流台灯 / 一次搬家），在不同平台会长成完全不同的样子。
+      以下七张<strong>版式 mock</strong>，用于说明构图、信息层级与钩子位置——画面为占位、数据为示意，不是成品设计。
+      其中四张（01 / 02 / 03 / 06）都来自<strong>同一批母素材</strong>（同一盏回流台灯、同一组搬家场景），可以横向对比「同一素材 → 不同钩子」具体怎么落地：一个是标准、一个是经历、一个是可被搜到的答案、一个是长文。
+    </p>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5.2 5.2L20 6.5"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5C12 20.5 4 15.9 4 10.3A4.4 4.4 0 0 1 12 7.4a4.4 4.4 0 0 1 8 2.9c0 5.6-8 10.2-8 10.2z"/></symbol>
+      <symbol id="i-comment" viewBox="0 0 24 24"><path d="M4 5h16v11.5H9L4 20V5z"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3.5V15M8 7l4-3.5L16 7M5 14.5v5h14v-5"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M6.5 4h11v16.5L12 16.6l-5.5 3.9V4z"/></symbol>
+      <symbol id="i-srch" viewBox="0 0 24 24"><path d="M11 18.5a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15zM16.6 16.6L21 21"/></symbol>
+    </svg>
+
+    <div class="mk-grid">
+
+      <!-- MOCK 01 -->
+      <div class="mk">
+        <div class="mk-hd"><span class="mk-no">MOCK 01</span><span class="plat">Instagram Reels · 封面</span><span class="ref">对应 C1</span></div>
+        <div class="mk-stage">
+          <div class="phone">
+            <div class="screen">
+              <div class="room"></div>
+              <div class="glow"></div>
+              <div class="shade"></div><div class="stem"></div><div class="base"></div>
+              <div class="ui-top">Reels</div>
+              <div class="hook">
+                <div class="hk1">Every object here has to pass <em>four questions.</em></div>
+                <ul class="qlist">
+                  <li><svg class="ico xs"><use href="#i-check"/></svg>Is it quiet?</li>
+                  <li><svg class="ico xs"><use href="#i-check"/></svg>Is it smart?</li>
+                  <li><svg class="ico xs"><use href="#i-check"/></svg>Is it worth circulating?</li>
+                  <li><svg class="ico xs"><use href="#i-check"/></svg>Is it usable?</li>
+                </ul>
+              </div>
+              <div class="ui-bottom">
+                <div class="prof"><span class="av">D</span><span class="hdl">delta.objects</span><span class="flw">Follow</span></div>
+                <div class="cap">Object No.007 · brass lamp, $68 &nbsp;<i>more</i></div>
+              </div>
+              <div class="acts">
+                <div class="a"><svg class="ico"><use href="#i-heart"/></svg><b>2.4K</b></div>
+                <div class="a"><svg class="ico"><use href="#i-comment"/></svg><b>118</b></div>
+                <div class="a"><svg class="ico"><use href="#i-share"/></svg><b>46</b></div>
+                <div class="a"><svg class="ico"><use href="#i-book"/></svg><b>891</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mk-note"><b>版式判断</b>
+          封面不是海报，是钩子：<strong>四条问题在第一帧就全部打勾</strong>，用户还没点开就已经知道「这个品牌有标准」。
+          产品（台灯）退到背景只留一团暖光——因为主角是标准，不是商品。
+          右上角 bookmark 数字被特意放大：<strong>保存</strong>是这条内容的唯一目标动作（KPI 里写的是保存率 ≥1.5%）。
+        </div>
+      </div>
+
+      <!-- MOCK 02 -->
+      <div class="mk">
+        <div class="mk-hd"><span class="mk-no">MOCK 02</span><span class="plat">TikTok · 视频帧</span><span class="ref">对应 C3</span></div>
+        <div class="mk-stage">
+          <div class="phone">
+            <div class="screen">
+              <div class="room b"></div>
+              <div class="glow sm"></div>
+              <div class="case"></div>
+              <div class="tabs"><span>Following</span><span class="on">For You</span></div>
+              <div class="tt">4 moves.<br>3 years.<br><u>One rule.</u></div>
+              <div class="tt2">I stopped buying things I'd feel guilty leaving behind.</div>
+              <div class="ui-bottom">
+                <div class="prof"><span class="av">D</span><span class="hdl">@delta.objects</span></div>
+                <div class="cap">I moved 4 times in 3 years. Here's what I stopped buying.</div>
+                <div class="chips"><span>#movingtips</span><span>#apartmenthacks</span><span>#secondhandhome</span></div>
+              </div>
+              <div class="acts">
+                <div class="a"><span class="av sp">D</span></div>
+                <div class="a"><svg class="ico"><use href="#i-heart"/></svg><b>18.2K</b></div>
+                <div class="a"><svg class="ico"><use href="#i-comment"/></svg><b>942</b></div>
+                <div class="a"><svg class="ico"><use href="#i-book"/></svg><b>3.1K</b></div>
+                <div class="a"><svg class="ico"><use href="#i-share"/></svg><b>508</b></div>
+              </div>
+              <div class="prog"><i></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="mk-note"><b>版式判断</b>
+          同样是台灯 + 搬家，这里是<strong>第一人称</strong>：标题说的是「我」，画面里只有一只行李箱。
+          前三句全是「我不再买什么」——<strong>执行的就是那条 ICP 审核规则</strong>：捡漏党和租赁用户会被劝退，留下的是「搬得动但不愿将就」的人。
+          全帧没有一个产品特写、没有价格、没有链接：TikTok 上任何推销痕迹都会压低完播。
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MOCK 03 -->
+    <div class="mk" style="margin-top:22px">
+      <div class="mk-hd"><span class="mk-no">MOCK 03</span><span class="plat">Pinterest · 搜索结果页 + Pin</span><span class="ref">对应 C4</span></div>
+      <div class="mk-stage" style="display:block">
+        <div class="ptwrap">
+          <div class="ptsearch"><svg class="ico dark" style="width:15px;height:15px"><use href="#i-srch"/></svg><span>first apartment essentials under $100</span></div>
+          <div class="ptgrid">
+            <div class="ptile other"><div class="ph" style="height:170px"></div><div class="plabel">apartment must haves</div></div>
+            <div class="ptile mine">
+              <div class="ph mine">
+                <span class="mini lamp"></span><span class="mini cup"></span><span class="mini vase"></span>
+              </div>
+              <span class="badge">DELTA</span>
+              <div class="ptitle">First Apartment Essentials Under $100</div>
+            </div>
+            <div class="ptile other"><div class="ph" style="height:200px"></div><div class="plabel">small space ideas</div></div>
+            <div class="ptile other"><div class="ph" style="height:210px"></div><div class="plabel">studio apartment decor</div></div>
+            <div class="ptile other"><div class="ph" style="height:160px"></div><div class="plabel">secondhand home finds</div></div>
+            <div class="ptile other"><div class="ph" style="height:190px"></div><div class="plabel">budget apartment makeover</div></div>
+          </div>
+          <div class="ptmeta">
+            <h5>Pin 标题 / 描述（原文照抄，无品牌词）</h5>
+            First Apartment Essentials Under $100 — small space, warm, mostly secondhand.<br>
+            A brass lamp. A wool scarf. Two cups. One small bag. Everything here can move with you — and everything here can be sent back when it's time.
+            <div class="kw"><span>first apartment</span><span>apartment essentials</span><span>small space</span><span>secondhand home</span><span>under $100</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mk-note"><b>版式判断</b>
+        这是全案唯一<strong>主动放弃品牌调性</strong>的一张：标题里没有一个品牌词、没有诗意、只有用户会搜的话。
+        因为在 Pinterest，用户是在<strong>找东西</strong>而不是在逛品牌——画面必须放进搜索结果里能活下来（暖、亮、有明确的物品轮廓）。
+        它和 Mock 01/02 用的是同一批物品，因此这张 mock 正好演示了「同一母素材 → 换钩子和信息层级」不是口号：一个是标准、一个是经历、一个是可被搜到的答案。
+      </div>
+    </div>
+
+    <!-- MOCK 04 -->
+    <div class="mk" style="margin-top:22px">
+      <div class="mk-hd"><span class="mk-no">MOCK 04</span><span class="plat">X · Thread</span><span class="ref">对应 C5 · 30 天计划 Day 1 首发</span></div>
+      <div class="mk-stage">
+        <div class="xwrap">
+          <div class="xbar">
+            <span class="lg">&#119961;</span>
+            <div class="tb"><span class="on">For you</span><span>Following</span></div>
+          </div>
+          <div class="xthread">
+            <div style="display:grid;justify-items:center"><span class="xav">D</span><span class="xline"></span></div>
+            <div>
+              <div class="xmeta"><b>Delta</b><span>@delta.objects · 9:14 AM</span></div>
+
+              <div class="xpost"><span class="xnum">1/5</span>
+                People keep asking if Delta is a rental company. It isn't.<br><br>
+                Here's the difference — and why it matters.
+              </div>
+
+              <div class="xpost"><span class="xnum">2/5</span>
+                <em>Rental:</em> you never own it. You pay monthly. You give it back because a contract says so.
+              </div>
+
+              <div class="xcard">
+                <h6>Why this matters</h6>
+                <div class="xcmp">
+                  <div class="hr">Rental</div><div class="hr dl">Delta</div>
+                  <div>Monthly fee</div><div class="dl">You buy it</div>
+                  <div>You never own it</div><div class="dl">You own it</div>
+                  <div>Returned when the contract ends</div><div class="dl">Returned when <em>you</em> are done</div>
+                </div>
+              </div>
+
+              <div class="xpost"><span class="xnum">4/5</span>
+                You get credit toward your next find. The object is cleaned, restaged, and finds a new home.<br><br>
+                Part of that resale goes to animal rescue and children's literacy — we publish the records every quarter.
+              </div>
+
+              <div class="xpost"><span class="xnum">5/5</span>
+                Ownership, with an exit.<br><br>
+                Beautiful things should circulate. That's all.
+              </div>
+
+              <div class="xacts">
+                <span><svg class="ico x"><use href="#i-comment"/></svg>84</span>
+                <span><svg class="ico x"><use href="#i-share"/></svg>216</span>
+                <span><svg class="ico x"><use href="#i-heart"/></svg>1.2K</span>
+                <span><svg class="ico x"><use href="#i-book"/></svg>307</span>
+                <span><svg class="ico x"><use href="#i-srch"/></svg>24.8K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mk-note"><b>版式判断</b>
+        这是<strong>30 天计划的 Day 1 首发</strong>，也是这批 mock 里最早该发的一张——因为第一个月的第一优先级是<strong>抢定义权</strong>：
+        Delta 一旦被归进「二手店」或「租赁」两个已有抽屉，之后所有内容都在给别人做解释。<br>
+        中间那张<strong>对照卡是整个 thread 的关键资产</strong>：它是唯一能被截图、被引用、被转发时不依赖上下文的部分，所以用橙色把 Delta 列标出——即使有人只读到这一张图，也能把差异带走。<br>
+        第 4/5 条写清公益去向与季度公示，不是补充信息：这个圈层对漂绿极敏感，<strong>形容词只会招来质疑，金额 + 受助方 + 回执才产生信任</strong>。
+      </div>
+    </div>
+
+      <!-- MOCK 05 -->
+      <div class="mk" style="margin-top:22px">
+        <div class="mk-hd"><span class="mk-no">MOCK 05</span><span class="plat">Reddit · 经验帖</span><span class="ref">对应 C8</span></div>
+        <div class="mk-stage">
+          <div class="rdwrap">
+            <div class="rdtop"><span class="rdsub">r/ApartmentHacks</span><span>·</span><span>u/emersoncaiye</span><span style="margin-left:auto">Sort: Best</span></div>
+            <div class="rdbody">
+              <div class="rdvote"><span class="up">▲</span><b>1.4K</b><span>▼</span></div>
+              <div>
+                <div class="rdmeta"><span>u/emersoncaiye</span><span>· 7 hr. ago</span></div>
+                <div class="rdtitle">I've moved 5 times in 4 years — what I learned about furnishing a life that keeps moving</div>
+                <div class="rdtext">
+                  <p>Buy at a size that can travel. A lamp, a cup, a scarf. Not a bookcase.</p>
+                  <p>Stop buying "for now" things. They're the first to get thrown out, and they're the least enjoyable while you have them.</p>
+                  <p>Secondhand doesn't mean settling — but it does mean you need a filter. Mine is four questions: is it quiet, is it smartly priced, will it survive another owner, will I actually use it.</p>
+                  <p>The hardest part isn't buying. It's leaving. I've started only buying things I can send back.</p>
+                  <div class="rdwarn"><b>Disclosure</b> — I run a small curated secondhand project, which is why I think about this far too much. Not here to sell anything; happy to answer questions about the framework.</div>
+                </div>
+                <div class="rdacts"><span>312 comments</span><span>share</span><span>save</span></div>
+                <div class="rdtag">NO LINK · NO CTA · 不引流</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mk-note"><b>版式判断</b>
+          这张 mock 上没有 logo、没有产品图、没有链接——<strong>留白本身就是一个判断</strong>：Reddit 的排序会直接惩罚营销痕迹，upvote ratio 掉到 80% 以下就该换社区重写。<br>
+          disclosure 不藏在评论区而是放在正文末尾，因为这个社区反感的不是广告，而是<strong>伪装成经验的广告</strong>；主动写明身份反而换来讨论空间。<br>
+          「四道题」在这里的形态不是标准，而是<strong>「我用的筛选方法」</strong>——可以被反驳、可以被追问，所以它才活得下来，也才能被 Google 长期收录。
+        </div>
+      </div>
+
+      <!-- MOCK 06 -->
+      <div class="mk" style="margin-top:22px">
+        <div class="mk-hd"><span class="mk-no">MOCK 06</span><span class="plat">Substack · Newsletter</span><span class="ref">对应 C9 · Where It Went</span></div>
+        <div class="mk-stage">
+          <div class="sswrap">
+            <div class="ssmail">
+              <b>the lamp that moved four times (and came back)</b>
+              <div>Delta · Where It Went &nbsp;·&nbsp; Issue 07</div>
+            </div>
+            <div class="sskicker">WHERE IT WENT · OBJECT NO.007</div>
+            <div class="sshero">物件占位图 · 黄铜台灯</div>
+            <div class="sstitle">Object No.007: the lamp that moved four times</div>
+            <div class="sstext">
+              <p>It started at a flea market in March, went to a first apartment, then a different city, and came back to us last week.</p>
+              <p>What we did to it: re-wired, de-rusted, re-polished. What we kept: the dent on the base.</p>
+            </div>
+            <div class="sspull">Wear you can date is provenance. Wear you can't is damage.</div>
+            <div class="ssfoot">本季回流 N 件 · 捐赠 ¥X（动物救助 + 儿童阅读）· 回执链接<br>下周上新 3–5 件，订阅者提前 24 小时看</div>
+          </div>
+        </div>
+        <div class="mk-note"><b>版式判断</b>
+          唯一一张<strong>纵向叙事</strong>的 mock：标题不用钩子而用物件编号与时间（four moves），因为愿意读字的人不需要被钓。<br>
+          中间那句 pull quote 是全篇唯一的可截图单位——它顺带把「整备标准」（哪些痕迹该留）讲完了，比解释定义更快。<br>
+          页尾三行不能省：公益去向 + 金额 + 回执链接，是仓库里对用户的<strong>季度公示承诺</strong>，社媒贴不下，只能放在这里；「提前 24 小时」是唯一的订阅动机（孤品生意里，先看比打折有效）。
+        </div>
+      </div>
+
+      <!-- MOCK 07 -->
+      <div class="mk" style="margin-top:22px">
+        <div class="mk-hd"><span class="mk-no">MOCK 07</span><span class="plat">Instagram Carousel · 8 帧</span><span class="ref">对应 C2 · The Graceful Exit</span></div>
+        <div class="mk-stage">
+          <div class="igcwrap">
+            <div class="igc-top">
+              <span class="av" style="width:24px;height:24px;background:#171514;color:#fff">D</span>
+              <span style="font-size:11.5px;font-weight:600;color:var(--ink)">delta.objects</span>
+              <span style="font-size:10.5px;color:var(--muted);margin-left:auto">⋯</span>
+            </div>
+            <div class="igc-strip">
+              <div class="igc-cell">
+                <div class="igc-f"><span class="pg">1/8</span><div class="glowx"></div>
+                  <h6>Would it survive<br>your <em>move?</em></h6>
+                  <p>The moving box test</p>
+                </div>
+                <div class="igc-lb">封面 · 只给钩子</div>
+              </div>
+              <div class="igc-cell">
+                <div class="igc-f"><span class="pg">2/8</span><span class="dot"></span>
+                  <h6>If it doesn't fit the box,<br>it doesn't come with you.</h6>
+                  <p>规则一句话说完</p>
+                </div>
+                <div class="igc-lb">规则 · 建立标准</div>
+              </div>
+              <div class="igc-cell">
+                <div class="igc-f"><span class="pg">3/8</span><span class="dot"></span>
+                  <div class="tickq">Q1</div>
+                  <h6>Is it <em>quiet?</em></h6>
+                  <p>No logos. No noise.<br>It should disappear into a room.</p>
+                </div>
+                <div class="igc-lb">四道题 1/4</div>
+              </div>
+              <div class="igc-cell">
+                <div class="igc-f"><span class="pg">4/8</span><span class="dot"></span>
+                  <div class="tickq">Q2</div>
+                  <h6>Is it smartly priced?</h6>
+                  <p>$5–100.<br>Cheap enough to risk, good enough to keep.</p>
+                </div>
+                <div class="igc-lb">四道题 2/4</div>
+              </div>
+              <div class="igc-cell">
+                <div class="igc-f"><span class="pg">5/8</span><span class="dot"></span>
+                  <div class="tickq">Q3</div>
+                  <h6>Will it survive<br>another owner?</h6>
+                  <p>Solid, repairable, re-homeable.</p>
+                </div>
+                <div class="igc-lb">四道题 3/4</div>
+              </div>
+              <div class="igc-cell">
+                <div class="igc-f"><span class="pg">6/8</span><span class="dot"></span>
+                  <div class="tickq">Q4</div>
+                  <h6>Will I actually<br>use it?</h6>
+                  <p>Every week, or it's clutter with good taste.</p>
+                </div>
+                <div class="igc-lb">四道题 4/4</div>
+              </div>
+              <div class="igc-cell">
+                <div class="igc-f"><span class="pg">7/8</span><span class="dot"></span>
+                  <h6>When you're done,<br>send it back.</h6>
+                  <p>Cleaned · restaged · credit toward your next find</p>
+                </div>
+                <div class="igc-lb">机制 · Exit 的曝光位</div>
+              </div>
+              <div class="igc-cell">
+                <div class="igc-f last"><span class="pg">8/8</span>
+                  <h6>Save this<br>before your move.</h6>
+                  <p>@delta.objects</p>
+                </div>
+                <div class="igc-lb">末页 CTA · Save</div>
+              </div>
+            </div>
+            <div class="igc-foot">
+              <span><svg class="ico dark" style="width:15px;height:15px"><use href="#i-heart"/></svg> <b>1.8K</b></span>
+              <span><svg class="ico dark" style="width:15px;height:15px"><use href="#i-comment"/></svg> <b>74</b></span>
+              <span><svg class="ico dark" style="width:15px;height:15px"><use href="#i-share"/></svg></span>
+              <span class="dots" style="margin:0 auto"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              <span><svg class="ico dark" style="width:15px;height:15px"><use href="#i-book"/></svg> <b>692</b></span>
+            </div>
+          </div>
+        </div>
+        <div class="mk-note"><b>版式判断</b>
+          这是唯一一张<strong>多帧</strong> mock，所以它回答的问题和其它六张都不同：不是"这一帧怎么钩住人"，而是<strong>"哪一页负责让人继续滑"</strong>。<br>
+          第 1 页只给钩子、不出现产品和价格；第 2 页用一句话把规则说完，让人知道后面四页值得看；<strong>中间四页一句一条</strong>——每页只讲一道题，靠"还差一条就集齐"的节奏把人推到第 6 页。<br>
+          第 7 页是整条 Carousel 里<strong>回流机制唯一的曝光位</strong>（也是 Graceful Exit 支柱的落点），不能省、也不能挪到 8 页以后——多数人滑不到那里。<br>
+          末页 CTA 写的是 <strong>Save</strong> 而不是 Link：这张 carousel 考核的是保存率（≥1.5%），保存行为本身会把它推给相似人群，比一次点击更值钱。<br>
+          八帧全部用同一批物品拍摄，一次拍摄窗口即可产出——符合前面「30 天 → 每周一个拍摄窗口」的约束。
+        </div>
+      </div>
+
+  </div>
+</section>
+
+<!-- 06 -->
+<section id="plan">
+  <div class="wrap">
+    <div class="sec-no">06 — 30-DAY PLAN</div>
+    <h2>30 天内容计划</h2>
+    <p class="sec-intro">
+      按「定义 → 标准 → 场景 → 证据」推进，而不是按商品上新推进。
+      第一个月如果只做一件事，是让海外用户明白：<strong>这不是二手店，也不是租赁</strong>。
+    </p>
+
+    <div class="week">
+      <div class="week-hd">
+        <span class="w">WEEK 1 · Day 1–7</span>
+        <span class="theme">抢定义 — What is Delta?</span>
+        <span class="goal">主 KPI：主页访问 / 关注增长</span>
+      </div>
+      <div class="days">
+        <div class="day"><div class="d">D1</div><span class="pl tw">X</span><div class="t">C5 我们不是租赁公司（定义权首发）</div></div>
+        <div class="day"><div class="d">D2</div><span class="pl ig">IG Reels</span><div class="t">C1 四道题：一盏台灯</div></div>
+        <div class="day"><div class="d">D3</div><span class="pl tt">TikTok</span><div class="t">15s「not a secondhand store」</div></div>
+        <div class="day"><div class="d">D4</div><span class="pl pt">Pinterest</span><div class="t">建 3 个 Board，铺首批 6 个 Pin</div></div>
+        <div class="day"><div class="d">D5</div><span class="pl th">Threads</span><div class="t">品牌口语版 + 提问「你搬过几次家」</div></div>
+        <div class="day"><div class="d">D6</div><span class="pl ig">IG Carousel</span><div class="t">「Why Delta」：河三角洲的比喻</div></div>
+        <div class="day"><div class="d">D7</div><span class="pl nl">Substack</span><div class="t">创刊号：Objects for a moving life</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hd">
+        <span class="w">WEEK 2 · Day 8–14</span>
+        <span class="theme">立标准 — The Four Questions</span>
+        <span class="goal">主 KPI：完播率 / 保存率</span>
+      </div>
+      <div class="days">
+        <div class="day"><div class="d">D8</div><span class="pl ig">IG Reels</span><div class="t">第二件过四关：一条能穿十年的羊毛围巾</div></div>
+        <div class="day"><div class="d">D9</div><span class="pl tt">TikTok</span><div class="t">「quiet things only」：为什么我们没有大 logo</div></div>
+        <div class="day"><div class="d">D10</div><span class="pl pt">Pinterest</span><div class="t">C4 First Apartment Under $100</div></div>
+        <div class="day"><div class="d">D11</div><span class="pl yt">Shorts</span><div class="t">C7 整备回流台灯 Part 1</div></div>
+        <div class="day"><div class="d">D12</div><span class="pl th">Threads</span><div class="t">C6 测试 3 条物件故事，选最高的升级</div></div>
+        <div class="day"><div class="d">D13</div><span class="pl ig">IG Carousel</span><div class="t">四道题框架海报（可长期置顶）</div></div>
+        <div class="day"><div class="d">D14</div><span class="pl rd">Reddit</span><div class="t">C8 r/ApartmentHacks 经验帖（首投）</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hd">
+        <span class="w">WEEK 3 · Day 15–21</span>
+        <span class="theme">放手的人 — The Graceful Exit</span>
+        <span class="goal">主 KPI：回流发起数 / 评论区讨论</span>
+      </div>
+      <div class="days">
+        <div class="day"><div class="d">D15</div><span class="pl ig">IG Reels</span><div class="t">回流包裹开箱（用户授权 UGC）</div></div>
+        <div class="day"><div class="d">D16</div><span class="pl ig">IG Stories</span><div class="t">搬家季提醒序列：持有满 X 天 / 你要搬走了吗</div></div>
+        <div class="day"><div class="d">D17</div><span class="pl tt">TikTok</span><div class="t">C3 我搬了 4 次，不再买什么</div></div>
+        <div class="day"><div class="d">D18</div><span class="pl tw">X</span><div class="t">数据条：平均持有天数 / 回流率</div></div>
+        <div class="day"><div class="d">D19</div><span class="pl ig">IG Carousel</span><div class="t">C2 搬家纸箱测试</div></div>
+        <div class="day"><div class="d">D20</div><span class="pl yt">Shorts</span><div class="t">Part 2：没过四关的那件</div></div>
+        <div class="day"><div class="d">D21</div><span class="pl pt">Pinterest</span><div class="t">what to do with things when you move（引导 Pin）</div></div>
+      </div>
+    </div>
+
+    <div class="week">
+      <div class="week-hd">
+        <span class="w">WEEK 4 · Day 22–30</span>
+        <span class="theme">流转的证据 — Where It Went</span>
+        <span class="goal">主 KPI：公示点击 / 转化 / 订阅</span>
+      </div>
+      <div class="days">
+        <div class="day"><div class="d">D22</div><span class="pl tw">X</span><div class="t">季度数据 Thread + 捐赠金额</div></div>
+        <div class="day"><div class="d">D23</div><span class="pl nl">Substack</span><div class="t">C9 台灯的四个住处 + 公益公示</div></div>
+        <div class="day"><div class="d">D24</div><span class="pl ig">IG Reels</span><div class="t">捐赠去哪儿了（救助站实拍 30s）</div></div>
+        <div class="day"><div class="d">D25</div><span class="pl tt">TikTok</span><div class="t">拼接：它被寄回 → 被整备 → 到了新家</div></div>
+        <div class="day"><div class="d">D26</div><span class="pl pt">Pinterest</span><div class="t">季度精选 10 Pin 批量发</div></div>
+        <div class="day"><div class="d">D27</div><span class="pl ig">IG Carousel</span><div class="t">本季 10 件物品的下一站</div></div>
+        <div class="day"><div class="d">D28</div><span class="pl rd">Reddit</span><div class="t">r/expats 二次投放 + 评论区答疑</div></div>
+        <div class="day"><div class="d">D29</div><span class="pl ig">IG Stories</span><div class="t">上新预告 + 订阅者提前 24h</div></div>
+        <div class="day"><div class="d">D30</div><span class="pl nl">Internal</span><div class="t">复盘 + 下月选题会</div></div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:34px">
+      <div class="card">
+        <h3>母素材复用：12 → 68</h3>
+        <p style="font-size:13.5px;color:var(--ink2);margin-bottom:14px">
+          <span class="tg asm">项目设定</span>30 天约 68 条发布，只来自 12 个母素材。每次拍摄都按「可拆成几条」来设计，而不是一条内容拍一次。
+        </p>
+        <div>
+          <span class="pill">5 件物品的四道题</span><span class="pill">2 段整备过程</span><span class="pill">1 组搬家场景</span>
+          <span class="pill">1 组定义对照图</span><span class="pill">1 位搬走的人</span><span class="pill">1 次公益探访</span>
+          <span class="pill">1 批 Pinterest 图</span>
+        </div>
+        <div class="note">复用顺序：Threads 试故事 → TikTok 试钩子 → 赢家升级为 Reels → 再切 Shorts → Pinterest 转搜索形态 → Reddit 转经验形态 → Substack 收深度。每一步都在给下一步筛选。</div>
+      </div>
+      <div class="card">
+        <h3>发布节奏 + 搬家日历</h3>
+        <ul class="tick">
+          <li>IG Reels：周二 / 周四 / 周六（本地 9–11am）</li>
+          <li>TikTok：周一 / 周三 / 周五 / 周日（7–9pm 完播更高）</li>
+          <li>IG Carousel：周三（理解型内容工作日下午更佳）</li>
+          <li>Pinterest：周五批量 5 个（偏好稳定高频）</li>
+          <li>X / Threads：每日一条，与当日主内容错开 4 小时</li>
+          <li>Shorts：周二 / 周六（复用当周素材）</li>
+          <li>Reddit：每月 2 次，不同 subreddit 分别改写，禁止一稿多投</li>
+          <li><b>对齐搬家高峰</b>：毕业季（5–6 月）、开学季（8–9 月）、年末换约（12–1 月）——这三个窗口把 Exit 类内容权重临时提到 50%</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:44px">8 个平台不是平均用力：投入分级与复用来源</h3>
+    <p style="font-size:13.5px;color:var(--ink2);margin-bottom:14px">
+      30 天 68 条、8 个平台，在「零预算 + 单人兼职 + 每周 1 个拍摄窗口」下其实相当激进。能立住的前提只有两条：
+      <strong>每周那一个拍摄窗口只给 TikTok 和 IG</strong>，其余平台一律吃这两个平台的产出；
+      <strong>大部分发布是不用重新拍摄的改写与重发</strong>（批量 Pin、文案改短、视频重剪、当月汇总），真正需要新素材的只有少数几条。
+      所以下表先定优先级和停止条件——落后时按次序砍，而不是全线减产。
+    </p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>平台</th><th>在链路里的角色</th><th>投入级别</th><th>内容从哪来</th><th>什么时候停 / 降配</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>TikTok</b></td><td>破圈与钩子测试场</td><td><b>主投入</b></td>
+            <td>拍摄窗口优先给它；同一素材一次拍多条</td>
+            <td>不断。它是唯一的低成本「钩子实验室」，停了就没有新素材来源</td>
+          </tr>
+          <tr>
+            <td><b>IG（Reels + Carousel）</b></td><td>定义与标准的存档页</td><td><b>主投入</b></td>
+            <td>母素材直出；TikTok 跑赢的钩子升级为 Reels</td>
+            <td>不断。主页是「别人来确认这品牌是什么」的地方</td>
+          </tr>
+          <tr>
+            <td>Pinterest</td><td>长尾搜索沉淀</td><td>中等（只需 30 分钟/周）</td>
+            <td>复用已有图片 + 标题改成纯搜索词，不额外拍摄</td>
+            <td>CTR 连续两周 &lt;0.8% → 停新建 Board，只补已有 Pin</td>
+          </tr>
+          <tr>
+            <td>Threads / X</td><td>低成本挑选题</td><td>轻（每日一条，零拍摄）</td>
+            <td>当天主内容的文案压缩成一条，用来判断值不值得升级</td>
+            <td>排期落后时第一个降配：每日 → 每周 3 条</td>
+          </tr>
+          <tr>
+            <td>YouTube Shorts</td><td>派生分发</td><td>极轻</td><td>只剪 TikTok 已经跑赢的素材，<b>不赢不剪</b></td>
+            <td>当月 TikTok 无赢家 → 本月不发</td>
+          </tr>
+          <tr>
+            <td>Reddit</td><td>搜索资产（Google 收录权重最高）</td><td>轻且低频（每月 2 次）</td>
+            <td>无拍摄，把已验证的经验写成经验帖，必须披露身份</td>
+            <td>upvote ratio &lt;80% → 停投该社区，不删帖，换社区重写</td>
+          </tr>
+          <tr>
+            <td>Substack</td><td>信任沉淀 / 深度版</td><td>极轻（每月 1 篇）</td>
+            <td>汇总当月已发内容，几乎不产生新工作量</td>
+            <td>排期落后时第一个停</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>落后时的削减顺序（已提前写死）：</b>
+      Substack 停更 → Threads / X 降到每周 3 条 → Shorts 暂停 → Pinterest 停止新建 Board → Reddit 停止新投。
+      <b>TikTok 与 IG 绝不降配</b>——砍掉它们就等于砍掉所有平台的素材来源。这个顺序保证了哪怕只完成一半排期，主链路仍然完整。
+    </div>
+  </div>
+</section>
+
+<!-- 06 / OPT -->
+<section id="opt">
+  <div class="wrap">
+    <div class="sec-no">07 — OPTIMIZATION</div>
+    <h2>优化方案：三层 + 一张 A/B 清单</h2>
+    <p class="sec-intro">
+      优化不是「多发点试试」，是每个变量单独可归因。以下是上线后前 90 天的执行路径。
+    </p>
+
+    <div class="grid3">
+      <div class="card">
+        <span class="pill rust">LAYER 1 · 内容层</span>
+        <h3 style="margin-top:14px">让内容本身更能打</h3>
+        <ul class="tick">
+          <li>前 3 秒：钩子必须在第 1 帧画面上，不是第 1 句台词</li>
+          <li>字幕硬编码 + 静音可读（85% 静音观看）</li>
+          <li>封面统一模板：物件 + 编号 + 四道题勾选状态，形成视觉资产</li>
+          <li>每条视频备「无对白版」用于 Shorts / 跨语种分发</li>
+          <li>「四道题」栏目化：每期固定结构，降低创作与理解成本</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="pill rust">LAYER 2 · 分发层</span>
+        <h3 style="margin-top:14px">让对的平台拿到对的形态</h3>
+        <ul class="tick">
+          <li>同一母素材多种改写，禁止「一条视频全网同步」</li>
+          <li>Pinterest 关键词表（first apartment / small space / secondhand home / moving essentials）</li>
+          <li>Reddit 分 subreddit 改写 + 强制 disclosure + 只答疑不导流</li>
+          <li>Threads 做前置筛选，只把赢家升级为高成本制作</li>
+          <li>内容日历对齐搬家高峰（毕业季 / 开学季 / 年末换约）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="pill rust">LAYER 3 · 转化层</span>
+        <h3 style="margin-top:14px">让流量走完最后一步</h3>
+        <ul class="tick">
+          <li>bio 链接走单品落地页（带 UTM），不是首页</li>
+          <li>评论区关键词 → DM 自动回复（价格 / 尺寸 / 怎么寄回）</li>
+          <li>「寄回流程」做成一条独立的常置内容，减少决策摩擦</li>
+          <li>Stories 贴纸直接进「发起寄回」流程</li>
+          <li>Newsletter 捕获点前置到商品页（提前 24 小时权益）</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:44px">A/B 测试清单（每次只测一个变量，7 天一轮）</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>变量</th><th>A 版</th><th>B 版</th><th>判定指标</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>钩子</td><td>四道题逐条打出</td><td>物件特写 + 一句结论</td><td>3 秒留存</td></tr>
+          <tr><td>2</td><td>叙事人称</td><td>第三人称（物品档案）</td><td>第一人称（我搬了 4 次）</td><td>完播率 + 评论数</td></tr>
+          <tr><td>3</td><td>时长</td><td>15s</td><td>30–45s</td><td>完播率 + 保存率</td></tr>
+          <tr><td>4</td><td>CTA</td><td>Save / link in bio</td><td>评论关键词（寄回、搬家）</td><td>互动率 vs 外链点击</td></tr>
+          <tr><td>5</td><td>封面</td><td>物件静物</td><td>住进去的样子（场景）</td><td>主页访问率</td></tr>
+          <tr><td>6</td><td>Carousel 首图</td><td>搬家清单</td><td>一句主张</td><td>翻至末页率</td></tr>
+          <tr><td>7</td><td>Pin 标题</td><td>品牌调性</td><td>纯搜索关键词</td><td>出站点击率</td></tr>
+          <tr><td>8</td><td>Reddit 开头</td><td>结论先行</td><td>故事先行</td><td>upvote ratio + 评论质量</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:44px">KPI 分层基线（30 天目标值）</h3>
+    <p style="font-size:12.5px;color:var(--muted);margin:-2px 0 14px">口径同「背景目标」一节：<span class="tg ref">行业参考值</span><span class="tg asm">项目假设</span><span class="tg real">上线后实测</span>——下表目前没有实测值。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>层级</th><th>指标</th><th>基线目标</th><th>为什么是它</th></tr></thead>
+        <tbody>
+          <tr><td>触达</td><td>TikTok 3 秒留存 / Reels 非粉触达比</td><td><span class="tg ref">行业参考值</span>≥70% / ≥60%</td><td>验证是否真在破圈，而非只推给老粉</td></tr>
+          <tr><td>互动</td><td>Reels 保存率</td><td><span class="tg ref">行业参考值</span>≥1.5%</td><td>选品/搬家类内容的最强意向信号，权重高于点赞</td></tr>
+          <tr><td>理解</td><td>Carousel 翻至末页率</td><td><span class="tg ref">行业参考值</span>≥40%</td><td>直接等于「机制被理解」的比例</td></tr>
+          <tr><td>理解</td><td>评论区出现「寄回 / 搬家」相关提问占比</td><td><span class="tg asm">项目假设</span>≥15%</td><td>说明 Exit 真的被看见，而不是被滑过</td></tr>
+          <tr><td>信任</td><td>Reddit upvote ratio</td><td><span class="tg asm">项目假设</span>≥85%</td><td>低于此值说明语气仍像营销，需重写</td></tr>
+          <tr><td>转化</td><td>Pinterest 出站 CTR / bio 点击率</td><td><span class="tg ref">行业参考值</span>≥1% / ≥2%</td><td>唯一能干净归因到站内的流量</td></tr>
+          <tr><td>转化</td><td>Newsletter 打开率</td><td><span class="tg ref">行业参考值</span>≥40%</td><td>小名单高密度，打开率低说明选题错</td></tr>
+          <tr><td>回流</td><td>30 天内回流发起数 / 售出量</td><td><span class="tg asm">项目假设</span>≥15%</td><td>没有公开基准可参考，是 Delta 独有的指标，也是机制是否成立的唯一证明</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:44px">验证路径：数据触发的决策规则</h3>
+    <p style="font-size:13.5px;color:var(--ink2);margin-bottom:14px">
+      指标不达标时怎么办，必须提前写死——否则优化就变成「再看感觉」。以下是上线后直接照执行的 if–then 表。
+    </p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>观测信号</th><th>阈值</th><th>触发动作</th><th>对应的 A/B</th></tr></thead>
+        <tbody>
+          <tr><td>Reels 3 秒留存低</td><td>&lt;65%</td><td>重做钩子：把结论挪到第 1 帧画面，不做铺垫</td><td>测试 1</td></tr>
+          <tr><td>完播高但主页访问低</td><td>完播 ≥45% 且点击 &lt;1%</td><td>内容被当成娱乐消费 → 换成第一人称叙事，结尾留具体物件悬念</td><td>测试 2 / 5</td></tr>
+          <tr><td>保存率高、点赞低</td><td>保存 ≥1.5% 且点赞 &lt;1%</td><td><b>这说明策略生效</b>（工具型内容正常表现），加做搬家清单类胡萝卜续集</td><td>—</td></tr>
+          <tr><td>评论区仍问「这是不是租赁」</td><td>误解类提问 &gt;20%</td><td>把 C5 对照图做成每条内容的结尾固定卡，定义内容提前重发一轮</td><td>—</td></tr>
+          <tr><td>Pinterest 出站 CTR 低</td><td>&lt;0.8%</td><td>标题重写为纯搜索词、去掉所有形容词；测试不同的 Pin 高度</td><td>测试 7</td></tr>
+          <tr><td>Reddit upvote ratio 低</td><td>&lt;80%</td><td><b>停止该 subreddit 投放，不删帖</b>；语气重写为纯经验后再换一个社区</td><td>测试 8</td></tr>
+          <tr><td>回流发起数几乎为零</td><td>&lt;5%</td><td>机制没被理解 → Exit 类内容权重提到 50%，并在 DTC 物流环节排查成本</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:44px">90 天路线</h3>
+    <ol class="num-list">
+      <li><b>Day 0–30 · 抢定义</b>：铺满 4 个支柱。核心目标是找出哪类钩子在起效，并确认用户是否已能正确复述「Delta 是什么」——可用评论区语义抽查判断，不求转化。</li>
+      <li><b>Day 31–60 · 加倍赢家</b>：把表现前 20% 的内容做成固定栏目（「四道题」做成周更系列、「搬走的人」做成人物专栏）；启动 UGC 回流故事征集；Pinterest 按关键词表铺到 60+ Pin；寄回流程与 DM 自动序列上线。</li>
+      <li><b>Day 61–90 · 系统化</b>：沉淀内容 SOP（母素材 → 8 平台改写清单）；用真实数据重排支柱权重；对齐下一个搬家高峰做集中投放；把季度捐赠做成固定栏目并主动投稿本地媒体与可持续类 newsletter。</li>
+    </ol>
+
+    <div class="card" style="margin-top:34px">
+      <h3>风险与边界</h3>
+      <ul class="tick">
+        <li><b>寄回的物流成本必须说清</b>：Exit 是机制成立的关键，谁付运费、跨境怎么寄，必须在内容或落地页明示——这是信任崩塌最快的地方。</li>
+        <li><b>二手瑕疵必须明示</b>：跨境退货成本极高，「有使用痕迹 / 待修复」要在社媒里说，不能只写在商品页。</li>
+        <li><b>公益金必须可核验</b>：金额 + 受助方（动物救助 / 儿童阅读）+ 回执链接三件套齐全，否则是品牌最大声誉风险。</li>
+        <li><b>Reddit 必须披露身份</b>：不披露有封号与品牌双重风险；且每个 subreddit 规则不同，禁止一稿多投。</li>
+        <li><b>禁用精英化表达</b>：品牌明确反对 gatekeeping，任何「懂的都懂」式文案都与定位冲突。</li>
+        <li><b>禁用捡漏 / 折扣语言</b>：定价立场是 "not cheap, smart"，用便宜做卖点会吸引 Depop 型用户，是错的人群。</li>
+        <li><b>禁用「临时 / 先用着」叙事</b>：会吸引把 Delta 当过渡方案的 Feather 型用户，混淆 ownership with an exit。</li>
+        <li><b>UGC 需书面授权</b>：尤其是用户字条这类含个人信息的内容。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section id="proof" style="border-bottom:none">
+  <div class="wrap">
+    <div class="sec-no">08 — WHAT TRANSFERS</div>
+    <h2>为什么这套判断可以用在别的品牌上</h2>
+    <p class="sec-intro" style="margin-bottom:18px">
+      这份 Case 是围绕 Delta 一个品牌做的，但里面真正值钱的三件事不依赖这个品牌：
+      怎么按平台重写同一件事、怎么从竞品空白反推优先级、怎么把策略落成可执行排期。
+      这三条我拿不出「X 年经验」当凭据，所以每一步判断的依据都留在了前面的章节里。
+    </p>
+    <div class="proof">
+      <div class="card">
+        <span class="pill sage">01 · 平台适配</span>
+        <h3 style="margin-top:12px">同一盏灯，八种写法</h3>
+        <p style="font-size:13.5px;color:var(--ink2)">
+          一盏回流台灯，在 IG 是「四道题」栏目、在 TikTok 是「我搬了 4 次」第一人称、
+          在 Pinterest 是 first apartment 关键词、在 Shorts 是无对白 ASMR、
+          在 Reddit 是「我用的筛选方法」、在 Substack 是四个住处的长文。
+          钩子、时长、人称、CTA 全部重写——包括两个方向相反的判断：
+          Pinterest 主动放弃调性换搜索，Reddit 主动放弃 CTA 换信任。
+        </p>
+      </div>
+      <div class="card">
+        <span class="pill sage">02 · 策略判断</span>
+        <h3 style="margin-top:12px">从空白反推支柱</h3>
+        <p style="font-size:13.5px;color:var(--ink2)">
+          竞品按「审美 / 移动 / 循环」三条轴选，证明交点为空；
+          由此推出第一个月的第一优先级不是涨粉而是<strong>抢定义权</strong>，
+          并把仓库里那句 <i>because you're moving</i> 提升为一整个内容场景——
+          搬家既是机制理由，也是唯一能对齐外部日历的内容节奏（毕业季 / 开学季 / 换约季）。
+        </p>
+      </div>
+      <div class="card">
+        <span class="pill sage">03 · 执行能力</span>
+        <h3 style="margin-top:12px">可交付，不是 PPT</h3>
+        <p style="font-size:13.5px;color:var(--ink2)">
+          排期做到逐日，并与搬家高峰对齐；
+          优化方案拆到 8 项单变量 A/B 测试、8 个分层 KPI（含品牌独有的回流发起率）
+          与 90 天路线，每一项都能落到具体动作，不需要二次翻译。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="serif">Delta · 海外社媒内容策略提案</div>
+    <div>Delta 是个人品牌项目（<code style="font:inherit;color:inherit">emersoncaiye/Delta</code>），非客户委托，品牌尚未上线。</div>
+    <div class="tag-line">
+      <span>Strategy</span><span>Copywriting</span><span>Content Ops</span><span>Analytics</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
