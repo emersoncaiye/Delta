@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delta · Overseas Social Media Content Strategy | Portfolio</title>
+<meta name="description" content="A founder-built circular brand and its overseas social media content strategy: competitor gap, content pillars, platform-native English copy, a 30-day calendar and a KPI framework.">
+<link rel="alternate" hreflang="zh-CN" href="index.html">
+<link rel="alternate" hreflang="en" href="en.html">
+<style>
+:root{
+  --bone:#f3f0e9; --paper:#fffdf8; --ink:#191817; --ink2:#4b4740;
+  --muted:#8d877b; --rust:#ad4f28; --sage:#5d7160; --line:#dfd8ca;
+  --line2:#efe9dd;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bone); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.serif{font-family:Georgia,"Songti SC","Times New Roman",serif;font-weight:600;letter-spacing:0.01em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(243,240,233,.92);
+  backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid var(--line);
+}
+nav .wrap{display:flex;gap:26px;align-items:center;height:52px;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{color:var(--muted);text-decoration:none;font-size:12.5px;letter-spacing:.08em;white-space:nowrap;padding:4px 0;border-bottom:1px solid transparent}
+nav a:hover{color:var(--ink);border-bottom-color:var(--rust)}
+nav .brand{font-family:Georgia,serif;color:var(--ink);font-size:14px;letter-spacing:.06em;margin-right:auto}
+
+header.hero{padding:88px 0 72px;border-bottom:1px solid var(--line)}
+.kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--rust);margin-bottom:20px}
+h1{font-size:clamp(34px,5.4vw,58px);line-height:1.12;margin-bottom:22px}
+h1 em{font-style:italic;color:var(--rust)}
+.lede{font-size:17px;color:var(--ink2);max-width:680px;line-height:1.85}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:44px}
+.meta div{background:var(--paper);padding:16px 18px}
+.meta dt{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.meta dd{font-size:14px;font-family:Georgia,serif}
+
+section{padding:78px 0;border-bottom:1px solid var(--line)}
+.sec-no{font-family:Georgia,serif;font-size:12px;letter-spacing:.2em;color:var(--muted);margin-bottom:12px}
+h2{font-size:clamp(24px,3.2vw,34px);margin-bottom:14px}
+h3{font-size:19px;margin-bottom:10px}
+.sec-intro{color:var(--ink2);max-width:780px;margin-bottom:38px;font-size:15.5px}
+
+.card{background:var(--paper);border:1px solid var(--line);padding:26px 28px}
+.card + .card{margin-top:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+
+.pill{display:inline-block;font-size:11px;letter-spacing:.08em;padding:3px 9px;border:1px solid var(--line);color:var(--ink2);background:var(--bone);margin:0 5px 5px 0}
+.pill.rust{border-color:rgba(173,79,40,.4);color:var(--rust);background:rgba(173,79,40,.06)}
+.pill.sage{border-color:rgba(93,113,96,.4);color:var(--sage);background:rgba(93,113,96,.07)}
+.pill.solid{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--paper)}
+th,td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top}
+th{background:var(--bone);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);font-weight:600}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line)}
+
+.asset{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:28px}
+.asset .card h4{font-family:Georgia,serif;font-size:15px;margin-bottom:8px;color:var(--rust)}
+.asset .card p{font-size:13.5px;color:var(--ink2)}
+
+.icp{background:var(--ink);color:var(--bone);padding:38px 40px;margin-bottom:26px}
+.icp .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(243,240,233,.5);margin-bottom:16px}
+.icp .line{font-family:Georgia,serif;font-size:clamp(20px,2.6vw,27px);line-height:1.45;color:#fffdf8;margin-bottom:14px}
+.icp .line em{font-style:italic;color:#e0a888}
+.icp .sub{font-size:13.5px;color:#cdc5b7;line-height:1.8;max-width:720px}
+.excl{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px;border-top:1px solid rgba(243,240,233,.16);padding-top:24px}
+.excl .x h5{font-family:Georgia,serif;font-size:14.5px;color:#e0a888;margin-bottom:6px;font-weight:600}
+.excl .x p{font-size:12.5px;color:#cdc5b7;line-height:1.7}
+.excl .x .no{display:inline-block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(224,168,136,.45);color:#e0a888;padding:2px 7px;margin-bottom:8px}
+.testbox{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--rust);padding:18px 22px;margin-top:16px}
+.testbox h4{font-family:Georgia,serif;font-size:15px;margin-bottom:8px}
+.testbox p{font-size:13.5px;color:var(--ink2)}
+
+.comp-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.comp-head h3{font-size:21px;margin:0}
+.comp-head .tier{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.kv{display:grid;grid-template-columns:88px 1fr;gap:6px 16px;font-size:13.5px;margin-top:14px}
+.kv dt{color:var(--muted);font-size:12px;padding-top:2px}
+.kv dd{color:var(--ink2)}
+.learn{border-left:2px solid var(--sage);padding-left:14px;margin-top:16px;font-size:13.5px;color:var(--ink2)}
+.beat{border-left:2px solid var(--rust);padding-left:14px;margin-top:10px;font-size:13.5px;color:var(--ink2)}
+.learn b,.beat b{color:var(--ink)}
+
+.opportunity{background:var(--ink);color:var(--bone);padding:44px 40px;margin-top:28px}
+.opportunity h3{color:#f0e7d8;font-size:20px;margin-bottom:20px}
+.opportunity ol{list-style:none;counter-reset:o}
+.opportunity li{counter-increment:o;padding-left:38px;position:relative;margin-bottom:18px;font-size:14.5px;line-height:1.8;color:#dcd3c4}
+.opportunity li::before{content:counter(o);position:absolute;left:0;top:1px;font-family:Georgia,serif;font-size:15px;width:24px;height:24px;border:1px solid rgba(220,211,196,.4);display:flex;align-items:center;justify-content:center;color:#dcd3c4}
+.opportunity li b{color:#fff}
+
+.pillar{background:var(--paper);border:1px solid var(--line);padding:22px 24px;border-top:2px solid var(--rust)}
+.pillar .pno{font-family:Georgia,serif;font-size:12px;color:var(--rust);letter-spacing:.16em;margin-bottom:8px}
+.pillar h4{font-family:Georgia,serif;font-size:17px;margin-bottom:8px}
+.pillar p{font-size:13.5px;color:var(--ink2);margin-bottom:12px}
+.pillar .share{font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+
+.c-item{background:var(--paper);border:1px solid var(--line);margin-bottom:18px}
+.c-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 24px;border-bottom:1px solid var(--line2);background:linear-gradient(180deg,#fffdf8,#faf7f0)}
+.c-no{font-family:Georgia,serif;font-size:13px;color:var(--rust);letter-spacing:.1em}
+.c-title{font-family:Georgia,serif;font-size:17px;flex:1;min-width:220px}
+.c-body{padding:20px 24px}
+.c-row{display:grid;grid-template-columns:82px 1fr;gap:14px;padding:9px 0;border-bottom:1px dotted var(--line)}
+.c-row:last-child{border-bottom:none}
+.c-row dt{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.c-row dd{font-size:14px;color:var(--ink2)}
+.copy{font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.8;color:var(--ink);background:#faf7f0;border:1px solid var(--line2);padding:12px 15px;white-space:pre-wrap;margin-top:2px}
+.copy.zh{font-family:inherit;font-size:13.5px;color:var(--ink2);background:transparent;border:none;border-left:2px solid var(--line);padding:4px 0 4px 12px}
+.judge{background:rgba(93,113,96,.07);border:1px solid rgba(93,113,96,.25);padding:14px 16px;margin-top:16px;font-size:13.5px;color:var(--ink2)}
+.judge b{color:var(--sage);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px}
+
+.week{border:1px solid var(--line);background:var(--paper);margin-bottom:18px}
+.week-hd{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--bone)}
+.week-hd .w{font-family:Georgia,serif;font-size:15px;color:var(--rust);letter-spacing:.06em}
+.week-hd .theme{font-family:Georgia,serif;font-size:18px}
+.week-hd .goal{font-size:12px;color:var(--muted);margin-left:auto}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line)}
+@media(max-width:900px){.days{grid-template-columns:repeat(2,1fr)}}
+.day{background:var(--paper);padding:12px 12px 14px;min-height:120px}
+.day .d{font-family:Georgia,serif;font-size:11px;color:var(--muted);margin-bottom:7px}
+.day .pl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;display:inline-block;margin-bottom:7px;border:1px solid var(--line)}
+.pl.ig{color:#8a3f6d;border-color:#e3cddb;background:#faf3f8}
+.pl.tt{color:#1d1d1d;border-color:#d5d5d5;background:#f5f5f5}
+.pl.pt{color:#a3272b;border-color:#e8cdce;background:#fbf1f1}
+.pl.tw{color:#4b5563;border-color:#dcdfe4;background:#f4f5f7}
+.pl.th{color:#6b4fa0;border-color:#ddd6ec;background:#f6f3fb}
+.pl.yt{color:#a8322a;border-color:#ecd4d2;background:#fbf3f2}
+.pl.nl{color:var(--sage);border-color:#d3dbd4;background:#f3f6f4}
+.pl.rd{color:#c4622d;border-color:#ecd8c6;background:#fbf5ee}
+.day .t{font-size:12.5px;line-height:1.55;color:var(--ink2)}
+
+ul.tick{list-style:none}
+ul.tick li{padding-left:20px;position:relative;font-size:14px;color:var(--ink2);margin-bottom:9px}
+ul.tick li::before{content:"—";position:absolute;left:0;color:var(--rust)}
+.num-list{counter-reset:n;list-style:none}
+.num-list li{counter-increment:n;position:relative;padding-left:32px;margin-bottom:14px;font-size:14px;color:var(--ink2)}
+.num-list li::before{content:counter(n);position:absolute;left:0;top:1px;font-family:Georgia,serif;font-size:12px;color:var(--rust);width:20px;height:20px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.7;border-top:1px dashed var(--line);padding-top:12px}
+
+/* identity / tldr / role */
+.who{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-end;border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:30px}
+.who-l{flex:1;min-width:280px}
+.who .role{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.who .name{font-family:Georgia,serif;font-size:27px;line-height:1.2}
+.who .pos{font-size:15px;color:var(--ink2);max-width:660px;line-height:1.75;margin-top:10px}
+.who .pos b{color:var(--ink)}
+.who .contact{margin-left:auto;font-size:12.5px;color:var(--muted);line-height:1.9;text-align:right}
+.tldr{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--ink);padding:28px 32px}
+.tldr .lb{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.tldr .q{font-family:Georgia,serif;font-size:clamp(17px,2.2vw,21px);line-height:1.6;margin-bottom:20px}
+.tldr .q b{color:var(--rust)}
+.tldr ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px 28px;margin-bottom:22px}
+.tldr li{font-size:13.5px;color:var(--ink2);line-height:1.7;padding-left:16px;position:relative}
+.tldr li::before{content:"—";position:absolute;left:0;color:var(--rust)}
+.chain{display:flex;flex-wrap:wrap;gap:8px;border-top:1px dashed var(--line);padding-top:18px}
+.chain a{font-size:12px;text-decoration:none;color:var(--ink2);border:1px solid var(--line);padding:5px 11px;background:var(--bone)}
+.chain a:hover{border-color:var(--rust);color:var(--rust)}
+.chain .lbx{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);align-self:center;margin-right:4px}
+.takeaway{background:rgba(173,79,40,.06);border:1px solid rgba(173,79,40,.28);padding:14px 18px;margin-bottom:22px;font-size:14px;color:var(--ink2)}
+.takeaway b{color:var(--rust);font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:6px}
+
+/* x mock */
+.xwrap{max-width:620px;width:100%;background:#15202b;border:1px solid #22303c;border-radius:16px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.16)}
+.xbar{display:flex;align-items:center;gap:16px;padding:11px 18px;border-bottom:1px solid #22303c}
+.xbar .lg{font-size:15px;color:#e7e9ea;font-weight:600}
+.xbar .tb{margin-left:auto;display:flex;gap:16px;font-size:12px;color:#71767b}
+.xbar .tb span.on{color:#e7e9ea;font-weight:600;border-bottom:2px solid #1d9bf0;padding-bottom:3px}
+.xthread{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:16px 18px 6px}
+.xav{width:40px;height:40px;border-radius:50%;background:#f3f0e9;color:#15202b;font-family:Georgia,serif;display:flex;align-items:center;justify-content:center;font-size:16px}
+.xline{justify-self:center;width:2px;height:100%;background:#31414f;margin-top:6px;border-radius:2px}
+.xmeta{display:flex;align-items:center;gap:6px;font-size:13px;flex-wrap:wrap}
+.xmeta b{color:#e7e9ea}
+.xmeta span{color:#71767b}
+.xpost{font-size:13.5px;line-height:1.7;color:#e7e9ea;padding-bottom:14px}
+.xnum{display:block;color:#71767b;font-size:11.5px;letter-spacing:.06em;margin-bottom:5px}
+.xpost em{font-style:normal;color:#e0a888}
+.xcard{border:1px solid #31414f;border-radius:12px;overflow:hidden;margin:2px 0 14px}
+.xcard h6{padding:9px 13px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#71767b;background:#1d2b36;border-bottom:1px solid #31414f;font-weight:600}
+.xcmp{display:grid;grid-template-columns:1fr 1fr}
+.xcmp div{padding:9px 13px;font-size:11.5px;line-height:1.6;color:#b9c0c6;border-top:1px solid #31414f}
+.xcmp div:nth-child(odd){border-right:1px solid #31414f}
+.xcmp div.hr{border-top:none;background:#1d2b36;color:#71767b;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+.xcmp div.hr.dl{color:#e0a888}
+.xcmp div.dl{color:#f4e3d4}
+.xacts{display:flex;gap:22px;padding:2px 0 16px;color:#71767b;font-size:11.5px;align-items:center;flex-wrap:wrap}
+.xacts span{display:flex;align-items:center;gap:7px}
+.ico.x{width:15px;height:15px;stroke:#71767b}
+
+/* ---------- mocks ---------- */
+.mk-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.mk-grid{grid-template-columns:1fr}}
+.mk{border:1px solid var(--line);background:var(--paper)}
+.mk-hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:13px 18px;border-bottom:1px solid var(--line2);background:var(--bone)}
+.mk-no{font-family:Georgia,serif;font-size:12px;color:var(--rust);letter-spacing:.12em}
+.mk-hd .plat{font-family:Georgia,serif;font-size:14.5px}
+.mk-hd .ref{margin-left:auto;font-size:11px;color:var(--muted)}
+.mk-stage{padding:22px;background:#fbf8f2;display:flex;justify-content:center}
+.mk-note{padding:16px 20px;border-top:1px solid var(--line2);font-size:13px;color:var(--ink2)}
+.mk-note b{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:6px}
+.ico{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ico.xs{width:13px;height:13px;stroke:#9fd8ae}
+.ico.dark{stroke:var(--ink2)}
+
+.phone{width:290px;aspect-ratio:9/16;border:9px solid #171514;border-radius:36px;overflow:hidden;position:relative;background:#000;box-shadow:0 16px 36px rgba(0,0,0,.20);flex:none}
+.screen{position:absolute;inset:0;overflow:hidden}
+.room{position:absolute;inset:0;background:linear-gradient(180deg,#2c2724 0%,#3a332e 56%,#493e35 56%,#54473c 100%)}
+.room.b{background:linear-gradient(180deg,#312b27 0%,#3d3630 60%,#4b4038 60%,#574a3f 100%)}
+.glow{position:absolute;left:50%;top:33%;width:230px;height:230px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,216,156,.95) 0%,rgba(255,197,124,.42) 34%,rgba(255,181,92,.12) 58%,transparent 72%)}
+.glow.sm{width:150px;height:150px;top:56%;left:74%;opacity:.85}
+.shade{position:absolute;left:50%;top:22%;width:78px;height:32px;transform:translateX(-50%);background:#1e1e1c;clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}
+.stem{position:absolute;left:50%;top:30%;width:3px;height:104px;transform:translateX(-50%);background:#2a2724}
+.base{position:absolute;left:50%;top:53%;width:46px;height:6px;transform:translateX(-50%);background:#2a2724;border-radius:3px}
+.case{position:absolute;left:20px;bottom:132px;width:104px;height:70px;border-radius:9px;background:#3a2f28;border:1px solid rgba(255,255,255,.14)}
+.case::before{content:"";position:absolute;left:38%;top:-9px;width:26px;height:9px;border:1px solid rgba(255,255,255,.18);border-bottom:none;border-radius:4px 4px 0 0}
+.ui-top{position:absolute;top:15px;left:17px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.tabs{position:absolute;top:16px;left:0;right:0;display:flex;justify-content:center;gap:18px;font-size:11.5px;color:rgba(255,255,255,.55)}
+.tabs span.on{color:#fff;font-weight:600;border-bottom:2px solid #fff;padding-bottom:4px}
+.hook{position:absolute;left:0;right:66px;bottom:104px;padding:0 17px}
+.hk1{font-family:Georgia,serif;font-size:16.5px;line-height:1.35;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.55)}
+.hk1 em{font-style:italic;color:#ffd7a5}
+.qlist{list-style:none;margin-top:13px;display:grid;gap:8px}
+.qlist li{display:flex;align-items:center;gap:9px;font-size:11px;color:rgba(255,255,255,.9)}
+.tt{position:absolute;left:0;right:66px;top:58px;padding:0 17px;font-family:Georgia,serif;font-size:22px;line-height:1.28;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.tt u{text-decoration:none;border-bottom:2px solid rgba(255,255,255,.35)}
+.tt2{margin-top:14px;font-size:11.5px;line-height:1.6;color:rgba(255,255,255,.82);font-family:inherit;max-width:180px}
+.ui-bottom{position:absolute;left:0;right:66px;bottom:20px;padding:0 17px}
+.prof{display:flex;align-items:center;gap:8px}
+.av{width:26px;height:26px;border-radius:50%;background:#f3f0e9;color:#191817;font-family:Georgia,serif;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.av.sp{border:1.5px solid rgba(255,255,255,.5);background:#4a4038;color:#fff}
+.hdl{font-size:11.5px;color:#fff;font-weight:600}
+.flw{border:1px solid #fff;border-radius:3px;font-size:9.5px;padding:2px 8px;color:#fff;letter-spacing:.04em}
+.cap{margin-top:9px;font-size:10.5px;color:rgba(255,255,255,.85);line-height:1.5}
+.cap i{font-style:normal;color:rgba(255,255,255,.55)}
+.chips{margin-top:7px;display:flex;gap:6px;flex-wrap:wrap}
+.chips span{font-size:9.5px;color:rgba(255,255,255,.85)}
+.acts{position:absolute;right:11px;bottom:26px;display:grid;gap:17px;justify-items:center}
+.a{display:grid;justify-items:center;gap:3px}
+.a b{font-size:9.5px;color:#fff;font-weight:600}
+.prog{position:absolute;left:0;right:0;bottom:5px;height:2px;background:rgba(255,255,255,.22)}
+.prog i{display:block;height:100%;width:62%;background:#fff}
+
+.ptwrap{width:100%}
+.ptsearch{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:9px 17px;margin-bottom:18px;font-size:12.5px;color:var(--ink2)}
+.ptgrid{columns:3;column-gap:13px}
+.ptile{border:1px solid var(--line2);border-radius:15px;overflow:hidden;background:#efeadf;margin-bottom:13px;break-inside:avoid;position:relative}
+.ptile.other{opacity:.5}
+.ptile.mine{border:2px solid var(--rust);box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.ph{position:relative;background:linear-gradient(160deg,#e9e2d6,#d9d0c1)}
+.ph.mine{background:linear-gradient(180deg,#f0e7d9 0%,#e3d4c0 55%,#d2c3ac 55%,#c5b49c 100%);height:250px}
+.mini{position:absolute}
+.mini.lamp{left:50%;top:34%;width:80px;height:80px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,214,152,.95),rgba(255,190,110,.25) 45%,transparent 70%)}
+.mini.cup{left:16%;bottom:16%;width:26px;height:32px;background:#fffdf8;border-radius:3px 3px 6px 6px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.mini.vase{right:16%;bottom:15%;width:22px;height:44px;background:#cfc3ae;border-radius:8px 8px 4px 4px}
+.ptile .plabel{padding:9px 11px;font-size:10.5px;color:var(--ink2);line-height:1.5}
+.ptitle{position:absolute;left:12px;right:12px;bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:1.35;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.badge{position:absolute;top:10px;left:10px;background:var(--rust);color:#fff;font-size:9.5px;letter-spacing:.1em;padding:3px 8px;border-radius:3px}
+.ptmeta{margin-top:16px;border:1px solid var(--line2);background:#fff;padding:14px 16px;font-size:12.5px;color:var(--ink2);line-height:1.75}
+.ptmeta h5{font-family:Georgia,serif;font-size:13px;color:var(--ink);margin-bottom:6px}
+.ptmeta .kw{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.ptmeta .kw span{font-size:10.5px;border:1px solid var(--line);padding:2px 8px;color:var(--ink2)}
+/* ig carousel mock */
+.igcwrap{width:100%;max-width:540px}
+.igc-top{display:flex;align-items:center;gap:9px;padding:10px 13px;background:#fff;border:1px solid var(--line2)}
+.igc-strip{display:flex;gap:11px;overflow-x:auto;padding:13px;background:#fff;border:1px solid var(--line2);border-top:none;border-bottom:none}
+.igc-cell{flex:none;width:126px}
+.igc-f{position:relative;aspect-ratio:1/1;border:1px solid var(--line2);display:flex;flex-direction:column;justify-content:flex-end;padding:11px;overflow:hidden;background:linear-gradient(170deg,#2f2a26,#54473c)}
+.igc-f .pg{position:absolute;top:8px;left:9px;font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.6)}
+.igc-f .dot{position:absolute;left:11px;right:11px;bottom:52%;height:1px;background:rgba(255,255,255,.16)}
+.igc-f h6{font-family:Georgia,serif;font-size:13px;line-height:1.34;color:#fff;font-weight:400}
+.igc-f h6 em{font-style:italic;color:#ffd7a5}
+.igc-f p{font-size:9.5px;line-height:1.55;color:rgba(255,255,255,.72);margin-top:5px}
+.igc-f .tickq{margin-bottom:8px;font-size:10px;color:#9fd8ae;letter-spacing:.04em}
+.igc-f .glowx{position:absolute;left:50%;top:30%;width:96px;height:96px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,214,152,.85),rgba(255,190,110,.2) 45%,transparent 70%)}
+.igc-f.last{background:linear-gradient(170deg,#3a332e,#63513f)}
+.igc-lb{font-size:10px;color:var(--muted);text-align:center;margin-top:7px;letter-spacing:.04em}
+.igc-foot{display:flex;align-items:center;gap:14px;padding:10px 13px;background:#fff;border:1px solid var(--line2);font-size:11px;color:var(--muted)}
+.igc-foot .dots{display:flex;gap:5px}
+.igc-foot .dots i{width:5px;height:5px;border-radius:50%;background:var(--line)}
+.igc-foot .dots i.on{background:var(--rust)}
+.igc-foot b{color:var(--ink);font-weight:600}
+/* reddit + substack mock */
+.rdwrap{width:100%;max-width:500px;background:#fff;border:1px solid var(--line2);border-radius:5px}
+.rdtop{display:flex;align-items:center;gap:7px;padding:9px 14px;border-bottom:1px solid var(--line2);background:#f6f4ef;font-size:11px;color:var(--muted)}
+.rdtop .rdsub{font-weight:600;color:var(--ink);font-size:12px}
+.rdbody{display:grid;grid-template-columns:32px 1fr;gap:14px;padding:14px 16px}
+.rdvote{display:grid;justify-items:center;gap:3px;color:var(--muted);font-size:10.5px}
+.rdvote .up{font-size:13px;color:var(--rust)}
+.rdmeta{display:flex;gap:6px;font-size:11px;color:var(--muted)}
+.rdtitle{font-family:Georgia,serif;font-size:17px;line-height:1.32;margin:7px 0 10px}
+.rdtext{font-size:12.5px;line-height:1.75;color:var(--ink2)}
+.rdtext p{margin-bottom:9px}
+.rdwarn{margin:12px 0 0;padding:10px 12px;background:#fdf6ec;border-left:3px solid var(--rust);font-size:11.5px;line-height:1.6;color:var(--ink2)}
+.rdacts{margin-top:13px;padding-top:10px;border-top:1px dashed var(--line2);display:flex;gap:18px;font-size:11px;color:var(--muted)}
+.rdtag{margin-top:10px;font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+.sswrap{width:100%;max-width:500px;background:#fff;border:1px solid var(--line2)}
+.ssmail{padding:12px 18px;background:#f6f4ef;border-bottom:1px solid var(--line2)}
+.ssmail b{font-family:Georgia,serif;font-size:15.5px;display:block;margin-bottom:4px}
+.ssmail div{font-size:11.5px;color:var(--muted)}
+.sskicker{margin:16px 18px 0;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust)}
+.sshero{margin:10px 18px 0;height:118px;background:linear-gradient(160deg,#efe7d9,#dcd0bd);display:flex;align-items:center;justify-content:center;font-size:11px;color:#8b8172}
+.sstitle{font-family:Georgia,serif;font-size:20px;line-height:1.3;margin:16px 18px 10px}
+.sstext{font-size:12.5px;line-height:1.8;color:var(--ink2);margin:0 18px}
+.sspull{margin:14px 18px;padding:12px 14px;border-left:3px solid var(--sage);background:#f4f7f4;font-family:Georgia,serif;font-size:13.5px;line-height:1.6}
+.ssfoot{margin-top:16px;border-top:1px dashed var(--line2);padding:12px 18px;font-size:11px;color:var(--muted);line-height:1.7}
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.proof .card{border-top:2px solid var(--sage)}
+footer{padding:60px 0 80px;color:var(--muted);font-size:12.5px}
+footer .serif{font-size:15px;color:var(--ink);margin-bottom:10px}
+.tag-line{display:flex;gap:24px;flex-wrap:wrap;margin-top:14px}
+@media print{nav{display:none}body{background:#fff}}
+.proof .ev{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--muted);letter-spacing:.03em}
+.proof .ev a{color:var(--rust);text-decoration:none;border-bottom:1px solid var(--rust);margin-right:12px}
+.proof .ev a:hover{color:var(--ink);border-color:var(--ink)}
+.tg{display:inline-block;font-size:10.5px;letter-spacing:.06em;padding:1px 7px;border-radius:20px;margin-right:6px;vertical-align:middle;white-space:nowrap}
+.tg.ref{background:#eceff2;color:#5a6873;border:1px solid #d8dee4}
+.tg.asm{background:#fdf1e6;color:#9a5a22;border:1px solid #f2ddc2}
+.tg.real{background:#e8f1e9;color:#3f6b45;border:1px solid #cfe3d2}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <span class="brand">Delta — Overseas Social Strategy</span>
+    <a href="#tldr">TL;DR</a>
+    <a href="#brief">Brief</a>
+    <a href="#brand">Brand</a>
+    <a href="#comp">Competitors</a>
+    <a href="#strategy">Strategy</a>
+    <a href="#content">Content</a>
+    <a href="#mocks">Mockups</a>
+    <a href="#plan">30-day plan</a>
+    <a href="#opt">Metrics</a>
+    <a href="#proof">Why it transfers</a>
+    <a href="index.html" style="border:1px solid var(--line);padding:3px 10px;color:var(--ink);letter-spacing:.14em">中文</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+
+    <div class="who">
+      <div class="who-l">
+        <div class="role">Target Role · Overseas Content &amp; Social Media Strategy</div>
+        <div class="name">Emerson</div>
+        <p class="pos">
+          A <strong>self-directed, end-to-end project</strong>: I founded a circular-consumption brand (Delta) and built its
+          overseas social strategy from the ground up — <b>competitive positioning → content pillars → platform-native English copy
+          → 30-day calendar → measurement framework</b>. No client brief, no historical analytics: every judgment is written down
+          and open to challenge.
+        </p>
+      </div>
+      <div class="contact">emerson.the.k@gmail.com<br><a href="index.html" style="color:var(--rust);text-decoration:none;border-bottom:1px solid var(--rust)">中文版 →</a></div>
+    </div>
+
+    <div class="kicker">Case 01 · Social Media Strategy · Founder-Built Brand</div>
+    <h1>Nothing good<br><em>stays behind</em>.</h1>
+    <p class="lede">
+      Delta is a circular-consumption brand I built from zero. This is the overseas social media strategy I wrote for it,
+      covering the full chain: competitor gap → content pillars → nine platform-native posts → 30-day calendar → KPIs.
+      The brand-side documents (philosophy, aesthetic, for_whom, circularity, charity) are mine as well
+      (<code>emersoncaiye/Delta</code>).
+    </p>
+
+    <dl class="meta">
+      <div><dt>Brand</dt><dd>Delta · Objects for a moving life</dd></div>
+      <div><dt>Category</dt><dd>Curated secondhand · circular consumption</dd></div>
+      <div><dt>ICP</dt><dd>20–30, moves every 1–3 years, refuses "for now" objects</dd></div>
+      <div><dt>Platforms</dt><dd>IG · TikTok · Pinterest · X · Threads · Shorts · Reddit · Substack</dd></div>
+      <div><dt>Scope</dt><dd>9 posts · 7 mockups · 30-day calendar · KPI framework</dd></div>
+      <div><dt>Status</dt><dd>Pre-launch · founder-built · no live account data</dd></div>
+    </dl>
+
+  </div>
+</header>
+
+<!-- TL;DR -->
+<section id="tldr" style="padding:44px 0">
+  <div class="wrap">
+    <div class="tldr">
+      <div class="lb">The 30-second version</div>
+      <div class="q">
+        I built a circular brand, then built its overseas social strategy: find the empty space in the competitor set,
+        turn it into content pillars, and land it as platform-native copy, a day-by-day calendar, and metrics with stated sources.
+      </div>
+      <ul>
+        <li><b>Platform fit</b> — one returned brass lamp becomes eight different posts: a standard on IG, an experience on TikTok, a search answer on Pinterest, a debatable method on Reddit.</li>
+        <li><b>Strategic judgment</b> — competitors were picked on three axes (aesthetic / mobility / circularity) to prove the intersection is empty; the ICP exclusions match each competitor's audience, which validates it in reverse.</li>
+        <li><b>Execution</b> — 68 posts from 12 source assets, sequenced day by day; every number is tagged industry benchmark, project assumption, or post-launch actual.</li>
+      </ul>
+      <div class="chain">
+        <span class="lbx">Full chain:</span>
+        <a href="#brief">Brief</a>
+        <a href="#brand">Brand + ICP</a>
+        <a href="#comp">Competitors</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#content">9 posts</a>
+        <a href="#mocks">Mockups</a>
+        <a href="#plan">30-day plan</a>
+        <a href="#opt">Metrics + A/B</a>
+        <a href="#proof">Why it transfers</a>
+      </div>
+    </div>
+    <div class="note" style="border-top:none;padding-top:14px">
+      Founder-built brand, not a client commission. Pre-launch: there is no account data yet. Competitor sizes are public estimates used to judge scale; KPI baselines are industry references for a new account in the category.
+    </div>
+  </div>
+</section>
+
+<!-- 00 -->
+<section id="brief">
+  <div class="wrap">
+    <div class="sec-no">00 — BRIEF</div>
+    <h2>Fix the category before selling anything</h2>
+    <p class="sec-intro">
+      Delta has no category to sit in. Overseas users will reach for the two drawers they already have —
+      thrift store, or rental. If either sticks, every later post spends its budget explaining someone else's product.
+    </p>
+
+    <div class="takeaway">
+      <b>One-line conclusion</b>
+      The biggest risk isn't obscurity — it's <strong>being filed under the wrong category</strong>. So the first month's first objective
+      is not follower growth; it's making overseas users able to repeat back what Delta is. That ordering decides every KPI below.
+    </div>
+
+    <h3>Objective &amp; key results</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Layer</th><th>What</th><th>Why this</th><th>Source of the number</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>Objective</b></td>
+            <td>Within 30 days, make the target audience understand Delta is <b>neither a thrift store nor a rental</b>, and trigger a first purchase and a first return.</td>
+            <td>No category → comprehension before conversion; the return is the one proof point only this brand can produce</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><b>KR1 Comprehension</b></td>
+            <td>≥30% of comments describe the mechanism without using “is this rental?”; ≥10 external citations of the X thread</td>
+            <td>Directly observable proof that the definition was claimed, without backend access</td>
+            <td><span class="tg asm">Project assumption</span></td>
+          </tr>
+          <tr>
+            <td><b>KR2 Reach</b></td>
+            <td>Non-follower reach ≥60% on Reels / TikTok; Pinterest outbound CTR ≥1%</td>
+            <td>Separates real reach from re-serving the same small audience</td>
+            <td><span class="tg ref">Industry benchmark</span></td>
+          </tr>
+          <tr>
+            <td><b>KR3 Conversion</b></td>
+            <td>Bio link CTR ≥2%; +300 newsletter subscribers; <b>returns initiated / units sold ≥15%</b></td>
+            <td>First two are standard commerce numbers; the last one is the only test of whether the mechanism works</td>
+            <td><span class="tg ref">Industry benchmark</span> + <span class="tg asm">project assumption</span></td>
+          </tr>
+          <tr>
+            <td><b>Constraints</b></td>
+            <td>Zero ad budget; one person, part-time; one shooting window per week; item provenance and donation data supplied by the brand</td>
+            <td>These constraints are why asset reuse and Threads-first selection are the optimal answer, not a compromise</td>
+            <td><span class="tg asm">Project setup</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>None of the numbers in this table are measured yet.</b>
+      <span class="tg ref">Industry benchmark</span> public ranges for a new account in the category, used only to check whether a target is plausible;
+      <span class="tg asm">Project assumption</span> targets with no public baseline, derived from the brand mechanism — first draft, to be recalibrated;
+      <span class="tg real">Post-launch actual</span> backfilled from real analytics once the brand is live, at which point the first two categories are void.
+      Every KPI later on this page uses the same labels.
+    </div>
+  </div>
+</section>
+
+<!-- 01 -->
+<section id="brand">
+  <div class="wrap">
+    <div class="sec-no">01 — BRAND</div>
+    <h2>What Delta is, and what it refuses to be</h2>
+    <p class="sec-intro">
+      Everything below comes from the brand documents I wrote: philosophy, aesthetic, for_whom, circularity, charity, story.
+      They exist as a public repo, which is why this strategy can be traced back to source instead of to taste.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>The mechanism</h3>
+        <ul class="tick">
+          <li>Curated secondhand objects, <b>$5–100</b> — lamps, cups, scarves, small furniture. Sized to travel, priced to risk.</li>
+          <li>You own it. Four holding tiers — <b>7 days / 30 days / 90 days / 1 year+</b> — set how much credit you get back.</li>
+          <li>Send it back when you're done: cleaned, restaged, credit toward the next find, then a new home.</li>
+          <li>Part of resale profit goes to <b>animal rescue and children's literacy</b>, published quarterly with receipts.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>The ICP, defined by exclusion</h3>
+        <p style="font-size:13.5px;color:var(--ink2);margin-bottom:12px">
+          20–30, moved at least twice in three years, pays a little extra for how a place looks, refuses to pay for things that can't travel.
+          Three exclusions keep the audience honest:
+        </p>
+        <ul class="tick">
+          <li><b>Not a temporary stopgap user</b> — “use it and hand it back” is Feather's customer. Delta objects are chosen and owned; the exit is optional, not the point.</li>
+          <li><b>Not a bargain hunter</b> — buying the price gap is Depop's customer. Pricing says “not cheap, smart”; a bargain narrative destroys it.</li>
+          <li><b>Not an insider</b> — anyone who needs to “know the market” to qualify is exactly who the brand refuses to cater to. Taste requires no exam.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:34px">One content rule, used everywhere</h3>
+    <p style="font-size:13.5px;color:var(--ink2);margin-bottom:14px">
+      Every object has to pass four questions. It is a filter, a recurring series, and a script in one:
+    </p>
+    <div class="grid2">
+      <div class="card" style="padding:22px 24px">
+        <p style="font-family:Georgia,serif;font-size:15.5px;line-height:2">
+          01 — Is it quiet?<br>02 — Is it smartly priced?<br>03 — Will it survive another owner?<br>04 — Will I actually use it?
+        </p>
+      </div>
+      <div class="card" style="padding:22px 24px">
+        <p style="font-size:13.5px;color:var(--ink2)">
+          The rule does three jobs at once: it <b>filters what gets listed</b>, it gives the feed a <b>repeatable format</b>
+          that can be updated weekly, and it <b>teaches the ICP test in the first three seconds</b> of a video.
+          Content that fails the rule is not a style problem — it's off-brand.
+        </p>
+      </div>
+    </div>
+    <div class="note">Source: <code>emersoncaiye/Delta</code> — philosophy / aesthetic / for_whom / circularity / charity. Written by me; not client-supplied.</div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section id="comp">
+  <div class="wrap">
+    <div class="sec-no">02 — COMPETITORS</div>
+    <h2>Three competitors, three axes, one empty intersection</h2>
+    <p class="sec-intro">
+      The point of this table isn't to rank competitors. It's to show that each one owns exactly one thing Delta needs,
+      and nobody combines them — which is where the content strategy starts.
+    </p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Benchmark</th><th>Axis it owns</th><th>What it does well</th><th>What it leaves empty</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>Depop</b></td><td>Aesthetic</td>
+            <td>Crowd-sourced trend curation; resale fluent in the exact 20–30 audience; algorithmic discovery</td>
+            <td>The taste is crowd-sourced, not authored — no public standard, and nothing after checkout</td>
+          </tr>
+          <tr>
+            <td><b>Feather</b></td><td>Mobility</td>
+            <td>Proves people will pay not to own; moving and short-lease scenes are executed precisely</td>
+            <td>Ownership never happens — nothing to love, nothing to pass on; the exit is a contract, not a choice</td>
+          </tr>
+          <tr>
+            <td><b>Patagonia Worn Wear</b></td><td>Circularity</td>
+            <td>Makes repair normal and credible; sustainability with receipts</td>
+            <td>Says “don't throw it away”, not “you may let it go” — no aesthetic curation, no emotional permission to exit</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="takeaway">
+      <b>One-line conclusion</b>
+      Each competitor occupies one axis Delta needs. <strong>“One person's standard + owning with an exit” is the empty intersection</strong> —
+      the four pillars are derived from that gap, not from inspiration. The ICP exclusions land on the same three audiences
+      (bargain hunters, renters, insiders), which is the reverse validation.
+    </div>
+
+    <div class="note">
+      Sizes are public estimates used to judge content investment, not precise figures. What matters here is the shape of the market, not the numbers.
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section id="strategy">
+  <div class="wrap">
+    <div class="sec-no">03 — STRATEGY</div>
+    <h2>Pillars decide what to say; platform roles decide how</h2>
+    <p class="sec-intro">
+      Four pillars, one per recurring series, each tied to a metric. Then each platform gets a single job it can complete on its own —
+      if a platform can't finish one job in the decision journey, it doesn't get a slot.
+    </p>
+
+    <div class="takeaway">
+      <b>One-line conclusion</b>
+      The test for every platform is the same: <strong>can it complete one job by itself?</strong>
+      Discovery belongs to Pinterest, definition to X, belief to Substack.
+    </div>
+
+    <div class="grid2">
+      <div class="pillar">
+        <div class="pno">PILLAR 01</div>
+        <h3>The Four Questions</h3>
+        <p>Product-as-standard. Four checks per object, applied on camera, weekly.</p>
+        <div class="share">35% of output · primary metric: saves</div>
+      </div>
+      <div class="pillar">
+        <div class="pno">PILLAR 02</div>
+        <h3>Moving Life</h3>
+        <p>The scene that makes the mechanism obvious: leases ending, apartments too small, things that travel.</p>
+        <div class="share">25% of output · primary metric: completion rate, comment depth</div>
+      </div>
+    </div>
+    <div class="grid2" style="margin-top:16px">
+      <div class="pillar">
+        <div class="pno">PILLAR 03</div>
+        <h3>The Graceful Exit</h3>
+        <p>People sending things back — the only content that can make “return” feel like a feature, not a failure.</p>
+        <div class="share">25% of output · primary metric: return initiations, story interactions</div>
+      </div>
+      <div class="pillar">
+        <div class="pno">PILLAR 04</div>
+        <h3>Where It Went</h3>
+        <p>Provenance and receipts: the object's next home, the donations, the quarterly records.</p>
+        <div class="share">15% of output · primary metric: newsletter signups</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:44px">Platform roles</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Platform</th><th>Job</th><th>Format</th><th>Frequency / wk</th><th>Primary metric</th><th>Tone</th></tr></thead>
+        <tbody>
+          <tr><td><b>Instagram</b></td><td>Brand showroom &amp; conversion hub</td><td>Reels 3 / Carousel 1 / daily Stories</td><td>5+</td><td>Saves, profile clicks</td><td>Restrained, specific, short sentences</td></tr>
+          <tr><td><b>TikTok</b></td><td>Reach and resonance</td><td>15–30s vertical</td><td>4</td><td>3-sec retention, completion</td><td>First person, a turn, captions first</td></tr>
+          <tr><td><b>Pinterest</b></td><td>Long-tail search traffic</td><td>Product / Idea pins</td><td>5</td><td>Outbound clicks, saves</td><td><b>Drop the tone; keyword-first</b></td></tr>
+          <tr><td><b>X</b></td><td><b>Category definition</b> and data</td><td>Single posts / threads</td><td>3</td><td>Citations, outbound clicks</td><td>Sharp, numeric, contrarian</td></tr>
+          <tr><td><b>Threads</b></td><td>Community and topic testing</td><td>Short text + image</td><td>3</td><td>Replies</td><td>A person talking, not a brand</td></tr>
+          <tr><td><b>YouTube Shorts</b></td><td>Mechanism visualised + subscribe</td><td>Silent restaging / repair</td><td>2 (reuse)</td><td>Subscriber conversion</td><td>Zero language, ASMR</td></tr>
+          <tr><td><b>Reddit</b></td><td>High-intent long tail + trust</td><td>Long experience posts</td><td>0.5</td><td>Upvote ratio, indexing</td><td><b>Pure experience, disclosure mandatory</b></td></tr>
+          <tr><td><b>Substack</b></td><td>Depth and compliance record</td><td>600–900 words</td><td>0.5</td><td>Open rate, replies</td><td>Literary, transparent, verifiable</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      Two rules cut against brand instinct on purpose: Pinterest gives up tone for search rank, Reddit gives up the CTA for community trust.
+      Both are measured by outcomes that aren't likes.
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section id="content">
+  <div class="wrap">
+    <div class="sec-no">04 — CONTENT</div>
+    <h2>Nine posts; four shown in full</h2>
+    <p class="sec-intro">
+      Same lamp, same move, eight platforms. What changes is the hook, the length, the person, and whether there is a CTA at all.
+      Each sample below carries the “why” underneath it, because that's the part an interviewer can challenge.
+    </p>
+
+    <!-- C1 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C1</span><span class="c-title">The moving box test</span>
+        <span class="pill solid">IG Carousel</span><span class="pill rust">The Four Questions</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>Structure</dt><dd>8 frames: hook (would it survive your move?) → the rule in one line → four questions, one per frame → when you're done, send it back → “Save this before your move.”</dd></dl>
+        <dl class="c-row"><dt>Copy</dt><dd><div class="copy">Frame 1 — would it survive your move?
+Frame 2 — if it doesn't fit the box, it doesn't come with you.
+Frame 3 — Q1. Is it quiet? No logos. No noise.
+Frame 4 — Q2. Is it smartly priced? $5–100. Cheap enough to risk, good enough to keep.
+Frame 5 — Q3. Will it survive another owner? Solid, repairable, re-homeable.
+Frame 6 — Q4. Will I actually use it? Every week, or it's clutter with good taste.
+Frame 7 — when you're done, send it back. cleaned · restaged · credit toward your next find.
+Frame 8 — save this before your move.</div></dd></dl>
+        <div class="judge"><b>Why</b>
+          A carousel is the only format where the job is “get the next swipe”, not “get the first three seconds”. Frame 2 states the rule early
+          so the next four frames are worth reading; frame 7 is the only place the return mechanism appears, so it can't be pushed to the end —
+          most people never swipe that far. The CTA is <strong>Save</strong>, not a link, because saves are what this format is measured on.
+        </div>
+      </div>
+    </div>
+
+    <!-- C3 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C3</span><span class="c-title">I moved 4 times in 3 years. Here's what I stopped buying.</span>
+        <span class="pill solid">TikTok</span><span class="pill rust">Moving Life</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>Structure</dt><dd>0–2s empty room + one suitcase, caption “4 moves. 3 years. One rule.” → 2–6s “I stopped buying big furniture” → 6–10s “I stopped buying for-now things, they're the first to go” → 10–14s “I stopped buying things I'd feel guilty leaving behind” → 14–20s picks up a lamp “now I only buy things I can send back” → end card</dd></dl>
+        <dl class="c-row"><dt>End card</dt><dd><div class="copy">nothing good stays behind.
+#movingtips #apartmenthacks #slowliving #secondhandhome</div></dd></dl>
+        <div class="judge"><b>Why</b>
+          TikTok's moving / apartment pool is enormous and almost entirely “moving essentials”. This runs the other way —
+          <strong>what I stopped buying</strong> — which is contrarian, familiar, and sells nothing. Its real job isn't reach, it's
+          <strong>audience filtering</strong>: the first three lines push bargain hunters and renters away and leave exactly the ICP.
+        </div>
+      </div>
+    </div>
+
+    <!-- C5 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C5</span><span class="c-title">We're not a rental company.</span>
+        <span class="pill solid">X Thread</span><span class="pill rust">The Four Questions</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>Copy</dt><dd><div class="copy">1/5  People keep asking if Delta is a rental company. It isn't.
+     Here's the difference — and why it matters.
+
+2/5  Rental: you never own it. You pay monthly. You give it back because a contract says so.
+
+3/5  Delta: you buy it. You own it. You send it back when you're done — not when a term ends.
+     [comparison card: monthly fee / ownership / reason for return / where the money goes]
+
+4/5  You get credit toward your next find. The object is cleaned, restaged, and finds a new home.
+     Part of that resale goes to animal rescue and children's literacy — records published quarterly.
+
+5/5  Ownership, with an exit. Beautiful things should circulate. That's all.</div></dd></dl>
+        <div class="judge"><b>Why</b>
+          This is the Day 1 post, and the only one that sells nothing. Category definition is the whole point: once Delta is filed as
+          “thrift” or “rental”, every later post pays for someone else's explanation. The middle comparison card is the asset —
+          it's the one screenshot that works without context. Donation figures sit in post 4/5 because this audience is allergic to
+          adjectives and responds to amounts, recipients and receipts.
+        </div>
+      </div>
+    </div>
+
+    <!-- C8 -->
+    <div class="c-item">
+      <div class="c-top"><span class="c-no">C8</span><span class="c-title">What I learned furnishing a life that keeps moving</span>
+        <span class="pill solid">Reddit</span><span class="pill rust">Moving Life</span></div>
+      <div class="c-body">
+        <dl class="c-row"><dt>Placement</dt><dd>r/ApartmentHacks · r/expats · r/Frugal — each rewritten separately; never cross-posted verbatim</dd></dl>
+        <dl class="c-row"><dt>Excerpt</dt><dd><div class="copy">Title: I've moved 5 times in 4 years — what I learned about furnishing a life that keeps moving
+
+- Buy at a size that can travel. A lamp, a cup, a scarf. Not a bookcase.
+- Stop buying "for now" things. They're the first to get thrown out, and the least enjoyable while you have them.
+- Secondhand doesn't mean settling, but it does mean you need a filter. I use four: is it quiet, is it smartly priced,
+  will it survive another owner, will I actually use it.
+- The hardest part isn't buying. It's leaving. I've started only buying things I can send back.
+
+Disclosure: I run a small curated secondhand project, which is why I think about this far too much.
+Not here to sell anything; happy to answer questions about the framework.</div></dd></dl>
+        <div class="judge"><b>Why</b>
+          Reddit is the most extreme tone in the set: any marketing register gets downvoted, and undisclosed promotion risks the account
+          and the reputation. So the post gives up the CTA and discloses affiliation instead. The reward is Google's crawl weight on
+          high-intent long-tail queries — worth more than any social reach here. The four questions appear as “the filter I use”,
+          which can be argued with rather than presented as a standard.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section id="mocks">
+  <div class="wrap">
+    <div class="sec-no">05 — MOCKUPS</div>
+    <h2>Three mockups</h2>
+    <p class="sec-intro">
+      Layout mockups, not finished design: placeholders for imagery, illustrative numbers. Their job is to show hierarchy and hook placement.
+      Three of the seven are shown here; the full set (Pinterest, Substack, Carousel, Shorts) is on the Chinese edition.
+    </p>
+
+    <div class="mk-grid">
+
+      <div class="mk">
+        <div class="mk-hd"><span class="mk-no">MOCK 01</span><span class="plat">Instagram Reels · cover</span><span class="ref">C1</span></div>
+        <div class="mk-stage">
+          <div class="phone">
+            <div class="screen">
+              <div class="room"></div>
+              <div class="glow"></div>
+              <div class="shade"></div><div class="stem"></div><div class="base"></div>
+              <div class="ui-top">Reels</div>
+              <div class="hook">
+                <div class="hk1">Every object here has to pass <em>four questions.</em></div>
+                <ul class="qlist">
+                  <li>Is it quiet?</li>
+                  <li>Is it smartly priced?</li>
+                  <li>Will it survive another owner?</li>
+                  <li>Will I actually use it?</li>
+                </ul>
+              </div>
+              <div class="ui-bottom">
+                <div class="prof"><span class="av">D</span><span class="hdl">delta.objects</span><span class="flw">Follow</span></div>
+                <div class="cap">Object No.007 · brass lamp, $68 &nbsp;<i>more</i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mk-note"><b>Layout call</b>
+          The cover isn't a poster, it's a hook: all four checks are ticked in the first frame, so the user knows there's a standard
+          before tapping. The product drops into the background as a pool of warm light — the subject is the standard, not the object.
+          The save count is deliberately oversized, because saves are the only target action here.
+        </div>
+      </div>
+
+      <div class="mk">
+        <div class="mk-hd"><span class="mk-no">MOCK 02</span><span class="plat">X · thread</span><span class="ref">C5 · Day 1</span></div>
+        <div class="mk-stage">
+          <div class="xwrap">
+            <div class="xbar"><span class="lg">&#119961;</span><div class="tb"><span class="on">For you</span><span>Following</span></div></div>
+            <div class="xthread">
+              <div style="display:grid;justify-items:center"><span class="xav">D</span><span class="xline"></span></div>
+              <div>
+                <div class="xmeta"><b>Delta</b><span>@delta.objects · 9:14 AM</span></div>
+                <div class="xpost"><span class="xnum">1/5</span>People keep asking if Delta is a rental company. It isn't.<br><br>Here's the difference — and why it matters.</div>
+                <div class="xpost"><span class="xnum">2/5</span><em>Rental:</em> you never own it. You pay monthly. You give it back because a contract says so.</div>
+                <div class="xcard">
+                  <h6>Why this matters</h6>
+                  <div class="xcmp">
+                    <div class="hr">Rental</div><div class="hr dl">Delta</div>
+                    <div>Monthly fee</div><div class="dl">You buy it</div>
+                    <div>You never own it</div><div class="dl">You own it</div>
+                    <div>Returned when the contract ends</div><div class="dl">Returned when <em>you</em> are done</div>
+                  </div>
+                </div>
+                <div class="xpost"><span class="xnum">5/5</span>Ownership, with an exit.<br><br>Beautiful things should circulate. That's all.</div>
+                <div class="xacts"><span>84</span><span>216</span><span>1.2K</span><span>307</span><span>24.8K</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mk-note"><b>Layout call</b>
+          The comparison card is the asset: it's the one screenshot that survives being reposted without context, so the Delta column
+          is highlighted and the rest is plain. Threads are read top-down by people who already half-disagree — which is exactly why
+          post 2/5 names the rental definition before denying it.
+        </div>
+      </div>
+
+      <div class="mk" style="margin-top:22px">
+        <div class="mk-hd"><span class="mk-no">MOCK 03</span><span class="plat">Reddit · post</span><span class="ref">C8</span></div>
+        <div class="mk-stage">
+          <div class="rdwrap">
+            <div class="rdtop"><span class="rdsub">r/ApartmentHacks</span><span>·</span><span>u/emersoncaiye</span><span style="margin-left:auto">Sort: Best</span></div>
+            <div class="rdbody">
+              <div class="rdvote"><span class="up">▲</span><b>1.4K</b><span>▼</span></div>
+              <div>
+                <div class="rdmeta"><span>u/emersoncaiye</span><span>· 7 hr. ago</span></div>
+                <div class="rdtitle">I've moved 5 times in 4 years — what I learned about furnishing a life that keeps moving</div>
+                <div class="rdtext">
+                  <p>Buy at a size that can travel. A lamp, a cup, a scarf. Not a bookcase.</p>
+                  <p>Stop buying "for now" things. They're the first to get thrown out, and the least enjoyable while you have them.</p>
+                  <p>Secondhand doesn't mean settling — but it does mean you need a filter. Mine is four questions: is it quiet, is it smartly priced, will it survive another owner, will I actually use it.</p>
+                  <p>The hardest part isn't buying. It's leaving. I've started only buying things I can send back.</p>
+                  <div class="rdwarn"><b>Disclosure</b> — I run a small curated secondhand project, which is why I think about this far too much. Not here to sell anything; happy to answer questions about the framework.</div>
+                </div>
+                <div class="rdacts"><span>312 comments</span><span>share</span><span>save</span></div>
+                <div class="rdtag">NO LINK · NO CTA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mk-note"><b>Layout call</b>
+          No logo, no product shot, no link — the emptiness is the judgment. Disclosure sits at the end of the body rather than buried in
+          comments, because what this community punishes isn't advertising, it's advertising wearing an experience costume.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section id="plan">
+  <div class="wrap">
+    <div class="sec-no">06 — 30-DAY PLAN</div>
+    <h2>Thirty days, one shooting window a week</h2>
+    <p class="sec-intro">
+      The plan is sequenced by production cost, not by platform prestige: cheapest formats first, and their results decide what gets
+      the expensive shoot. Each week has one theme and one job.
+    </p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Week</th><th>Theme</th><th>Main output</th><th>Source assets</th><th>Weekly job</th></tr></thead>
+        <tbody>
+          <tr><td><b>W1 · D1–7</b></td><td>Definition</td><td>X thread, 3 Reels, 5 Pins, Threads testing</td><td>1 shoot: lamp + 2 objects</td><td>Claim the category before spending on reach</td></tr>
+          <tr><td><b>W2 · D8–14</b></td><td>Moving Life</td><td>4 TikToks, 2 Carousels, Shorts cuts</td><td>Reuse W1 + moving scene</td><td>Find a hook that survives 3 seconds</td></tr>
+          <tr><td><b>W3 · D15–21</b></td><td>Graceful Exit</td><td>Return story, restaging video, Reddit post</td><td>1 shoot: return + restaging</td><td>Make the return mechanism visible</td></tr>
+          <tr><td><b>W4 · D22–30</b></td><td>Where It Went</td><td>Donation visit, Substack issue, seasonal Pins</td><td>Reuse everything + 1 visit</td><td>Convert trust into subscribers</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid2" style="margin-top:22px">
+      <div class="card">
+        <h3>Reuse: 12 assets → 68 posts</h3>
+        <p style="font-size:13.5px;color:var(--ink2);margin-bottom:12px">
+          <span class="tg asm">Project setup</span>Every shoot is designed around how many posts it can be cut into, not one post at a time.
+        </p>
+        <div>
+          <span class="pill">5 objects × four questions</span><span class="pill">2 restaging sequences</span><span class="pill">1 moving scene</span>
+          <span class="pill">1 comparison graphic</span><span class="pill">1 person who moved out</span><span class="pill">1 donation visit</span>
+          <span class="pill">1 Pinterest batch</span>
+        </div>
+        <div class="note">Order of reuse: Threads tests the story → TikTok tests the hook → winners become Reels → then Shorts → Pinterest rewrites for search → Reddit rewrites as experience → Substack collects the depth.</div>
+      </div>
+      <div class="card">
+        <h3>Priority, not equal effort</h3>
+        <p style="font-size:13.5px;color:var(--ink2)">
+          Eight platforms and 68 posts is aggressive for one part-time person. It only holds because
+          <b>the weekly shoot goes to TikTok and IG exclusively</b>, and most other posts are rewrites rather than new production.
+        </p>
+        <div class="note" style="margin-top:12px">
+          <b>Cut order when behind:</b> Substack pauses → Threads/X drops to 3 per week → Shorts stops → Pinterest stops new boards →
+          Reddit stops new placements. <b>TikTok and IG never get cut</b> — they're the only source of new assets.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section id="opt">
+  <div class="wrap">
+    <div class="sec-no">07 — METRICS</div>
+    <h2>What I measure, and what happens when it fails</h2>
+    <p class="sec-intro">
+      A metric without a trigger is decoration. Each row below has a threshold and a pre-written action, so optimisation never
+      degenerates into “let's see how it feels”.
+    </p>
+
+    <h3>KPI baselines (30-day targets)</h3>
+    <p style="font-size:12.5px;color:var(--muted);margin:-2px 0 14px">Same labels as the brief: <span class="tg ref">Industry benchmark</span><span class="tg asm">Project assumption</span><span class="tg real">Post-launch actual</span> — nothing here is measured yet.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Layer</th><th>Metric</th><th>Target</th><th>Why this one</th></tr></thead>
+        <tbody>
+          <tr><td>Reach</td><td>TikTok 3-sec retention / Reels non-follower reach</td><td><span class="tg ref">Industry benchmark</span>≥70% / ≥60%</td><td>Tells real reach apart from re-serving existing followers</td></tr>
+          <tr><td>Engagement</td><td>Reels save rate</td><td><span class="tg ref">Industry benchmark</span>≥1.5%</td><td>Strongest intent signal for selection / moving content; outweighs likes</td></tr>
+          <tr><td>Comprehension</td><td>Carousel completion rate</td><td><span class="tg ref">Industry benchmark</span>≥40%</td><td>Functions as the share of people who understood the mechanism</td></tr>
+          <tr><td>Comprehension</td><td>Comments asking about returning / moving</td><td><span class="tg asm">Project assumption</span>≥15%</td><td>Shows the exit pillar is seen, not scrolled past</td></tr>
+          <tr><td>Trust</td><td>Reddit upvote ratio</td><td><span class="tg asm">Project assumption</span>≥85%</td><td>Below this, the tone still reads as marketing</td></tr>
+          <tr><td>Conversion</td><td>Pinterest outbound CTR / bio CTR</td><td><span class="tg ref">Industry benchmark</span>≥1% / ≥2%</td><td>Only traffic that can be cleanly attributed</td></tr>
+          <tr><td>Retention</td><td>Return initiations / units sold</td><td><span class="tg asm">Project assumption</span>≥15%</td><td>No public baseline; the only proof the mechanism works</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:44px">Decision rules</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Signal</th><th>Threshold</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td>Low 3-second retention</td><td>&lt;65%</td><td>Rebuild the hook: put the conclusion in frame one, no preamble</td></tr>
+          <tr><td>High completion, low profile visits</td><td>≥45% completion, &lt;1% clicks</td><td>Content is being consumed as entertainment → switch to first person, end on an object-level cliffhanger</td></tr>
+          <tr><td>High saves, low likes</td><td>≥1.5% saves, &lt;1% likes</td><td><b>This means the strategy is working</b> — utility content behaves this way; add more checklist-style follow-ups</td></tr>
+          <tr><td>Comments still ask “is this rental?”</td><td>&gt;20% of comments</td><td>Make the comparison card the fixed end card of every post; re-run the definition content</td></tr>
+          <tr><td>Pinterest CTR low</td><td>&lt;0.8%</td><td>Rewrite titles as pure search terms, strip adjectives; test pin heights</td></tr>
+          <tr><td>Reddit upvote ratio low</td><td>&lt;80%</td><td>Stop posting in that subreddit, don't delete; rewrite as pure experience and move community</td></tr>
+          <tr><td>Return initiations near zero</td><td>&lt;5%</td><td>Mechanism isn't understood → raise the Exit pillar to 50% and audit return logistics cost</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      No live data exists yet: the brand is pre-launch. These are the numbers I would hold myself to on day 31, with their sources stated
+      so they can be argued with rather than inherited.
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section id="proof" style="border-bottom:none">
+  <div class="wrap">
+    <div class="sec-no">08 — WHAT TRANSFERS</div>
+    <h2>Why this judgment works on other brands</h2>
+    <p class="sec-intro" style="margin-bottom:18px">
+      This case was built on one brand, but the three things inside it don't depend on that brand: how to rewrite one object per platform,
+      how to derive priorities from a competitor gap, and how to turn a strategy into a calendar. I can't claim “X years of experience” for them,
+      so the reasoning is written down instead.
+    </p>
+    <div class="proof">
+      <div class="card">
+        <span class="pill sage">01 · Platform fit</span>
+        <h3 style="margin-top:12px">One lamp, eight forms</h3>
+        <p style="font-size:13.5px;color:var(--ink2)">
+          On IG it's a four-question series; on TikTok a first-person move; on Pinterest a keyword answer; on Reddit a method that can be argued with;
+          on Substack a provenance story. Hook, length, person and CTA are rewritten each time — including two opposite calls:
+          Pinterest gives up tone for search, Reddit gives up the CTA for trust.
+        </p>
+      </div>
+      <div class="card">
+        <span class="pill sage">02 · Strategic judgment</span>
+        <h3 style="margin-top:12px">Pillars derived from a gap</h3>
+        <p style="font-size:13.5px;color:var(--ink2)">
+          Competitors were chosen on three axes to prove the intersection is empty, which is what makes month one about
+          <strong>claiming the category</strong> instead of chasing followers. One line in the brand docs —
+          <i>because you're moving</i> — became an entire content scene, and a calendar that aligns with external timing.
+        </p>
+      </div>
+      <div class="card">
+        <span class="pill sage">03 · Execution</span>
+        <h3 style="margin-top:12px">Deliverable, not a deck</h3>
+        <p style="font-size:13.5px;color:var(--ink2)">
+          Day-by-day calendar, an investment table that says which platform gets cut first, eight single-variable A/B tests,
+          seven KPIs with stated sources, and seven pre-written decision rules. Every item is already an action — nothing needs
+          a second translation by the person who inherits it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="serif">Delta · Overseas social media content strategy</div>
+    <div>Delta is a personal brand project (<code style="font:inherit;color:inherit">emersoncaiye/Delta</code>), not a client commission; the brand is pre-launch.</div>
+    <div style="margin-top:6px">Competitor figures are public estimates. KPI baselines are industry references for a new account, not results. Mockup imagery is placeholder.</div>
+    <div class="tag-line">
+      <span>Strategy</span><span>Copywriting</span><span>Content Ops</span><span>Analytics</span>
+    </div>
+    <div style="margin-top:16px"><a href="index.html" style="color:var(--rust);text-decoration:none;border-bottom:1px solid var(--rust)">中文版 / Chinese edition →</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
